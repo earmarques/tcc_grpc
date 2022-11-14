@@ -114,7 +114,7 @@ const endereco = 'localhost';
 const porta = '50053';
 const pontoAcesso = endereco + ':' + porta;
 
-server.bindAsync(Aplicação cliente consumindo microserviço e servidor respondendo às requisições com gRPC
+server.bindAsync(
   pontoAcesso,
   grpc.ServerCredentials.createInsecure(),
   (error, port) => {
@@ -128,7 +128,7 @@ _Listagem 2: server.js_
 
 ```js
 // client.js
-const grpc = require("@grpc/grpc-js");Aplicação cliente consumindo microserviço e servidor respondendo às requisições com gRPC
+const grpc = require("@grpc/grpc-js");
 const protoLoader = require("@grpc/proto-loader");
 const PROTO_PATH = "./sorteio.proto";
 const packageDefinition = protoLoader.loadSync(PROTO_PATH);
