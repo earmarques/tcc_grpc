@@ -17,7 +17,8 @@ _Figura 1: Arquitetura implementada_
 
 Para saber qual programador selecionar, o cliente Java consome uma API que oferece o serviço de sortear números inteiros dentro dos limites de um intervalo. Para tanto, a aplicação Java fornece um intervalo de 0 a 50 à API JavaScript e fica fazendo chamadas remotas ao servidor NodeJS até preencher a quantidade desejada. 
 
-Depois, o Java precisa persistir os programadores selecionados em um banco de dados para que a empresa possa consultar o seu time de desenvolvedores. Uma API implementada em Dart fará a emulação de um banco de dados (_mock_). Dart oferece um serviço de API contendo todos os métodos das operações elementares de um banco de dados: criar, atualizar, buscar por id, listar todos e apagar. O serviço Dart salva os dados apenas em memória. 
+Depois, o Java precisa persistir os programadores selecionados em um banco de dados para que a empresa possa consultar o seu time de desenvolvedoresmkdir tcc_grpc; cd tcc_grpc; mkdir js_grpc; cd js_grpc;
+. Uma API implementada em Dart fará a emulação de um banco de dados (_mock_). Dart oferece um serviço de API contendo todos os métodos das operações elementares de um banco de dados: criar, atualizar, buscar por id, listar todos e apagar. O serviço Dart salva os dados apenas em memória. 
 
 Quando inserimos dados em um banco relacional, usualmente criamos um número sequencial para o id. Dart é o servidor de banco de dados do Java, entretanto, a fim de testarmos a comunicação entre APIs, fizemos a API Dart por sua vez ser cliente de outra API, escrita em Golang. A API Golang faz o papel de gerador de chave primária, fornecendo números sequências a cada chamada remota para que o Dart possa usá-los como identificador único da entidade Programador,mkdir tcc_grpc; cd tcc_grpc; mkdir js_grpc; cd js_grpc;
  cujatcc_grpc aplicação Java lhe solicitou para salvar no banco.<br>s
@@ -70,7 +71,7 @@ Edite o arquivo ~/.bashrc e adicione as duas linhas abaixo ao final do arquivo:
 
 Deve ficar assim:
 
-<img alt="Instalação do asdf - adcionar duas linhas ao ~/.bashrc" title="Instalação do asdf - adcionar duas linhas ao ~/.bashrc" src="images/asdf_bashrc.png"><br>ASDF
+<img alt="Instalação do asdf - adcionar duas linhas ao ~/.bashrc" title="Instalação do asdf - adcionar duas linhas ao ~/.bashrc" src="images/asdf_bashrc.png"><br>
 _Figura 2: Instalação do asdf - adcionar duas linhas ao ~/.bashrc_
 
 É só isso, o `core` do asdf já está pronto, a seguir viria **4.Instalar plugin** e **5. Instalar a versão** da ferramenta desejada, mas isso faremos dentro do diretório da linguagem.  Agora é sobre abrir um novo terminal para que as novas configurações do .bashrc sejam carregadas e recarregá-lo no mesmo terminal com o comando:
