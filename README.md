@@ -2,6 +2,8 @@
 
 Nós construímos um sistema distribuído de microsserviços fazendo a interoperabilidade de APIs implementadas em quatro linguagens de programação diferentes (`Golang`, `Dart`, `Java` e `Javacript`), utilizando o gRPC para a comunicação entre os sistemas de APIs.
 
+---
+
 ## Apresentação
 
 Este foi o nosso Trabalho de Conclusão do Curso _Análise e Desenvolvimento de Sistema_ apresentado à Fatec de São José de Rio Preto/SP em junho de 2022. Nós estávamos interessandos em compreender a tecnologia do gRPC, um novo estilo arquitetural, mais rápido e eficiente, com menores _payload_, tráfego e latência, bidirecional e nativamente poliglota. 
@@ -19,6 +21,8 @@ Depois, o Java precisa persistir os programadores selecionados em um banco de da
 
 Quando inserimos dados em um banco relacional, usualmente criamos um número sequencial para o id. Dart é o servidor de banco de dados do Java, entretanto, a fim de testarmos a comunicação entre APIs, fizemos a API Dart por sua vez ser cliente de outra API, escrita em Golang. A API Golang faz o papel de gerador de chave primária, fornecendo números sequências a cada chamada remota para que o Dart possa usá-los como identificador único da entidade Programador, cuja aplicação Java lhe solicitou para salvar no banco.<br>
 Dessa forma, temos quatro sistemas implementados em linguagens distintas se comunicando, fornecendo e consumindo serviços de API com o gRPC.
+
+---
 
 ### Execução
 
@@ -64,7 +68,7 @@ Edite o arquivo ~/.bashrc e adicione as duas linhas abaixo ao final do arquivo:
 
 Deve ficar assim:
 
-<img alt="Instalação do asdf - adcionar duas linhas ao ~/.bashrc" title="Instalação do asdf - adcionar duas linhas ao ~/.bashrc" src="images/asdf_bashrc.png"><br>
+<img alt="Instalação do asdf - adcionar duas linhas ao ~/.bashrc" title="Instalação do asdf - adcionar duas linhas ao ~/.bashrc" src="images/asdf_bashrc.png"><br>ASDF
 _Figura 2: Instalação do asdf - adcionar duas linhas ao ~/.bashrc_
 
 É só isso, o `core` do asdf já está pronto, a seguir viria **4.Instalar plugin** e **5. Instalar a versão** da ferramenta desejada, mas isso faremos dentro do diretório da linguagem.  Agora é sobre abrir um novo terminal para que as novas configurações do .bashrc sejam carregadas e recarregá-lo no mesmo terminal com o comando:
