@@ -44,7 +44,7 @@ Peço desculpas aos usuários Windows por não oferecer orientações em seu sis
 mkdir tcc_grpc; cd tcc_grpc; mkdir js_grpc; cd js_grpc;
 
 O essêncial para instalação em distros baseado em Debian como o Ubuntu, está a seguir, para mais detalhes e outras distros consulte a documentação.
-mkdir tcc_grpc; cd tcc_grpc; mkdir js_grpc; cd js_grpc;
+mkdir tcc_grpc; cd tcc_grpc; mkdir js_grpc; cd js_grpc;README.md
 
 #### 1. Instalar as dependência
 
@@ -84,6 +84,6 @@ Começaremos criando a pasta geral tcc_grpc e dentro dela a pasta que abrigará 
 ```
 mkdir -p tcc_grpc/js_grpc; cd tcc_grpc/js_grpc;
 ```
-Agora siga para [js_grpc/README.md](js_grpc/README.md) para configurarmos o servidor gRPC NodeJS.
+Agora siga para [js_grpc/README.md](js_grpc/README.md) para configurarmos o servidor gRPC no NodeJS.
 
 
