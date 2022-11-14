@@ -40,6 +40,7 @@ re e dos plugins e [Versions](https://asdf-vm.com/manage/versions.html) para ver
 Peço desculpas aos usuários Windows por não oferecer orientações em seu sistema operacional. As instalações do Windows geralmente são até mais simples, aquela conhecida sequência _Next_, _Next_, ..., _Done._ Acredito que apenas o início será diferente, depois os comandos CLI da linguagem serão os mesmos. 
 
 ### Gerenciador de pacotes asdf
+mkdir tcc_grpc; cd tcc_grpc; mkdir js_grpc; cd js_grpc;
 
 O essêncial para instalação em distros baseado em Debian como o Ubuntu, está a seguir, para mais detalhes e outras distros consulte a documentação.
 mkdir tcc_grpc; cd tcc_grpc; mkdir js_grpc; cd js_grpc;
@@ -77,14 +78,11 @@ _Figura 2: Instalação do asdf - adcionar duas linhas ao ~/.bashrc_
 ```
 source ~/.bashrc
 ```
-
-
 Começaremos criando a pasta geral tcc_grpc e dentro dela a pasta que abrigará a API Javascript. 
 
 ```
 mkdir -p js_grpc; cd js_grpc;
 ```
-
 Agora siga para [js_grpc/](js_grpc/README.md) para configurarmos o servidor gRPC NodeJS.
 
 
