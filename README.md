@@ -29,7 +29,7 @@ O cliente principal, o maior consumidor de microserviços é o Java, mas é tota
 3. Dart
 4. Java
 
-Nós estamos utilizando no momento o [`Pop!_OS 22.04 LTS`](https://pop.system76.com/), uma ditribuição linux baseada no Debian. Nela estamos utilizando um gerenciador de pacotes de linguagens chamado ASDF. Ele é como o npm do nodeJS, mas a vantagem dele é que podemos controlar o versionamente global, ou de apenas uma pasta local. Depois de instalado o asdf é só instalar o plugin específico da linguagem que quer versionar e pronto; qualquer linguagem de programação em um único gerenciador. A documentação é tranquila, confira [Getting Started](https://asdf-vm.com/guide/getting-started.html) para instalação do core e dos plugins e [Versions](https://asdf-vm.com/manage/versions.html) para ver como é simples fazer o controle de versionamento.
+Nós estamos utilizando no momento o [`Pop!_OS 22.04 LTS`](https://pop.system76.com/), uma ditribuição linux baseada no Debian. Nela estamos utilizando um gerenciador de pacotes de linguagens chamado **asdf**. Ele é como o npm do nodeJS, mas a vantagem dele é que podemos controlar o versionamente global, ou de apenas uma pasta local. Depois de instalado o asdf é só instalar o plugin específico da linguagem que quer versionar e pronto; qualquer linguagem de programação em um único gerenciador. A documentação é tranquila, confira [Getting Started](https://asdf-vm.com/guide/getting-started.html) para instalação do core e dos plugins e [Versions](https://asdf-vm.com/manage/versions.html) para ver como é simples fazer o controle de versionamento.
 
 Peço desculpas aos usuários Windows por não oferecer orientações em seu sistema operacional. As instalações do Windows geralmente são até mais simples, aquela conhecida sequência _Next_, _Next_, ..., _Done._ Acredito que apenas o início será diferente, depois os comandos CLI da linguagem serão os mesmos. 
 
@@ -40,13 +40,15 @@ O essêncial para instalação em distros baseado em Debian como o Ubuntu, está
 #### 1. Instalar as dependência
 
 ```sh
+
 apt install curl git
 ```
-#### 2. Baixar o asdf_Figura 1: Arquitetura implementada_
+#### 2. Baixar o asdf
 
 Melhor forma é clonar o repositório usando o git instalado no passo 1.
 
 ```sh
+
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
 ```
 
@@ -55,6 +57,7 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
 Edite o arquivo ~/.bashrc e adicione as duas linhas abaixo ao final do arquivo:
 
 ```sh
+
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 ```
@@ -67,13 +70,15 @@ _Figura 2: Instalação do asdf - adcionar duas linhas ao ~/.bashrc_
 É só isso, o `core` do asdf já está pronto, a seguir viria **4.Instalar plugin** e **5. Instalar a versão** da ferramenta desejada, mas isso faremos dentro do diretório da linguagem.  Agora é sobre abrir um novo terminal para que as novas configurações do .bashrc sejam carregadas e recarregá-lo no mesmo terminal com o comando:
 
 ```sh
+
 source ~/.bashrc
 ```
 
 
-Começaremos criando a pasta geral tcc_grpc e dentro dela a pasta que abrigará o Javascript:
+Começaremos criando a pasta geral tcc_grpc e dentro dela a pasta que abrigará o Javascript. 
 
 ```sh
+
 mkdir tcc_grpc;
 mkdir js_grpc;
 cd js_grpc;
