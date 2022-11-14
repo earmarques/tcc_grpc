@@ -156,3 +156,25 @@ client.sortearNumero(intervaloRequest, (error, responseSorteado) => {
 });
 ```
 _Listagem 3: client.js_
+
+Vamos subir o servidor com o comando:
+```
+node server.js
+```
+Veremos o servidor escutando requisiçoes na porta 50053.
+
+<img alt="Servidor NodeJS gRPC ouvindo na porta 50053" title="Servidor NodeJS gRPC ouvindo na porta 50053" src="images/node_serving.png"><br>
+_Figura 1: Servidor NodeJS gRPC ouvindo na porta 50053_
+
+Deixaremos o servidor escutando em um terminal e abriremos outro, no mesmo diretório, para executar o client.js que irá consumir a API.
+
+```
+node server.js
+```
+
+A cada execução do comando acima a aplicação cliente JS envia uma requisição para o servidor usando o _framework_ gRPC. O servidor gera um número entre 0 e 50 e envia para a aplicação cliente, que recebe o valor e imprime na tela.  
+
+<img alt="Aplicação cliente e servidor se comunicando através do framework gRPC" title="Aplicação cliente e servidor se comunicando através do framework gRPC" src="images/js_grpc_test.png"><br>
+_Figura 2: Aplicação cliente e servidor se comunicando através do framework gRPC_
+
+
