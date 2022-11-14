@@ -34,7 +34,7 @@ O cliente principal, o maior consumidor de microserviços é o Java, mas é tota
 2. Goulang
 3. Dart
 4. Java
-
+mkdir -p tcc_grpc/js_grpc; cd tcc_grpc/js_grpc;
 Nós estamos utilizando no momento o [`Pop!_OS 22.04 LTS`](https://pop.system76.com/), uma ditribuição linux baseada no Debian. Nela estamos utilizando um gerenciador de pacotes de linguagens chamado **asdf**. Ele é como o npm do nodeJS, mas a vantagem dele é que podemos controlar o versionamente global, ou de apenas uma pasta local. Depois de instalado o asdf é só instalar o plugin específico da linguagem que quer versionar e pronto; qualquer linguagem de programação em um único gerenciador. A documentação é tranquila, confira [Getting Started](https://asdf-vm.com/guide/getting-started.html) para instalação do comkdir tcc_grpc; cd tcc_grpc; mkdir js_grpc; cd js_grpc;
 re e dos plugins e [Versions](https://asdf-vm.com/manage/versions.html) para ver como é simples fazer o controle de versionamento.
 
@@ -84,6 +84,6 @@ Começaremos criando a pasta geral tcc_grpc e dentro dela a pasta que abrigará 
 ```
 mkdir -p tcc_grpc/js_grpc; cd tcc_grpc/js_grpc;
 ```
-Agora siga para [js_grpc/](js_grpc/README.md) para configurarmos o servidor gRPC NodeJS.
+Agora siga para [js_grpc/README.md](js_grpc/README.md) para configurarmos o servidor gRPC NodeJS.
 
 
