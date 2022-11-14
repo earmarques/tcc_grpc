@@ -161,7 +161,7 @@ Vamos subir o servidor com o comando:
 ```
 node server.js
 ```
-Veremos o servidor escutando requisiçoes na porta 50053.
+Veremos o servidor escutando requisições na porta 50053.
 
 <img alt="Servidor NodeJS gRPC ouvindo na porta 50053" title="Servidor NodeJS gRPC ouvindo na porta 50053" src="images/node_serving.png"><br>
 _Figura 1: Servidor NodeJS gRPC ouvindo na porta 50053_
