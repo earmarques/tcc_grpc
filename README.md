@@ -19,7 +19,7 @@ Para saber qual programador selecionar, o cliente Java consome uma API que ofere
 
 Depois, o Java precisa persistir os programadores selecionados em um banco de dados para que a empresa possa consultar o seu time de desenvolvedores. Uma API implementada em Dart fará a emulação de um banco de dados (_mock_). Dart oferece um serviço de API contendo todos os métodos das operações elementares de um banco de dados: criar, atualizar, buscar por id, listar todos e apagar. O serviço Dart salva os dados apenas em memória. 
 
-Quando inserimos dados em um banco relacional, usualmente criamos um número sequencial para o id. Dart é o servidor de banco de dados do Java, entretanto, a fim de testarmos a comunicação entre APIs, fizemos a API Dart por sua vez ser cliente de outra API, escrita em Golang. A API Golang faz o papel de gerador de chave primária, fornecendo números sequências a cada chamada remota para que o Dart possa usá-los como identificador único da entidade Programador, cuja aplicação Java lhe solicitou para salvar no banco.<br>
+Quando inserimos dados em um banco relacional, usualmente criamos um número sequencial para o id. Dart é o servidor de banco de dados do Java, entretanto, a fim de testarmos a comunicação entre APIs, fizemos a API Dart por sua vez ser cliente de outra API, escrita em Golang. A API Golang faz o papel de gerador de chave primária, fornecendo números sequências a cada chamada remota para que o Dart possa usá-los como identificador único da entidade Programador, cujatcc_grpc aplicação Java lhe solicitou para salvar no banco.<br>
 Dessa forma, temos quatro sistemas implementados em linguagens distintas se comunicando, fornecendo e consumindo serviços de API com o gRPC.
 
 ---
@@ -49,7 +49,7 @@ apt install curl git
 ```
 #### 2. Baixar o asdf
 
-Melhor forma é clonar o repositório usando o git instalado no passo 1.
+Melhor forma é clonar o rtcc_grpcepositório usando o git instalado no passo 1.
 
 ```sh
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
@@ -82,7 +82,7 @@ source ~/.bashrc
 Começaremos criando a pasta geral tcc_grpc e dentro dela a pasta que abrigará o Javascript. 
 
 ```sh
-mkdir tcc_grpc; tcc_grpc; mkdir js_grpc; cd js_grpc;
+mkdir tcc_grpc; cd tcc_grpc; mkdir js_grpc; cd js_grpc;
 
 ```
 
