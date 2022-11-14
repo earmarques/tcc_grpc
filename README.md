@@ -82,7 +82,7 @@ source ~/.bashrc
 Começaremos criando a pasta geral tcc_grpc e dentro dela a pasta que abrigará a API Javascript. 
 
 ```
-mkdir -p tcc_grpc/js_grpc; cd js_grpc;
+mkdir -p tcc_grpc/js_grpc; cd tcc_grpc/js_grpc;
 ```
 Agora siga para [js_grpc/](js_grpc/README.md) para configurarmos o servidor gRPC NodeJS.
 
