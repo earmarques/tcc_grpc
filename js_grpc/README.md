@@ -121,7 +121,7 @@ server.bindAsync(
     console.log("\n🍏 Servidor rodando no ponto acesso " + pontoAcesso);
     server.start();
   }
-  );
+);
 ```
 _Listagem 2: server.js_
 
