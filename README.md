@@ -19,7 +19,7 @@ Para saber qual programador selecionar, o cliente Java consome uma API que ofere
 
 Depois, o Java precisa persistir os programadores selecionados em um banco de dados para que a empresa possa consultar o seu time de desenvolvedores. Uma API implementada em Dart fará a emulação de um banco de dados (_mock_). Dart oferece um serviço de API contendo todos os métodos das operações elementares de um banco de dados: criar, atualizar, buscar por id, listar todos e apagar. O serviço Dart salva os dados apenas em memória. 
 
-Quando inserimos dados em um banco relacional, usualmente criamos um número sequencial para o id. Dart é o servidor de banco de dados do Java, entretanto, a fim de testarmos a comunicação entre APIs, fizemos a API Dart por sua vez ser cliente de outra API, escrita em Golang. A API Golang faz o papel de gerador de chave primária, fornecendo números sequências a cada chamada remota para que o Dart possa usá-los como identificador único da entidade Programador, cujatcc_grpc aplicação Java lhe solicitou para salvar no banco.<br>
+Quando inserimos dados em um banco relacional, usualmente criamos um número sequencial para o id. Dart é o servidor de banco de dados do Java, entretanto, a fim de testarmos a comunicação entre APIs, fizemos a API Dart por sua vez ser cliente de outra API, escrita em Golang. A API Golang faz o papel de gerador de chave primária, fornecendo números sequências a cada chamada remota para que o Dart possa usá-los como identificador único da entidade Programador, cujatcc_grpc aplicação Java lhe solicitou para salvar no banco.<br>s
 Dessa forma, temos quatro sistemas implementados em linguagens distintas se comunicando, fornecendo e consumindo serviços de API com o gRPC.
 
 ---
@@ -79,7 +79,7 @@ source ~/.bashrc
 ```
 
 
-Começaremos criando a pasta geral tcc_grpc e dentro dela a pasta que abrigará o Javascript. 
+Começaremos criando a pasta geral tcc_grpc e dentro dela a pasta que abrigará a API Javascript. 
 
 ```
 mkdir tcc_grpc; cd tcc_grpc; mkdir js_grpc; cd js_grpc;
