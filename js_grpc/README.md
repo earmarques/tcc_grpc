@@ -31,9 +31,24 @@ asdf install nodejs 18.7.0
 
 Mas aqui nós vamos utilizar localmente(tcc_grpc/js_grpc/) neste repositório a versão específica.
 ```
-asdf global nodejs 18.7.0
+asdf local nodejs 18.7.0
 ```
 
+### NodeJS
 
+O NodeJS traz a reboque em seu binário o gerenciador de pacotes npm. Primeiro precisamos inicializá-lo.
+```
+npm init -y
+```
 
+Nós vamos precisar de duas bibliotecas, vamos pedir para o npm buscá-las para nós.
+
+- @grpc/grpc-js
+```
+npm i @grpc/grpc-js
+```
+- @grpc/proto-loader
+```
+npm i @grpc/proto-loader
+```
 
