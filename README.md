@@ -87,3 +87,7 @@ mkdir tcc_grpc;
 mkdir js_grpc;
 cd js_grpc;
 ```
+
+Agora siga para a pasta [js_grpc/](js_grpc/README.md) para configurarmos o servidor gRPC NodeJS.
+
+
