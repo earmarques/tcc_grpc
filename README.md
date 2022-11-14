@@ -45,7 +45,6 @@ O essêncial para instalação em distros baseado em Debian como o Ubuntu, está
 
 ```
 apt install curl git
-
 ```
 #### 2. Baixar o asdf
 
@@ -53,7 +52,6 @@ Melhor forma é clonar o rtcc_grpcepositório usando o git instalado no passo 1.
 
 ```
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
-
 ```
 
 #### 3. Instalar o asdf
@@ -63,7 +61,6 @@ Edite o arquivo ~/.bashrc e adicione as duas linhas abaixo ao final do arquivo:
 ```
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
-
 ```
 
 Deve ficar assim:
@@ -75,7 +72,6 @@ _Figura 2: Instalação do asdf - adcionar duas linhas ao ~/.bashrc_
 
 ```
 source ~/.bashrc
-
 ```
 
 
@@ -83,7 +79,6 @@ Começaremos criando a pasta geral tcc_grpc e dentro dela a pasta que abrigará 
 
 ```
 mkdir tcc_grpc; cd tcc_grpc; mkdir js_grpc; cd js_grpc;
-
 ```
 
 Agora siga para [js_grpc/](js_grpc/README.md) para configurarmos o servidor gRPC NodeJS.
