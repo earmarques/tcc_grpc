@@ -17,27 +17,22 @@ asdf install nodejs 18.7.0
 ```
 
 > Se quiser instalar a versão mais recente o comando é:
-> 
 > ```
 > asdf install nodejs latest
 > ```
-> 
 > Poderá ter qualquer versão disponível entre as listadas:
-> 
 > ```
 > asdf list all nodejs
 > ```
-> 
 > Poderá configurar a última versão globalmente, como versão default:
-> 
 > ```
 > asdf global nodejs latest
 > ```
 
 Mas aqui nós vamos utilizar localmente(tcc_grpc/js_grpc/) neste repositório a versão específica.
-> ```
-> asdf global nodejs 18.7.0
-> ```
+```
+asdf global nodejs 18.7.0
+```
 
 
 
