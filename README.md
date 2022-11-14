@@ -44,16 +44,16 @@ O essêncial para instalação em distros baseado em Debian como o Ubuntu, está
 #### 1. Instalar as dependência
 
 ```sh
-
 apt install curl git
+
 ```
 #### 2. Baixar o asdf
 
 Melhor forma é clonar o repositório usando o git instalado no passo 1.
 
 ```sh
-
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
+
 ```
 
 #### 3. Instalar o asdf
@@ -61,9 +61,9 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
 Edite o arquivo ~/.bashrc e adicione as duas linhas abaixo ao final do arquivo:
 
 ```sh
-
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
 ```
 
 Deve ficar assim:
@@ -74,20 +74,18 @@ _Figura 2: Instalação do asdf - adcionar duas linhas ao ~/.bashrc_
 É só isso, o `core` do asdf já está pronto, a seguir viria **4.Instalar plugin** e **5. Instalar a versão** da ferramenta desejada, mas isso faremos dentro do diretório da linguagem.  Agora é sobre abrir um novo terminal para que as novas configurações do .bashrc sejam carregadas e recarregá-lo no mesmo terminal com o comando:
 
 ```sh
-
 source ~/.bashrc
+
 ```
 
 
 Começaremos criando a pasta geral tcc_grpc e dentro dela a pasta que abrigará o Javascript. 
 
 ```sh
+mkdir tcc_grpc; tcc_grpc; mkdir js_grpc; cd js_grpc;
 
-mkdir tcc_grpc;
-mkdir js_grpc;
-cd js_grpc;
 ```
 
-Agora siga para a pasta [js_grpc/](js_grpc/README.md) para configurarmos o servidor gRPC NodeJS.
+Agora siga para [js_grpc/](js_grpc/README.md) para configurarmos o servidor gRPC NodeJS.
 
 
