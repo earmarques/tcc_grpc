@@ -159,7 +159,7 @@ _Listagem 3: client.js_
 
 Vamos subir o servidor com o comando:
 ```
-node server.js
+node client.js
 ```
 Veremos o servidor escutando requisições na porta 50053.
 
