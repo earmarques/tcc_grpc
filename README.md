@@ -22,5 +22,21 @@ Dessa forma, temos quatro sistemas implementados em linguagens distintas se comu
 
 ## Execução
 
+O cliente principal, o maior consumidor de microserviços é o Java, mas é totalmente dependente dos outros serviços. E cada tem seu próprio ambiente de excecução, seu próprio servidor. Sendo assim, nós vamos criar um diretório para cada linguagem de programação. É preciso ter em mente que cada diretório é como se fosse um repositório, logo, cada um deles terá o seu README.md com as instruções e comandos de execução no terminal. JavaScript e Go não possuem dependência, mas Dart depende que o serviço Go esteja no ar, e o Java depende de todos eles, sendo assim, nós faremos a seguinte sequencia:
+
+1. JavaScript
+2. Goulang
+3. Dart
+4. Java
+
+Nós estamos utilizando no momento o [`Pop!_OS 22.04 LTS`](https://pop.system76.com/), uma ditribuição linux baseada no Debian. Nela estamos utilizando um gerenciador de pacotes de linguagens chamado ASDF. Ele é como o npm do nodeJS, mas a vantagem dele é que podemos controlar o versionamente global, ou de apenas uma pasta local. Depois de instalado o asdf é só instalar o plugin específico da linguagem que quer versionar e pronto; qualquer linguagem de programação em um único gerenciador. A documentação é tranquila, confira [Getting Started](https://asdf-vm.com/guide/getting-started.html) para instalação do core e dos plugins e (Versions)[https://asdf-vm.com/manage/versions.html] para ver como é simples fazer o controle de versionamento.
+
+Peço desculpas aos usuários Windows por não oferecer orientações em seu sistema operacional. As instalações do Windows geralmente são até mais simples, aquela conhecida sequência _Next_,_Next_,..._Done._ Acredito que apenas o início será diferente, depois que os comandos CLI da linguagem serão os mesmos. 
+
+Começaremos criando a pasta geral tcc_grpc e dentro dela a pasta que abrigará o Javascript:
+
+
+
+
 
 
