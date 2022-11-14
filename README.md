@@ -57,7 +57,7 @@ Melhor forma é clonar o rtcc_grpcepositório usando o git instalado no passo 1.
 
 ```
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
-```mkdir tcc_grpc; cd tcc_grpc; mkdir js_grpc; cd js_grpc;
+```
 
 
 #### 3. Instalar o asdf
