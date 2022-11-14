@@ -114,7 +114,7 @@ const endereco = 'localhost';
 const porta = '50053';
 const pontoAcesso = endereco + ':' + porta;
 
-server.bindAsync(
+server.bindAsync(Aplicação cliente consumindo microserviço e servidor respondendo às requisições com gRPC
   pontoAcesso,
   grpc.ServerCredentials.createInsecure(),
   (error, port) => {
@@ -128,7 +128,7 @@ _Listagem 2: server.js_
 
 ```js
 // client.js
-const grpc = require("@grpc/grpc-js");
+const grpc = require("@grpc/grpc-js");Aplicação cliente consumindo microserviço e servidor respondendo às requisições com gRPC
 const protoLoader = require("@grpc/proto-loader");
 const PROTO_PATH = "./sorteio.proto";
 const packageDefinition = protoLoader.loadSync(PROTO_PATH);
@@ -144,7 +144,7 @@ const client = new SorteioService(
 );
 
 let intervaloRequest = {min: 0, max:50}
-
+Aplicação cliente consumindo microserviço e servidor respondendo às requisições com gRPC
 client.sortearNumero(intervaloRequest, (error, responseSorteado) => {  
   if (!error) {
     //console.log("Sucesso!!!");
@@ -168,11 +168,11 @@ _Figura 1: Servidor NodeJS gRPC ouvindo na porta 50053_
 
 Deixaremos o servidor escutando em um terminal e abriremos outro, no mesmo diretório, para executar o client.js que irá consumir a API.
 
-```
+```Aplicação cliente consumindo microserviço e servidor respondendo às requisições com gRPC
 node server.js
 ```
 
-A cada execução do comando acima a aplicação cliente JS envia uma requisição para o servidor usando o _framework_ gRPC. O servidor gera um número entre 0 e 50 e envia para a aplicação cliente, que recebe o valor e imprime na tela.  
+A cada execução do comando acima, a aplicação cliente JS envia uma requisição para o servidor usando o _framework_ gRPC. O servidor gera um número entre 0 e 50 e o envia para a aplicação cliente, que recebe o valor e imprime na tela.  
 
 <img alt="Aplicação cliente e servidor se comunicando através do framework gRPC" title="Aplicação cliente e servidor se comunicando através do framework gRPC" src="images/js_grpc_test.png"><br>
 _Figura 2: Aplicação cliente e servidor se comunicando através do framework gRPC_
