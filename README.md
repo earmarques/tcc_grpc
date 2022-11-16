@@ -52,7 +52,7 @@ sudo apt install curl git
 ```
 ##### 2. Baixar o asdf
 
-Melhor forma é clonar o rtcc_grpcepositório usando o git instalado no passo 1.
+Melhor forma é clonar o repositório usando o git instalado no passo 1.
 
 ```
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
