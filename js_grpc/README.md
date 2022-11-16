@@ -11,7 +11,7 @@ Para uma fundamentação teórica e explicação do código, recomendamos a leit
 ### 1.asdf
 Estando dentro da pasta tcc_grpc/js_grpc/, execute os comandos.
 
-#### Instalar o plugin asdf do Node
+#### Instalar o plugin asdf do NodeJS
 
 ```
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
