@@ -8,8 +8,9 @@ Temos três coisas a fazer:
 
 Para uma fundamentação teórica e explicação do código, recomendamos a leitura da [Wiki do projeto](https://github.com/earmarques/tcc_grpc/wiki). Aqui vamos cuidar apenas dos comandos para fazer o gRPC funcionar com JavaScript.
 
-### 1.asdf
 Estando dentro da pasta tcc_grpc/js_grpc/, execute os comandos.
+
+### 1.asdf
 
 #### Instalar o plugin asdf do NodeJS
 
