@@ -48,7 +48,7 @@ O essêncial para instalação em distros baseado em Debian como o Ubuntu, está
 ##### 1. Instalar as dependência
 
 ```
-apt install curl git
+sudo apt install curl git
 ```
 ##### 2. Baixar o asdf
 
