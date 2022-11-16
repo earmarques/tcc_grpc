@@ -1,4 +1,4 @@
-## gRPC no NodeJS
+## :green_apple: gRPC no NodeJS
 
 Temos três coisas a fazer:
 
