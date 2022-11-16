@@ -62,7 +62,7 @@ npm i @grpc/grpc-js
 npm i @grpc/proto-loader
 ```
 
-### 3.Criando os arquivos server.js, client.js e o contrato sorteio.proto
+### 3.Criando os arquivos `server.js`, `client.js` e o contrato `sorteio.proto`
 
 Vamos criar os três arquivos que iremos precisar.
 
