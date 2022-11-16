@@ -52,7 +52,7 @@ sudo apt install curl git
 ```
 
 ##### 2. Baixar o asdf
-
+´
 Melhor forma é clonar o repositório usando o git instalado no passo 1.
 
 ```
@@ -83,6 +83,6 @@ Começaremos criando a pasta geral tcc_grpc e dentro dela a pasta que abrigará 
 ```
 mkdir -p tcc_grpc/js_grpc; cd tcc_grpc/js_grpc;
 ```
-Agora convidamos o leitor para ir até o sub-repositório do [_JavaScript_](js_grpc/README.md) para ver como é simples configurar o o gRPC no _NodeJS_.
+Agora convidamos o leitor para ir até o sub-repositório do [_JavaScript_](js_grpc/README.md) para ver como é simples configurar o gRPC no _NodeJS_.
 
 
