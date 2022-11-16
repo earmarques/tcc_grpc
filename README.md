@@ -83,6 +83,6 @@ Começaremos criando a pasta geral tcc_grpc e dentro dela a pasta que abrigará 
 ```
 mkdir -p tcc_grpc/js_grpc; cd tcc_grpc/js_grpc;
 ```
-Agora siga para [_JavaScript_](js_grpc/README.md) para configurarmos o servidor gRPC no _NodeJS_.
+Agora convidamos o leitor para ir até o sub-repositório do [_JavaScript_](js_grpc/README.md) para ver como é simples configurar o o gRPC no _NodeJS_.
 
 
