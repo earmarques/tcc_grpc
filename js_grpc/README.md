@@ -1,5 +1,14 @@
+## gRPC no NodeJS
 
-### asdf
+Temos três coisas a fazer:
+
+1. Configurar o ambiente para o NodeJS usando a CLI asdf;
+2. Usar a CLI npm do NodeJS para instalar as dependência;
+3. Criar os arquivos 
+
+Para uma fundamentação teórica e explicação do código, recomendamos a leitura da [Wiki do projeto](https://github.com/earmarques/tcc_grpc/wiki). Aqui vamos cuidar apenas dos comandos para fazer o gRPC funcionar com JavaScript.
+
+### 1.asdf
 Estando dentro da pasta tcc_grpc/js_grpc/, execute os comandos.
 
 #### Instalar o plugin asdf do Node
@@ -15,7 +24,7 @@ Nós estamos usando a versão 18.7.0 do NodeJS. Para evitar problemas, recomenda
 ```
 asdf install nodejs 18.7.0
 ```
-
+O que está destacado a seguir é opcional.
 > Se quiser instalar a versão mais recente o comando é:
 > ```
 > asdf install nodejs latest
@@ -34,7 +43,7 @@ Mas aqui nós vamos utilizar localmente(tcc_grpc/js_grpc/) neste repositório a 
 asdf local nodejs 18.7.0
 ```
 
-### NodeJS
+### 2.NodeJS
 
 O NodeJS traz a reboque em seu binário o gerenciador de pacotes npm. Primeiro precisamos inicializá-lo.
 ```
@@ -52,7 +61,7 @@ npm i @grpc/grpc-js
 npm i @grpc/proto-loader
 ```
 
-### Criando os arquivos
+### 3.Criando os arquivos server.js, client.js e o contrato sorteio.proto
 
 Vamos criar os três arquivos que iremos precisar.
 
