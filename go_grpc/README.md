@@ -55,7 +55,7 @@ Precisamos instalar dois plugins do Golang para compilar os arquivos _protobuff_
 go get google.golang.org/protobuf/cmd/protoc-gen-go
 ```
 ```
-go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
+google.golang.org/grpc/cmd/protoc-gen-go-grpc
 ```
 
 #### Exportar PATH
@@ -95,7 +95,7 @@ syntax = "proto3";
 import "google/protobuf/empty.proto";
 
 option go_package = "github.com/earmarques/tcc_grpc/go_grpc";
-package gerador_id;
+package geradorid;
 
 service GeradorID {
     rpc GerarId(google.protobuf.Empty) returns (IdReply) {}
