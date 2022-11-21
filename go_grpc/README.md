@@ -55,7 +55,7 @@ Precisamos instalar dois plugins do Golang para compilar os arquivos _protobuff_
 go get google.golang.org/protobuf/cmd/protoc-gen-go
 ```
 ```
-google.golang.org/grpc/cmd/protoc-gen-go-grpc
+go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
 ```
 
 #### Exportar PATH
