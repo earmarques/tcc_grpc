@@ -41,7 +41,7 @@ asdf install protoc 3.20.3
 asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 ```
 
-#### Instalar uma versão do Golang
+##### Instalar uma versão do Golang
 
 Podemos ver todas as versões disponíveis com:
 ```
@@ -58,7 +58,7 @@ asdf install golang 1.19
 
 #### Plugins Go
 
-Precisamos instalar dois plugins do Golang para compilar os arquivos _protobuff_.
+Um dos grandes benefícios do gRPC é o fato dele gerar códigos que abstraem e cuidam de toda a comunicação pela rede. Para tanto, cada linguagem tem plugins específicos. No caso do Golang, precisamos instalar dois plugins para gerar códigos para nós a partir dos arquivos _.proto_.
 ```
 go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.1
 ```
@@ -69,10 +69,11 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
 #### Atualizar PATH
 
 Precisamos atualizar o PATH para incluir os pacotes baixados do golang, para que o `protoc` possa encontrar os plugins que acabamos de instalar.
-
 ```
 export PATH="$PATH:$(go env GOPATH)/bin"
 ```
+Este comando modifica temporariamente o PATH, apenas para o shell que estiver usando. Se deseja manter seu PATH limpo tudo bem, mas se quer evitar ter de executar o camando anterior toda vez que for compilar arquivos _.proto_ em Go, então acrescente a linha de comando ao final do arquivo ~/.bashrc.
+
 
 #### Reshim
 
