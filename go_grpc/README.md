@@ -1,5 +1,7 @@
 ## 🦫 gRPC no Golang
 
+No Golang a configuração é mais burocrática que no JavaScript.
+
 Temos três coisas a fazer:
 
 1. Instalar o plugin asdf do Goland e com ele instalar o Golang;
@@ -18,10 +20,23 @@ mkdir go_grpc; cd go_grpc;
 
 ### 1.asdf
 
-#### Instalar o plugin asdf do Golang
+Podemos encontrar o plugin de qualquer linguagem procurando no google por: _asdf plugin `nomeDaLinguagem`_. Entrar no github do plugin e seguir as instruções. Fizemos isso para o `golang`e o compilador protoc
 
-Podemos encontrar o plugin de qualquer linguagem procurando no google por: _asdf plugin `nomeDaLinguagem`_. Entrar no github do plugin e seguir as instruções; para o [Golang](https://github.com/kennyp/asdf-golang), o comando é:
+#### Protocol Buffer Compile 
+Para compilar um arquivo `protocol buffer`, nós precisamos instalar o compilador e depois os plugins específicos da linguagem golang. O _protocol buffer compiler_ usaremos o asdf para instalá-lo.
 
+##### Instalar o plugin 
+```
+asdf plugin-add protoc https://github.com/paxosglobal/asdf-protoc.git
+```
+##### Instalar a versão 
+
+```
+asdf install protoc 3.20.3
+```
+
+#### Golang
+##### Instalar o plugin
 ```
 asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 ```
@@ -40,25 +55,18 @@ asdf install golang 1.19
 
 ### 2. Golang
 
-#### Inicializar o projeto
-
-O comando `go mod init` cria um arquivo `go.mod` e rastreia as dependências do projeto. Nós chamaremos nosso módulo como o subrepositório do tcc `go mod init github.com/earmarques/tcc_grpc/go_grpc`, mas recomendamos ao leitor usar o seu próprio git, ou um nome qualquer, como:
-
-```
-go mod init meu_modulo_grpc
-```
 
 #### Plugins Go
 
 Precisamos instalar dois plugins do Golang para compilar os arquivos _protobuff_.
 ```
-go get google.golang.org/protobuf/cmd/protoc-gen-go
+go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.1
 ```
 ```
-go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
 ```
 
-#### Exportar PATH
+#### Atualizar PATH
 
 Precisamos atualizar o PATH para incluir os pacotes baixados do golang, para que o `protoc` possa encontrar os plugins que acabamos de instalar.
 
@@ -72,6 +80,15 @@ A documentação do [plugin](https://github.com/kennyp/asdf-golang#when-using-go
 ```
 asdf reshim golang
 ```
+
+#### Inicializar o projeto
+
+O comando `go mod init` cria um arquivo `go.mod` e rastreia as dependências do projeto. Nós chamaremos nosso módulo como o subrepositório do tcc `go mod init github.com/earmarques/tcc_grpc/go_grpc`, mas recomendamos ao leitor usar o seu próprio git, ou um nome qualquer, como:
+
+```
+go mod init meu_modulo_grpc
+```
+
 
 ### 3. Criar os arquivos
 
