@@ -1,4 +1,4 @@
-## 🦫 gRPC no Golang
+## gRPC no Golang 🦫
 
 No Golang a configuração é mais burocrática que no JavaScript.
 
@@ -72,7 +72,10 @@ Precisamos atualizar o PATH para incluir os pacotes baixados do golang, para que
 ```
 export PATH="$PATH:$(go env GOPATH)/bin"
 ```
-Este comando modifica temporariamente o PATH, apenas para o shell que estiver usando. Se deseja manter seu PATH limpo tudo bem, mas se quer evitar ter de executar o camando anterior toda vez que for compilar arquivos _.proto_ em Go, então acrescente a linha de comando ao final do arquivo ~/.bashrc.
+Este comando modifica temporariamente o PATH, apenas para o shell que estiver usando. Se quiser evitar ter de executar o camando anterior toda vez que for compilar arquivos _.proto_ em Go, então acrescente a linha de comando ao final do arquivo ~/.bashrc.
+
+[!GOPATH no ~/.bashrc](images/gopath.png)
+
 
 
 #### Reshim
