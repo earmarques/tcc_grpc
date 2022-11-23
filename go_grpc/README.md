@@ -69,14 +69,12 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
 #### Atualizar PATH
 
 Precisamos atualizar o PATH para incluir os pacotes baixados do golang, para que o `protoc` possa encontrar os plugins que acabamos de instalar.
-```
+```sh
 export PATH="$PATH:$(go env GOPATH)/bin"
 ```
 Este comando modifica temporariamente o PATH, apenas para o shell que estiver usando. Se quiser evitar ter de executar o camando anterior toda vez que for compilar arquivos _.proto_ em Go, então acrescente a linha de comando ao final do arquivo ~/.bashrc.
 
-[!GOPATH no ~/.bashrc](images/gopath.png)
-
-
+![GOPATH no ~/.bashrc](images/gopath.png "GOPATH no ~/.bashrc")
 
 #### Reshim
 
