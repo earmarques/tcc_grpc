@@ -191,7 +191,7 @@ client.sortearNumero(intervaloRequest, (error, responseSorteado) => {
 });
 ```
 _Listagem 3: client.js_
-https://github.com/earmarques/tcc_grpc/tree/main/js_grpc
+
 ---
 
 ### 4. Executar teste
