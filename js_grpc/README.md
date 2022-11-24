@@ -2,20 +2,20 @@
 
 Temos as seguintes etapas para fazer:
 
-**[1. asdf](./README.md#1-asdf-1)**<br>
-[1.1. Instalar o plugin asdf do NodeJS](./README.md#11-instalar-o-plugin-asdf-do-nodejs)<br>
-[1.2. Instalar uma versão do NodeJS](./README.md#12-instalar-uma-vers%C3%A3o-do-nodejs)<br>
+**[1. asdf](#1-asdf-1)**<br>
+[1.1. Instalar o plugin asdf do NodeJS](#11-instalar-o-plugin-asdf-do-nodejs)<br>
+[1.2. Instalar uma versão do NodeJS](#12-instalar-uma-vers%C3%A3o-do-nodejs)<br>
 
-**[2. NodeJS](./README.md#2-nodejs-1)**<br>
-[2.1 Inicializar o projeto](./README.md#21-inicializar-o-projeto)<br>
-[2.2. Instalar dependências](./README.md#22-instalar-depend%C3%AAncias)<br>
+**[2. NodeJS](#2-nodejs-1)**<br>
+[2.1 Inicializar o projeto](#21-inicializar-o-projeto)<br>
+[2.2. Instalar dependências](#22-instalar-depend%C3%AAncias)<br>
 
-**[3. Criar os arquivos](./README.md#3-criando-os-arquivos-serverjs-clientjs-e-o-contrato-sorteioproto)**<br>
-[3.1. sorteio.proto](./README.md#31-sorteioproto)<br>
-[3.2 server.js](./README.md#32-serverjs)<br>
-[3.3 client.js](./README.md#33-clientjs)<br>
+**[3. Criar os arquivos](#3-criando-os-arquivos-serverjs-clientjs-e-o-contrato-sorteioproto)**<br>
+[3.1. sorteio.proto](#31-sorteioproto)<br>
+[3.2 server.js](#32-serverjs)<br>
+[3.3 client.js](#33-clientjs)<br>
 
-**[4. Executar teste](./README.md#4-executar-teste)**
+**[4. Executar teste](#4-executar-teste)**
 
 ---
 
