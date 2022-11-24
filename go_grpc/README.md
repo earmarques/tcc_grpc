@@ -302,7 +302,7 @@ _Figura 3: Teste de comunicação cliente-servidor Golang_
 
 <br><br>
 
-[:arrow_up: Topo](#grpc-no-nodejs-green_apple)
+[:arrow_up: Topo](#grpc-no-golang)
 
 <br><br>
 
