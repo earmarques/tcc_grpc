@@ -1,7 +1,8 @@
 ## gRPC no NodeJS :green_apple:
 
-Temos as seguintes etapas para fazer:<br>
-**[1. asdf]**(./README.md#1-asdf-1)<br>
+Temos as seguintes etapas para fazer:
+
+[**1. asdf**](./README.md#1-asdf-1)<br>
 [1.1. Instalar o plugin asdf do NodeJS](./README.md#11-instalar-o-plugin-asdf-do-nodejs)<br>
 [1.2. Instalar uma versão do NodeJS](./README.md#12-instalar-uma-vers%C3%A3o-do-nodejs)<br>
 
