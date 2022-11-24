@@ -2,28 +2,28 @@
 
 No Golang a configuração é mais burocrática que no JavaScript.
 
-#### 1. asdf<br>
-1.1. Protocol Buffer Compile<br>
-1.1.2. Instalar o plugin<br>
-1.1.3. Instalar a versão<br>
-1.2. Golang<br>
-1.2.1. Instalar o plugin<br>
-1.2.2. Instalar uma versão do Golang<br>
+**[1. asdf](README.md#1-asdf-1)**<br>
+1.1. Protocol Buffer Compile](#11-protocol-buffer-compiler)<br>
+[1.1.1. Instalar o plugin](#111-instalar-o-plugin)<br>
+[1.1.2. Instalar a versão](#112-instalar-a-vers%C3%A3o)<br>
+[1.2. Golang](#12-golang)<br>
+[1.2.1. Instalar o plugin](#121-instalar-o-plugin)<br>
+[1.2.2. Instalar uma versão do Golang](#122-instalar-uma-vers%C3%A3o-do-golangestrutura-do-projeto)<br>
 
-#### 2. Golang<br>
-2.1. Plugins Go<br>
-2.2. Atualizar PATH<br>
-2.3. Inicializar o projeto<br>
-2.4. Instalar a dependência grpc-go<br>
-2.5. Reshim<br>
+**[2. Golang](README.md#2-golang-1)**<br>
+[2.1. Plugins Go](#21-plugins-go)<br>
+[2.2. Atualizar PATH](#22-atualizar-path)<br>
+[2.3. Inicializar o projeto](#23-inicializar-o-projeto)<br>
+[2.4. Instalar a dependência grpc-go](#24-instalar-o-pacote-grpc-go)<br>
+[2.5. Reshim](#25-reshim)<br>
 
-#### 3. Criar os arquivos<br>
-3.1. Arquivo _Protobuff_<br>
-3.2. Compilar o arquivo proto<br>
-3.3. Server<br>
-3.4. Client<br>
+**[3. Criar os arquivos](README.md#3-criar-os-arquivos-1)**<br>
+[3.1. Arquivo _Protobuff_](#31-arquivo-_protobuff_estrutura-do-projeto)<br>
+[3.2. Compilar o arquivo proto](#32-compilar-o-arquivo-proto)<br>
+[3.3. Server](#33-server)<br>
+[3.4. Client](#34-client)<br>
 
-#### 4. Executar teste
+**[4. Executar teste](README.md#4-executar-teste-1)**
 
 ---
 
