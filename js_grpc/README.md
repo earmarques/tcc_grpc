@@ -2,25 +2,27 @@
 
 Temos três coisas a fazer:
 
-#### 1. Configurar o ambiente para o NodeJS usando a CLI asdf;
-#### 2. Usar a CLI npm do NodeJS para instalar as dependência;
-#### 3. Criar os arquivos 
+1. Configurar o ambiente para o NodeJS usando a CLI asdf;
+2. Usar a CLI npm do NodeJS para instalar as dependência;
+3. Criar os arquivos 
 
 ---
 
 Para uma fundamentação teórica e explicação do código, recomendamos a leitura da [Wiki do projeto](https://github.com/earmarques/tcc_grpc/wiki). Aqui vamos cuidar apenas dos comandos para fazer o gRPC funcionar com JavaScript.
 
+---
+
 Estando dentro da pasta tcc_grpc/js_grpc/, execute os comandos.
 
 ### 1.asdf
 
-#### Instalar o plugin asdf do NodeJS
+#### 1.1 Instalar o plugin asdf do NodeJS
 
 ```
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 ```
 
-#### Instalar uma versão do NodeJS
+#### 1.2 Instalar uma versão do NodeJS
 
 Nós estamos usando a versão 18.7.0 do NodeJS. Para evitar problemas, recomendamos usar a mesma versão. 
 
