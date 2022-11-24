@@ -93,6 +93,12 @@ O comando `go mod init` cria um arquivo `go.mod` e rastreia as dependências do 
 go mod init meu_modulo_grpc
 ```
 
+##### Instalar o pacote grpc-go
+
+Por fim, agora que o projeto está sendo monitorado, vamos instalar a dependência `grpc-go`.
+```
+go get google.golang.org/grpc
+```
 
 
 ### 4. Criar os arquivos
@@ -137,10 +143,124 @@ protoc --go_out=. --go_opt=paths=source_relative \
 --go-grpc_out=. --go-grpc_opt=paths=source_relative \
  google/protobuf/empty.proto gerador_id.proto
 ```
-Chamamos o compilador `protoc` que usará os plugins do Go para gerar o código. No arquivo `gerador_id.proto` nós importamos a definição de tipo vazio (`empty.proto`). Na definições de contrato, se uma chamada de procedimento remota `rpc` não recebe nenhum parâmetro como argumento, ou retorna `void`, ainda assim, devemos definir esse tipo ``message. Como isso é uma message muito recorrente é bom que tenhamos uma definição comum ao invez de definí-la em cada arquivo _.proto_ e termos problemas de conflito de declaração. Sendo assim, nós importamos de `google/protobuf/empty.proto`.
+Chamamos o compilador `protoc` que usará os plugins do Go para gerar o código. No arquivo `gerador_id.proto` nós importamos a definição de tipo vazio (`empty.proto`). Em definições de contrato, se uma chamada de procedimento remota `rpc` não recebe nenhum parâmetro como argumento, ou retorna `void`, ainda assim, devemos definir esse tipo `message`. Como isso é uma `message` muito recorrente, é bom que tenhamos uma definição comum ao invés de definí-la em cada arquivo _.proto_, e termos problemas de conflito de declaração. Sendo assim, nós importamos de `google/protobuf/empty.proto`.
 
-Veremos dois arquivos `.go` criados na pasta _protos, `gerador_id_grpc.pb.go` e `gerador_id.pb.go`. Também foi criada uma pasta _google_ referente ao importação com outro código gerado pelos plugins, `empty.pb.go`. Abaixo a figura mostra como está a estrutura do módulo Go.
+Veremos dois arquivos `.go` criados na pasta _protos_, `gerador_id_grpc.pb.go` e `gerador_id.pb.go`. Também foi criada uma pasta _google_ referente ao importação com outro código gerado pelos plugins, `empty.pb.go`. Abaixo a figura mostra como está a estrutura do módulo Go.
+
 ![Estrutura do projeto](images/tree-go.png "Estrutura do projeto")
 
+#### Server
+
+Criar a pasta do servidor e o seu código.
+```
+mkdir server;
+touch server/main.go
+```
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	"net"
+
+	"google.golang.org/grpc"
+
+	pb "github.com/earmarques/tcc_grpc/go_grpc/protos"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+)
+
+const (
+	port = ":50051"
+)
+
+var id int32 = 0
+
+// Stub
+type server struct {
+	pb.UnimplementedGeradorIDServer
+}
+
+// Implementação do método
+func (s *server) GerarId(ctx context.Context, in *emptypb.Empty) (*pb.IdReply, error) {
+	id++
+	log.Printf("🦫 Id=%d", id)
+	return &pb.IdReply{GoId: id}, nil
+}
+
+func main() {
+	// Canal gRPC
+	lis, err := net.Listen("tcp", port)
+	if err != nil {
+		log.Fatalf("Falha ao escutar a conexão: %v", err)
+	}
+	// Instancia o servidor
+	s := grpc.NewServer()
+	pb.RegisterGeradorIDServer(s, &server{})
+
+	log.Printf("🦫 Servidor Go ouvindo na porta %s", port)
+
+	if err := s.Serve(lis); err != nil {
+		log.Fatalf("Falha ao prestar o serviço: %v", err)
+	}
+}
+
+```
+
+#### Client
+Vamos criar um código de teste para consumir o serviço `GeradorID` e checar se o servidor está respondendo.
+
+Criar a pasta do cliente e o código.
+```
+mkdir client;
+touch client/main.go
+```
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	"time"
+
+	"google.golang.org/grpc"
+
+	pb "github.com/earmarques/tcc_grpc/go_grpc/protos"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+)
+
+const (
+	address = "localhost:50051"
+)
+
+func main() {
+	// Set up a connection to the server.
+	conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
+	if err != nil {
+		log.Fatalf("Não foi possível estabelecer conexão com o servidor gRPC: %v", err)
+	}
+	defer conn.Close()
+	c := pb.NewGeradorIDClient(conn)
+
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+	r, err := c.GerarId(ctx, &emptypb.Empty{})
+	if err != nil {
+		log.Fatalf("Não foi possível gerar o id: %v", err)
+	}
+	var id = r.GetGoId()
+	log.Printf("🦫 ID gerado: %d", id)
+	//log.Printf("Não foi possível gerar o id: %v", r)
+}
+
+```
+
+## Execução
+
+Vamos precisar de dois terminais, em um deixaremos o servidor ouvindo na porta 50051, no outro executamos as chamadas remotas. O comportamento esperado é dado na figura.
+
+![Teste de comunicação cliente-servidor Golang](images/teste-go.png "Teste de comunicação cliente-servidor Golang")
 
 
