@@ -72,7 +72,6 @@ asdf install golang 1.19
 Estrutura do projeto
 ### 2. Golang
 
-https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
 #### 2.1. Plugins Go
 Estrutura do projeto
 Um dos grandes benefícios do gRPC é o fato dele gerar códigos que abstraem e cuidam de toda a comunicação pela rede. Para tanto, cada linguagem tem plugins específicos. No caso do Golang, precisamos instalar dois plugins para gerar códigos para nós a partir dos arquivos _.proto_.
