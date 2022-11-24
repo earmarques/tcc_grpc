@@ -77,7 +77,7 @@ npm i @grpc/grpc-js
 ```
 - **@grpc/proto-loader**
 ```
-npm i @grpc/proto-loader
+npm i @grpc/proto-loaderAplicação cliente e servidor se comunicando através do framework gRPC
 ```
 
 ---
@@ -192,7 +192,7 @@ _Listagem 3: client.js_
 
 ---
 
-### 4. Executrar teste
+### 4. Executar teste
 
 Vamos subir o servidor com o comando:
 ```
@@ -210,8 +210,8 @@ node server.js
 ```
 
 A cada execução do comando acima, a aplicação cliente JS envia uma requisição para o servidor usando o _framework_ gRPC. O servidor gera um número entre 0 e 50 e o envia para a aplicação cliente, que recebe o valor e imprime na tela.  
-ME.md
-<img alt="Aplicação cliente e servidor se comunicando através do framework gRPC" title="Aplicação cliente e servidor se comunicando através do framework gRPC" src="images/js_grpc_test.png"><br>
+
+![Aplicação cliente e servidor se comunicando através do framework gRPC] (images/js_grpc_test.png "Aplicação cliente e servidor se comunicando através do framework gRPC")<br>
 _Figura 2: Aplicação cliente e servidor se comunicando através do framework gRPC_
 
 
