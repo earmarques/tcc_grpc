@@ -184,7 +184,7 @@ client.sortearNumero(intervaloRequest, (error, responseSorteado) => {
     let msg = responseSorteado.numero;
     console.log('🍏 número sorteado:' + msg.toString() + '\n');
   }else {
-    console.log(error);
+    console.log(error);Aplicação cliente consumindo microserviço e servidor respondendo às requisições com gRPC
   }
 });
 ```
@@ -211,7 +211,7 @@ node client.js
 
 A cada execução do comando acima, a aplicação cliente JS envia uma requisição para o servidor usando o _framework_ gRPC. O servidor gera um número entre 0 e 50 e o envia para a aplicação cliente, que recebe o valor e imprime na tela.  
 
-![Aplicação cliente e servidor se comunicando através do framework gRPC] (images/js_grpc_test.png "Aplicação cliente e servidor se comunicando através do framework gRPC")<br>
+![Aplicação cliente e servidor se comunicando através do framework gRPC](images/js_grpc_test.png "Aplicação cliente e servidor se comunicando através do framework gRPC")<br>
 _Figura 2: Aplicação cliente e servidor se comunicando através do framework gRPC_
 
 
