@@ -1,10 +1,20 @@
 ## gRPC no NodeJS :green_apple:
 
-Temos três coisas a fazer:
+Temos as seguintes etapas para fazer:
+#### 1. asdf<br>
+1.1. Instalar o plugin asdf do NodeJS<br>
+1.2. Instalar uma versão do NodeJS<br>
 
-1. Configurar o ambiente para o NodeJS usando a CLI asdf;
-2. Usar a CLI npm do NodeJS para instalar as dependência;
-3. Criar os arquivos 
+#### 2. NodeJS<br>
+2.1 Inicializar o projeto<br>
+2.2. Instalar dependências<br>
+
+#### 3. Criar os arquivos<br>
+3.1. sorteio.proto<br>
+3.2 server.js<br>
+3.3 client.js<br>
+
+#### 4. Executrar teste
 
 ---
 
@@ -12,17 +22,15 @@ Temos três coisas a fazer:
 
 ---
 
-Estando dentro da pasta tcc_grpc/js_grpc/, execute os comandos.
+### 1. asdf
 
-### 1.asdf
-
-#### 1.1 Instalar o plugin asdf do NodeJS
+#### 1.1. Instalar o plugin asdf do NodeJS
 
 ```
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 ```
 
-#### 1.2 Instalar uma versão do NodeJS
+#### 1.2. Instalar uma versão do NodeJS
 
 Nós estamos usando a versão 18.7.0 do NodeJS. Para evitar problemas, recomendamos usar a mesma versão. 
 
@@ -49,12 +57,17 @@ asdf local nodejs 18.7.0
 ```
 ---
 
-### 2.NodeJS
+### 2. NodeJS
 
 O NodeJS traz a reboque em seu binário o gerenciador de pacotes npm. Primeiro precisamos inicializá-lo.
+
+#### 2.1 Inicializar o projeto
+
 ```
 npm init -y
 ```
+
+#### 2.2. Instalar dependências
 
 Nós vamos precisar de duas bibliotecas, vamos pedir para o npm buscá-las para nós.
 
@@ -69,16 +82,17 @@ npm i @grpc/proto-loader
 
 ---
 
-### 3.Criando os arquivos `server.js`, `client.js` e o contrato `sorteio.proto`
+### 3. Criando os arquivos `server.js`, `client.js` e o contrato `sorteio.proto`
 
 Vamos criar os três arquivos que iremos precisar.
 
 ```
 touch sorteio.proto server.js client.js
 ```
-
 Vamos editar os arquivos para que fiquem como nas listagens 1, 2 e 3.
 
+#### 3.1. sorteio.proto
+ 
 ```proto
 //sorteio.proto
 syntax = "proto3";
@@ -101,6 +115,7 @@ message SorteadoResponse {
 ```
 _Listagem 1: sorteio.proto_
 
+#### 3.2. server.js
 
 ```js
 // server.js
@@ -143,6 +158,7 @@ server.bindAsync(
 _Listagem 2: server.js_
 
 
+#### 3.3. client.js
 ```js
 // client.js
 const grpc = require("@grpc/grpc-js");
@@ -174,13 +190,17 @@ client.sortearNumero(intervaloRequest, (error, responseSorteado) => {
 ```
 _Listagem 3: client.js_
 
+---
+
+### 4. Executrar teste
+
 Vamos subir o servidor com o comando:
 ```
 node client.js
 ```
 Veremos o servidor escutando requisições na porta 50053.
-####
-<img alt="Servidor NodeJS gRPC ouvindo na porta 50053" title="Servidor NodeJS gRPC ouvindo na porta 50053" src="images/node_serving.png"><br>
+
+<img alt="Servidor NodeJS gRPC ouvindo na porta 50053" title="Servidor NodeJS gRPC ouvindo na porta 50053" src="images/nod- **e_serving.png"><br>
 _Figura 1: Servidor NodeJS gRPC ouvindo na porta 50053_
 
 Deixaremos o servidor escutando em um terminal e abriremos outro, no mesmo diretório, para executar o client.js que irá consumir a API.
