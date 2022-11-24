@@ -106,7 +106,7 @@ service SorteioService {
 message IntervaloRequest {
   int32 min = 1;
   int32 max = 2;
-}
+}ME.md
 
 message SorteadoResponse {
   int32 numero = 1;
@@ -121,7 +121,7 @@ _Listagem 1: sorteio.proto_
 // server.js
 const grpc = require("@grpc/grpc-js");
 const protoLoader = require("@grpc/proto-loader");
-const PROTO_PATH = "./sorteio.proto";
+const PROTO_PATH = "./sorteio.proto";ME.md
 
 con####st protoObject = protoLoader.loadSync(PROTO_PATH);
 const sorteioDefinition = grpc.loadPackageDefinition(protoObject);
@@ -173,7 +173,7 @@ const pontoAcesso = endereco + ':' + porta;
 
 const client = new SorteioService(
   pontoAcesso,
-  grpc.credentials.createInsecure()
+  grpc.credentials.createInsecure()ME.md
 );
 
 let intervaloRequest = {min: 0, max:50}
@@ -196,7 +196,7 @@ _Listagem 3: client.js_
 
 Vamos subir o servidor com o comando:
 ```
-node client.js
+node server.js
 ```
 Veremos o servidor escutando requisições na porta 50053.
 
@@ -205,8 +205,8 @@ _Figura 1: Servidor NodeJS gRPC ouvindo na porta 50053_
 
 Deixaremos o servidor escutando em um terminal e abriremos outro, no mesmo diretório, para executar o client.js que irá consumir a API.
 
-```Aplicação cliente consumindo microserviço e servidor respondendo às requisições com gRPC
-node server.js
+```
+node client.js
 ```
 
 A cada execução do comando acima, a aplicação cliente JS envia uma requisição para o servidor usando o _framework_ gRPC. O servidor gera um número entre 0 e 50 e o envia para a aplicação cliente, que recebe o valor e imprime na tela.  
