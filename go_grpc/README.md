@@ -89,9 +89,10 @@ Precisamos atualizar o PATH para incluir os pacotes baixados do Golang, para que
 ```sh
 export PATH="$PATH:$(go env GOPATH)/bin"
 ```
-Este comando modifica temporariamente o PATH, apenas para o shell que estivermos usando. Se quiser evitar ter de executar o camando anterior toda vez que for compilar arquivos _.proto_ em Go, então acrescente a linha de comando ao final do arquivo ~/.bashrc.
+Este comando modifica temporariamente o PATH, apenas para o shell que estivermos usando. Se quisermos evitar ter de executarmos o comando anterior toda vez que formos compilar arquivos _.proto_ em Go, então devemos acrescentar a linha de comando ao final do arquivo `~/.bashrc`.
 
-![GOPATH no ~/.bashrc](images/gopath.png "GOPATH no ~/.bashrc")
+![GOPATH no ~/.bashrc](images/gopath.png "GOPATH no ~/.bashrc")<br>
+_Figura 1: GOPATH no ~/.bashrc_
 
 Nosso shell é bash, executar `source ~/.bashrc` carrregará as novas configurações. Se usa outro shell, feche e abra o terminal novamente. 
 
@@ -157,6 +158,7 @@ message IdReply {
     int32 goId = 1;
 }
 ```
+_Listagem 1: protos/gerador_id.proto_
 
 #### 3.2. Compilar o arquivo proto
 
@@ -170,7 +172,9 @@ Chamamos o compilador `protoc` que usará os plugins do Go para gerar o código.
 
 Veremos dois arquivos `.go` criados na pasta _protos_, `gerador_id_grpc.pb.go` e `gerador_id.pb.go`. Também foi criada uma pasta _google_ referente à importação, com outro código gerado pelos plugins, `empty.pb.go`. Abaixo a figura mostra como está a estrutura do módulo Go.
 
-![Estrutura do projeto](images/tree-go.png "Estrutura do projeto")
+![Estrutura do projeto](images/tree-go.png "Estrutura do projeto")<br>
+_Figura 2: Estrutura do projeto_
+
 
 #### 3.3. Server
 
@@ -232,6 +236,7 @@ func main() {
 }
 
 ```
+_Listagem 2: server/main.go_
 
 #### 3.4 Client
 Vamos criar um código de teste para consumir o serviço `GeradorID` e checar se o servidor está respondendo.
@@ -283,6 +288,7 @@ func main() {
 }
 
 ```
+_Listagem 3: client/main.go_
 
 ---
 
@@ -290,7 +296,7 @@ func main() {
 
 Vamos precisar de dois terminais, em um deixaremos o servidor ouvindo na porta 50051, no outro executamos as chamadas remotas. O comportamento esperado é dado na figura.
 
-![Teste de comunicação cliente-servidor Golang](images/teste-go.png "Teste de comunicação cliente-servidor Golang")
-
+![Teste de comunicação cliente-servidor Golang](images/teste-go.png "Teste de comunicação cliente-servidor Golang")<br>
+_Figura 3: Teste de comunicação cliente-servidor Golang_
 
 
