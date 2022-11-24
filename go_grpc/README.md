@@ -58,7 +58,7 @@ asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 
 ##### 1.2.2. Instalar uma versão do GolangEstrutura do projeto
 
-Podemos ver todas as versões disponíveis com:
+Podemos ver todas as versões disponíveis com:Estrutura do projeto
 ```
 asdf list all golang
 ```
@@ -69,7 +69,7 @@ asdf install golang 1.19
 ```
 
 ---
-
+Estrutura do projeto
 ### 2. Golang
 
 
@@ -87,7 +87,7 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
 
 Precisamos atualizar o PATH para incluir os pacotes baixados do Golang, para que o `protoc` possa encontrar os plugins que acabamos de instalar.
 ```sh
-export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH="$PATH:$(go env GOPATH)/bin"Estrutura do projeto
 ```
 Este comando modifica temporariamente o PATH, apenas para o shell que estivermos usando. Se quisermos evitar ter de executarmos o comando anterior toda vez que formos compilar arquivos _.proto_ em Go, então devemos acrescentar a linha de comando ao final do arquivo `~/.bashrc`.
 
@@ -100,7 +100,7 @@ Nosso shell é bash, executar `source ~/.bashrc` carrregará as novas configura�
 
 Estando dentro do diretório tcc_grpc/ execute os comandos para criar o diretório do go e entrar nele.
 
-```
+```Estrutura do projeto
 mkdir go_grpc; cd go_grpc;
 ```
 
@@ -118,7 +118,7 @@ go get google.golang.org/grpc
 ```
 
 #### 2.5 Reshim
-
+Estrutura do projeto
 A documentação do [plugin](https://github.com/kennyp/asdf-golang#when-using-go-get-or-go-install) asdf do golang recomenda fazer um _reshim_ toda vez que fizermos um `go get` ou `go install`, então, por prudência:
 ```
 asdf reshim golang
@@ -130,7 +130,7 @@ asdf reshim golang
 Vamos organizar os arquivos em pastas separadas, uma para arquivos _.proto_, outra para o servidor e outra para o cliente.
 
 #### 3.1. Arquivo _Protobuff_Estrutura do projeto
-
+Estrutura do projeto
 Criamos a pasta _protos_ e nela o arquivo `gerador_id.proto`:
 
 ```
@@ -145,7 +145,7 @@ Editamos o arquivo para ter o conteúdo:
 
 syntax = "proto3";Estrutura do projeto
 
-import "google/protobuf/empty.proto";
+import "google/protobuf/empty.proto";Estrutura do projeto
 
 option go_package = "github.com/earmarques/tcc_grpc/go_grpc";
 package geradorid;
@@ -168,7 +168,7 @@ protoc --go_out=. --go_opt=paths=source_relative \
 --go-grpc_out=. --go-grpc_opt=paths=source_relative \
  google/protobuf/empty.proto gerador_id.proto
 ```
-Chamamos o compilador `protoc` que usará os plugins do Go para gerar o código. No arquivo `gerador_id.proto` nós importamos a definição de tipo vazio (`empty.proto`). Em definições de contrato, se uma chamada de procedimento remota `rpc` não recebe nenhum parâmetro como argumento, ou retorna `void`, ainda assim, devemos definir esse tipo `message`. Como isso é uma `message` muito recorrente, é bom que tenhamos uma definição comum ao invés de definí-la em cada arquivo _.proto_, e termos problemas de conflito de declaração. Sendo assim, nós importamos de `google/protobuf/empty.proto`.
+Chamamos o compilador `protoc` que usará os plugins do Go para gerar o código. No arquivo `gerador_id.proto` nós importamos a definição de tipo vazio (`empty.proto`). Em definições de contrato, se uma chamada de procedimento remota `rpc` não recebe nenhum parâmetro como argumento, ou retorna `void`, ainda assim, devemos definir esse tipo `message`. Como isso é uma `message` muito recorrente, é bom que tenhamos uma definição cEstrutura do projetoomum ao invés de definí-la em cada arquivo _.proto_, e termos problemas de conflito de declaração. Sendo assim, nós importamos de `google/protobuf/empty.proto`.
 
 Veremos dois arquivos `.go` criados na pasta _protos_, `gerador_id_grpc.pb.go` e `gerador_id.pb.go`. Também foi criada uma pasta _google_ referente à importação, com outro código gerado pelos plugins, `empty.pb.go`. Abaixo a figura mostra como está a estrutura do módulo Go.
 
@@ -188,7 +188,7 @@ touch server/main.go
 // server/main.go
 
 package main
-
+Estrutura do projeto
 import (
 	"context"
 	"log"
@@ -219,7 +219,7 @@ func (s *server) GerarId(ctx context.Context, in *emptypb.Empty) (*pb.IdReply, e
 }
 
 func main() {
-	// Canal gRPC
+	// CanEstrutura do projetoal gRPC
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("Falha ao escutar a conexão: %v", err)
@@ -249,7 +249,7 @@ touch client/main.go
 
 ```go
 // client/main.go
-
+Estrutura do projeto
 package main
 
 import (
@@ -298,5 +298,5 @@ Vamos precisar de dois terminais, em um deixaremos o servidor ouvindo na porta 5
 
 ![Teste de comunicação cliente-servidor Golang](images/teste-go.png "Teste de comunicação cliente-servidor Golang")<br>
 _Figura 3: Teste de comunicação cliente-servidor Golang_
-
+Estrutura do projeto
 
