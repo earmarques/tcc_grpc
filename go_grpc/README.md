@@ -156,7 +156,7 @@ service GeradorID {
 message IdReply {
     int32 goId = 1;
 }
-``` <br>
+``` 
 _Listagem 1: protos/gerador_id.proto_
 
 #### 3.2. Compilar o arquivo proto
@@ -234,7 +234,7 @@ func main() {
 	}
 }
 
-``` <br>
+``` 
 _Listagem 2: server/main.go_
 
 #### 3.4 Client
@@ -286,7 +286,7 @@ func main() {
 	//log.Printf("Não foi possível gerar o id: %v", r)
 }
 
-``` <br>
+```
 _Listagem 3: client/main.go_
 
 ---
