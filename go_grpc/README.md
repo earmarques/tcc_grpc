@@ -3,7 +3,7 @@
 No Golang a configuração é mais burocrática que no JavaScript.
 
 **[1. asdf](README.md#1-asdf-1)**<br>
-1.1. Protocol Buffer Compile](#11-protocol-buffer-compiler)<br>
+[1.1. Protocol Buffer Compile](#11-protocol-buffer-compiler)<br>
 [1.1.1. Instalar o plugin](#111-instalar-o-plugin)<br>
 [1.1.2. Instalar a versão](#112-instalar-a-vers%C3%A3o)<br>
 [1.2. Golang](#12-golang)<br>
