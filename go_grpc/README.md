@@ -57,7 +57,7 @@ asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 ```
 
 ##### 1.2.2. Instalar uma versão do GolangEstrutura do projeto
-
+<br>
 Podemos ver todas as versões disponíveis com:Estrutura do projeto
 ```
 asdf list all golang
@@ -100,7 +100,7 @@ Nosso shell é bash, executar `source ~/.bashrc` carrregará as novas configura�
 Estando dentro do diretório tcc_grpc/ execute os comandos para criar o diretório do go e entrar nele.
 
 ```Estrutura do projeto
-mkdir go_grpc; cd go_grpc;
+mkdir go_grpc; cd go_grpc;<br>
 ```
 
 O comando `go mod init` cria um arquivo `go.mod` e rastreia as dependências do projeto. Nós chamaremos nosso módulo como o subrepositório do tcc: `go mod init github.com/earmarques/tcc_grpc/go_grpc`, mas recomendamos ao leitor usar o seu próprio git, ou um nome qualquer, como:
@@ -156,7 +156,7 @@ service GeradorID {
 message IdReply {
     int32 goId = 1;
 }
-```<br>
+``` <br>
 _Listagem 1: protos/gerador_id.proto_
 
 #### 3.2. Compilar o arquivo proto
@@ -234,7 +234,7 @@ func main() {
 	}
 }
 
-```<br>
+``` <br>
 _Listagem 2: server/main.go_
 
 #### 3.4 Client
@@ -286,7 +286,7 @@ func main() {
 	//log.Printf("Não foi possível gerar o id: %v", r)
 }
 
-```<br>
+``` <br>
 _Listagem 3: client/main.go_
 
 ---
