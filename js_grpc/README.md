@@ -8,7 +8,7 @@ Temos três coisas a fazer:
 
 ---
 
-Para uma fundamentação teórica e explicação do código, recomendamos a leitura da [Wiki do projeto](https://github.com/earmarques/tcc_grpc/wiki). Aqui vamos cuidar apenas dos comandos para fazer o gRPC funcionar com JavaScript.
+📌 Para uma fundamentação teórica e explicação do código, recomendamos a leitura da [Wiki do projeto](https://github.com/earmarques/tcc_grpc/wiki). Aqui vamos cuidar apenas dos comandos para fazer o gRPC funcionar com JavaScript.
 
 ---
 
@@ -47,6 +47,7 @@ Mas aqui nós vamos utilizar localmente(tcc_grpc/js_grpc/) neste repositório a 
 ```
 asdf local nodejs 18.7.0
 ```
+---
 
 ### 2.NodeJS
 
@@ -65,6 +66,8 @@ npm i @grpc/grpc-js
 ```
 npm i @grpc/proto-loader
 ```
+
+---
 
 ### 3.Criando os arquivos `server.js`, `client.js` e o contrato `sorteio.proto`
 
