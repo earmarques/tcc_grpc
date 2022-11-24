@@ -56,7 +56,7 @@ asdf install protoc 3.20.3
 asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 ```
 
-##### 1.2.2. Instalar uma versão do Golang
+##### 1.2.2. Instalar uma versão do GolangEstrutura do projeto
 
 Podemos ver todas as versões disponíveis com:
 ```
@@ -74,7 +74,7 @@ asdf install golang 1.19
 
 
 #### 2.1. Plugins Go
-
+Estrutura do projeto
 Um dos grandes benefícios do gRPC é o fato dele gerar códigos que abstraem e cuidam de toda a comunicação pela rede. Para tanto, cada linguagem tem plugins específicos. No caso do Golang, precisamos instalar dois plugins para gerar códigos para nós a partir dos arquivos _.proto_.
 ```
 go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.1
@@ -104,7 +104,7 @@ Estando dentro do diretório tcc_grpc/ execute os comandos para criar o diretór
 mkdir go_grpc; cd go_grpc;
 ```
 
-O comando `go mod init` cria um arquivo `go.mod` e rastreia as dependências do projeto. Nós chamaremos nosso módulo como o subrepositório do tcc `go mod init github.com/earmarques/tcc_grpc/go_grpc`, mas recomendamos ao leitor usar o seu próprio git, ou um nome qualquer, como:
+O comando `go mod init` cria um arquivo `go.mod` e rastreia as dependências do projeto. Nós chamaremos nosso módulo como o subrepositório do tcc: `go mod init github.com/earmarques/tcc_grpc/go_grpc`, mas recomendamos ao leitor usar o seu próprio git, ou um nome qualquer, como:
 
 ```
 go mod init meu_modulo_grpc
@@ -113,13 +113,13 @@ go mod init meu_modulo_grpc
 #### 2.4. Instalar o pacote ***`grpc-go`***
 
 Por fim, agora que o projeto está sendo monitorado, vamos instalar a dependência `grpc-go`.
-```
+```Estrutura do projeto
 go get google.golang.org/grpc
 ```
 
 #### 2.5 Reshim
 
-A documentação do [plugin](https://github.com/kennyp/asdf-golang#when-using-go-get-or-go-install) recomenda fazer um _reshim_ toda vez que fizermos um `go get` ou `go install`, então, por prudência:
+A documentação do [plugin](https://github.com/kennyp/asdf-golang#when-using-go-get-or-go-install) asdf do golang recomenda fazer um _reshim_ toda vez que fizermos um `go get` ou `go install`, então, por prudência:
 ```
 asdf reshim golang
 ```
@@ -129,7 +129,7 @@ asdf reshim golang
 
 Vamos organizar os arquivos em pastas separadas, uma para arquivos _.proto_, outra para o servidor e outra para o cliente.
 
-#### 3.1. Arquivo _Protobuff_
+#### 3.1. Arquivo _Protobuff_Estrutura do projeto
 
 Criamos a pasta _protos_ e nela o arquivo `gerador_id.proto`:
 
@@ -143,7 +143,7 @@ Editamos o arquivo para ter o conteúdo:
 ```proto
 // gerador_id.proto
 
-syntax = "proto3";
+syntax = "proto3";Estrutura do projeto
 
 import "google/protobuf/empty.proto";
 
