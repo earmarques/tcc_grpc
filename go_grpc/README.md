@@ -157,7 +157,7 @@ message IdReply {
     int32 goId = 1;
 }
 ``` 
-_<sup>Listagem 1: protos/gerador_id.proto</sup>_
+_Listagem 1: protos/gerador_id.proto_
 
 #### 3.2. Compilar o arquivo proto
 
@@ -235,7 +235,7 @@ func main() {
 }
 
 ``` 
-_<sup>Listagem 2: server/main.go</sup>_
+_Listagem 2: server/main.go_
 
 #### 3.4 Client
 Vamos criar um código de teste para consumir o serviço `GeradorID` e checar se o servidor está respondendo.
@@ -287,7 +287,7 @@ func main() {
 }
 
 ```
-_<sup>Listagem 3: client/main.go</sup>_
+_Listagem 3: client/main.go_
 
 ---
 
