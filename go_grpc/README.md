@@ -2,40 +2,61 @@
 
 No Golang a configuração é mais burocrática que no JavaScript.
 
-Temos três coisas a fazer:
+#### 1. asdf<br>
+1.1. Protocol Buffer Compile<br>
+1.1.2. Instalar o plugin<br>
+1.1.3. Instalar a versão<br>
+1.2. Golang<br>
+1.2.1. Instalar o plugin<br>
+1.2.2. Instalar uma versão do Golang<br>
 
-1. Instalar o plugin asdf do Goland e com ele instalar o Golang;
-2. Configurar o ambiente do projeto;
-3. Criar os arquivos 
+#### 2. Golang<br>
+2.1. Plugins Go<br>
+2.2. Atualizar PATH<br>
+2.3. Inicializar o projeto<br>
+2.4. Instalar a dependência grpc-go<br>
+2.5. Reshim<br>
 
-Para uma fundamentação teórica e explicação do código, recomendamos a leitura da [Wiki do projeto](https://github.com/earmarques/tcc_grpc/wiki). Aqui vamos cuidar apenas dos comandos para fazer o gRPC funcionar Golang.
+#### 3. Criar os arquivos<br>
+3.1. Arquivo _Protobuff_<br>
+3.2. Compilar o arquivo proto<br>
+3.3. Server<br>
+3.4. Client<br>
+
+#### 4. Executar teste
+
+---
+
+:pushpin: Para uma fundamentação teórica e explicação do código, recomendamos a leitura da [Wiki do projeto](https://github.com/earmarques/tcc_grpc/wiki). Aqui vamos cuidar apenas dos comandos para fazer o gRPC funcionar Golang.
+
+---
 
 
-
-### 1.asdf
+### 1. asdf
 
 Podemos encontrar o plugin de qualquer linguagem procurando no google por: _asdf plugin `nomeDaLinguagem`_. Entrar no github do plugin e seguir as instruções. Fizemos isso para o `golang`e o compilador protoc
 
-#### Protocol Buffer Compile 
+#### 1.1. _Protocol Buffer Compiler_
+
 Para compilar um arquivo `protocol buffer`, nós precisamos instalar o compilador e depois os plugins específicos da linguagem golang. O _protocol buffer compiler_ usaremos o asdf para instalá-lo.
 
-##### Instalar o plugin 
+##### 1.1.1. Instalar o plugin 
 ```
 asdf plugin-add protoc https://github.com/paxosglobal/asdf-protoc.git
 ```
-##### Instalar a versão 
+##### 1.1.2. Instalar a versão 
 
 ```
 asdf install protoc 3.20.3
 ```
 
-#### Golang
-##### Instalar o plugin
+#### 1.2. Golang
+##### 1.2.1. Instalar o plugin
 ```
 asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 ```
 
-##### Instalar uma versão do Golang
+##### 1.2.2. Instalar uma versão do Golang
 
 Podemos ver todas as versões disponíveis com:
 ```
@@ -47,10 +68,12 @@ Intalamos a versão 1.19:
 asdf install golang 1.19
 ```
 
+---
+
 ### 2. Golang
 
 
-#### Plugins Go
+#### 2.1. Plugins Go
 
 Um dos grandes benefícios do gRPC é o fato dele gerar códigos que abstraem e cuidam de toda a comunicação pela rede. Para tanto, cada linguagem tem plugins específicos. No caso do Golang, precisamos instalar dois plugins para gerar códigos para nós a partir dos arquivos _.proto_.
 ```
@@ -60,26 +83,19 @@ go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.1
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
 ```
 
-#### Atualizar PATH
+#### 2.2. Atualizar PATH
 
-Precisamos atualizar o PATH para incluir os pacotes baixados do golang, para que o `protoc` possa encontrar os plugins que acabamos de instalar.
+Precisamos atualizar o PATH para incluir os pacotes baixados do Golang, para que o `protoc` possa encontrar os plugins que acabamos de instalar.
 ```sh
 export PATH="$PATH:$(go env GOPATH)/bin"
 ```
-Este comando modifica temporariamente o PATH, apenas para o shell que estiver usando. Se quiser evitar ter de executar o camando anterior toda vez que for compilar arquivos _.proto_ em Go, então acrescente a linha de comando ao final do arquivo ~/.bashrc.
+Este comando modifica temporariamente o PATH, apenas para o shell que estivermos usando. Se quiser evitar ter de executar o camando anterior toda vez que for compilar arquivos _.proto_ em Go, então acrescente a linha de comando ao final do arquivo ~/.bashrc.
 
 ![GOPATH no ~/.bashrc](images/gopath.png "GOPATH no ~/.bashrc")
 
 Nosso shell é bash, executar `source ~/.bashrc` carrregará as novas configurações. Se usa outro shell, feche e abra o terminal novamente. 
 
-#### Reshim
-
-A documentação do [plugin](https://github.com/kennyp/asdf-golang#when-using-go-get-or-go-install) recomenda fazer um reshim toda vez que fizermos um `go get` ou `go install`, então, por prudência:
-```
-asdf reshim golang
-```
-
-### 3. Inicializar o projeto
+#### 2.3. Inicializar o projeto
 
 Estando dentro do diretório tcc_grpc/ execute os comandos para criar o diretório do go e entrar nele.
 
@@ -93,21 +109,28 @@ O comando `go mod init` cria um arquivo `go.mod` e rastreia as dependências do 
 go mod init meu_modulo_grpc
 ```
 
-##### Instalar o pacote grpc-go
+#### 2.4. Instalar o pacote ***`grpc-go`***
 
 Por fim, agora que o projeto está sendo monitorado, vamos instalar a dependência `grpc-go`.
 ```
 go get google.golang.org/grpc
 ```
 
+#### 2.5 Reshim
 
-### 4. Criar os arquivos
+A documentação do [plugin](https://github.com/kennyp/asdf-golang#when-using-go-get-or-go-install) recomenda fazer um _reshim_ toda vez que fizermos um `go get` ou `go install`, então, por prudência:
+```
+asdf reshim golang
+```
+---
+
+### 3. Criar os arquivos
 
 Vamos organizar os arquivos em pastas separadas, uma para arquivos _.proto_, outra para o servidor e outra para o cliente.
 
-#### _Protobuff_
+#### 3.1. Arquivo _Protobuff_
 
-Criamos a pasta proto e nela o arquivo `gerador_id.proto`:
+Criamos a pasta _protos_ e nela o arquivo `gerador_id.proto`:
 
 ```
 mkdir protos; 
@@ -135,7 +158,7 @@ message IdReply {
 }
 ```
 
-##### Compilar o arquivo proto
+#### 3.2. Compilar o arquivo proto
 
 Estando no diretório `protos/`, execute:
 ```
@@ -145,11 +168,11 @@ protoc --go_out=. --go_opt=paths=source_relative \
 ```
 Chamamos o compilador `protoc` que usará os plugins do Go para gerar o código. No arquivo `gerador_id.proto` nós importamos a definição de tipo vazio (`empty.proto`). Em definições de contrato, se uma chamada de procedimento remota `rpc` não recebe nenhum parâmetro como argumento, ou retorna `void`, ainda assim, devemos definir esse tipo `message`. Como isso é uma `message` muito recorrente, é bom que tenhamos uma definição comum ao invés de definí-la em cada arquivo _.proto_, e termos problemas de conflito de declaração. Sendo assim, nós importamos de `google/protobuf/empty.proto`.
 
-Veremos dois arquivos `.go` criados na pasta _protos_, `gerador_id_grpc.pb.go` e `gerador_id.pb.go`. Também foi criada uma pasta _google_ referente ao importação com outro código gerado pelos plugins, `empty.pb.go`. Abaixo a figura mostra como está a estrutura do módulo Go.
+Veremos dois arquivos `.go` criados na pasta _protos_, `gerador_id_grpc.pb.go` e `gerador_id.pb.go`. Também foi criada uma pasta _google_ referente à importação, com outro código gerado pelos plugins, `empty.pb.go`. Abaixo a figura mostra como está a estrutura do módulo Go.
 
 ![Estrutura do projeto](images/tree-go.png "Estrutura do projeto")
 
-#### Server
+#### 3.3. Server
 
 Criar a pasta do servidor e o seu código.
 ```
@@ -158,6 +181,8 @@ touch server/main.go
 ```
 
 ```go
+// server/main.go
+
 package main
 
 import (
@@ -208,7 +233,7 @@ func main() {
 
 ```
 
-#### Client
+#### 3.4 Client
 Vamos criar um código de teste para consumir o serviço `GeradorID` e checar se o servidor está respondendo.
 
 Criar a pasta do cliente e o código.
@@ -218,6 +243,8 @@ touch client/main.go
 ```
 
 ```go
+// client/main.go
+
 package main
 
 import (
@@ -257,7 +284,9 @@ func main() {
 
 ```
 
-## Execução
+---
+
+### 4. Executar teste
 
 Vamos precisar de dois terminais, em um deixaremos o servidor ouvindo na porta 50051, no outro executamos as chamadas remotas. O comportamento esperado é dado na figura.
 
