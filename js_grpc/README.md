@@ -150,7 +150,7 @@ server.bindAsync(
   pontoAcesso,
   grpc.ServerCredentials.createInsecure(),
   (error, port) => {
-    console.log("\n🍏 Servidor rodando no ponto acesso " + pontoAcesso);
+    console.log("\n🍏 Servidor rodando no ponto de acesso " + pontoAcesso);
     server.start();
   }
 );
@@ -200,9 +200,9 @@ node client.js
 ```
 Veremos o servidor escutando requisições na porta 50053.
 
-<img alt="Servidor NodeJS gRPC ouvindo na porta 50053" title="Servidor NodeJS gRPC ouvindo na porta 50053" src="images/nod- **e_serving.png"><br>
+![Servidor NodeJS gRPC ouvindo na porta 50053](images/node_serving.png "Servidor NodeJS gRPC ouvindo na porta 50053")<br>
 _Figura 1: Servidor NodeJS gRPC ouvindo na porta 50053_
-ME.md
+
 Deixaremos o servidor escutando em um terminal e abriremos outro, no mesmo diretório, para executar o client.js que irá consumir a API.
 
 ```Aplicação cliente consumindo microserviço e servidor respondendo às requisições com gRPC
