@@ -215,4 +215,4 @@ A cada execução do comando acima, a aplicação cliente JS envia uma requisiç
 ![Aplicação cliente e servidor se comunicando através do framework gRPC](images/js_grpc_test.png "Aplicação cliente e servidor se comunicando através do framework gRPC")<br>
 _Figura 2: Aplicação cliente e servidor se comunicando através do framework gRPC_
 
-
+[:arrow_up: Topo](#grpc-no-nodejs-green_apple)
