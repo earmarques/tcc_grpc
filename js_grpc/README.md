@@ -1,10 +1,12 @@
-## :green_apple: gRPC no NodeJS
+## gRPC no NodeJS :green_apple:
 
 Temos três coisas a fazer:
 
-1. Configurar o ambiente para o NodeJS usando a CLI asdf;
-2. Usar a CLI npm do NodeJS para instalar as dependência;
-3. Criar os arquivos 
+#### 1. Configurar o ambiente para o NodeJS usando a CLI asdf;
+#### 2. Usar a CLI npm do NodeJS para instalar as dependência;
+#### 3. Criar os arquivos 
+
+---
 
 Para uma fundamentação teórica e explicação do código, recomendamos a leitura da [Wiki do projeto](https://github.com/earmarques/tcc_grpc/wiki). Aqui vamos cuidar apenas dos comandos para fazer o gRPC funcionar com JavaScript.
 
@@ -101,7 +103,7 @@ const grpc = require("@grpc/grpc-js");
 const protoLoader = require("@grpc/proto-loader");
 const PROTO_PATH = "./sorteio.proto";
 
-const protoObject = protoLoader.loadSync(PROTO_PATH);
+con####st protoObject = protoLoader.loadSync(PROTO_PATH);
 const sorteioDefinition = grpc.loadPackageDefinition(protoObject);
 const SorteioService = sorteioDefinition.SorteioService;
 
@@ -172,7 +174,7 @@ Vamos subir o servidor com o comando:
 node client.js
 ```
 Veremos o servidor escutando requisições na porta 50053.
-
+####
 <img alt="Servidor NodeJS gRPC ouvindo na porta 50053" title="Servidor NodeJS gRPC ouvindo na porta 50053" src="images/node_serving.png"><br>
 _Figura 1: Servidor NodeJS gRPC ouvindo na porta 50053_
 
