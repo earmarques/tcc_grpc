@@ -7,7 +7,7 @@ Temos as seguintes etapas para fazer:
 [1.1. Instalar o plugin asdf do NodeJS](#11-instalar-o-plugin-asdf-do-nodejs)<br>
 [1.2. Instalar uma versão do NodeJS](#12-instalar-uma-vers%C3%A3o-do-nodejs)<br>
 
-**[2. NodeJS](./README.md#2-nodejs-1)**<br>
+**[2. NodeJS](./README.md#2-nodejs)**<br>
 [2.1 Inicializar o projeto](#21-inicializar-o-projeto)<br>
 [2.2. Instalar dependências](#22-instalar-depend%C3%AAncias)<br>
 
