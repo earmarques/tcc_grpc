@@ -2,20 +2,21 @@
 
 Temos as seguintes etapas para fazer:
 
-**[1. asdf](#1-asdf-1)**<br>
+
+**[1. asdf](./README.md#1-asdf)**<br>
 [1.1. Instalar o plugin asdf do NodeJS](#11-instalar-o-plugin-asdf-do-nodejs)<br>
 [1.2. Instalar uma versão do NodeJS](#12-instalar-uma-vers%C3%A3o-do-nodejs)<br>
 
-**[2. NodeJS](#2-nodejs-1)**<br>
+**[2. NodeJS](./README.md#2-nodejs-1)**<br>
 [2.1 Inicializar o projeto](#21-inicializar-o-projeto)<br>
 [2.2. Instalar dependências](#22-instalar-depend%C3%AAncias)<br>
 
-**[3. Criar os arquivos](#3-criando-os-arquivos-serverjs-clientjs-e-o-contrato-sorteioproto)**<br>
+**[3. Criar os arquivos](./README.md#3-criando-os-arquivos-serverjs-clientjs-e-o-contrato-sorteioproto)**<br>
 [3.1. sorteio.proto](#31-sorteioproto)<br>
 [3.2 server.js](#32-serverjs)<br>
 [3.3 client.js](#33-clientjs)<br>
 
-**[4. Executar teste](#4-executar-teste)**
+**[4. Executar teste](./README.md#4-executar-teste)**
 
 ---
 
@@ -56,7 +57,7 @@ Mas aqui nós vamos utilizar localmente(tcc_grpc/js_grpc/) neste repositório a 
 ```
 asdf local nodejs 18.7.0
 ```
----https://github.com/earmarques/tcc_grpc/tree/main/js_grpc
+---
 
 ### 2. NodeJS
 
@@ -78,7 +79,7 @@ npm i @grpc/grpc-js
 ```
 - **@grpc/proto-loader**
 ```
-npm i @grpc/proto-loaderAplicação cliente e servidor se comunicando através do framework gRPC
+npm i @grpc/proto-loader
 ```
 
 ---
@@ -185,7 +186,7 @@ client.sortearNumero(intervaloRequest, (error, responseSorteado) => {
     let msg = responseSorteado.numero;
     console.log('🍏 número sorteado:' + msg.toString() + '\n');
   }else {
-    console.log(error);Aplicação cliente consumindo microserviço e servidor respondendo às requisições com gRPC
+    console.log(error);
   }
 });
 ```
@@ -203,7 +204,7 @@ Veremos o servidor escutando requisições na porta 50053.
 
 ![Servidor NodeJS gRPC ouvindo na porta 50053](images/node_serving.png "Servidor NodeJS gRPC ouvindo na porta 50053")<br>
 _Figura 1: Servidor NodeJS gRPC ouvindo na porta 50053_
-https://github.com/earmarques/tcc_grpc/tree/main/js_grpc
+
 Deixaremos o servidor escutando em um terminal e abriremos outro, no mesmo diretório, para executar o client.js que irá consumir a API.
 
 ```
