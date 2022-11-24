@@ -293,3 +293,4 @@ Vamos precisar de dois terminais, em um deixaremos o servidor ouvindo na porta 5
 ![Teste de comunicação cliente-servidor Golang](images/teste-go.png "Teste de comunicação cliente-servidor Golang")
 
 
+
