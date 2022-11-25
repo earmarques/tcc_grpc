@@ -28,10 +28,10 @@ Dessa forma, temos quatro sistemas implementados em linguagens distintas se comu
 
 O cliente principal, o maior consumidor de microserviços é o _Java_, mas é totalmente dependente dos outros serviços. E cada API tem seu próprio ambiente de excecução, seu próprio servidor. Sendo assim, nós vamos criar um diretório para cada linguagem de programação. É preciso ter em mente que cada diretório é como se fosse um repositório, logo, cada um deles terá o seu README.md com as instruções e comandos de execução no terminal. JavaScript e Go não possuem dependência, mas Dart depende que o serviço Go esteja no ar, e o Java depende de todos eles, sendo assim, nós faremos os "sub-repositórios" na seguinte sequência:
 
-[1. JavaScript](js_grpc)
-[2. Golang](go_grpc)
-3. Dart
-4. Java
+[1. JavaScript](js_grpc)<br>
+[2. Golang](go_grpc)<br>
+3. Dart<br>
+4. Java<br>
 
 Nos README.md's dos sub-repositórios haverá apenas as instruções para subir o servidor e alguns testes. Explicações mais detalhes do que cada trecho do código faz o leitor pode consultar a [Wiki do projeto](https://github.com/earmarques/tcc_grpc/wiki), onde temos uma explicação mais abrangente e integrada. Se o leitor estiver interessado no gRPC em apenas uma das linguagens de programação, pode ir até o sub-repositório que as instruções ali bastam para fazer o gRPC funcionar.
 
