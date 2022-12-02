@@ -73,7 +73,7 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 Este comando modifica temporariamente o PATH, apenas para o shell que estivermos usando. Se quisermos evitar ter de executarmos o comando anterior toda vez que formos compilar arquivos .proto para o Dart, devemos acrescentar essa linha de comando ao final do arquivo ~/.bashrc.
 
-![Path para o plugin do compilador _protobuff_](images/dart_plugin_path.png Path para o plugin do compilador _protobuff_)<br>
+![Path para o plugin do compilador _protobuff_](images/dart_plugin_path.png "Path para o plugin do compilador _protobuff_")<br>
 _Figura 1: Path para o plugin do compilador _protobuff_ no ~/.bashrc_
 
 Nosso shell é bash, executar source ~/.bashrc carrregará as novas configurações. Se usa outro shell, feche e abra o terminal novamente.
