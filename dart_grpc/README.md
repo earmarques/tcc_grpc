@@ -1,13 +1,13 @@
-## gRPC no NodeJS :green_apple:
+## gRPC no Dart :bird:
 
 Temos as seguintes etapas para fazer:
 
 
-**[1. asdf](./README.md#1-asdf)**<br>
-[1.1. Instalar o plugin asdf do NodeJS](#11-instalar-o-plugin-asdf-do-nodejs)<br>
-[1.2. Instalar uma versão do NodeJS](#12-instalar-uma-vers%C3%A3o-do-nodejs)<br>
+**[1. asdf](./README.md#)**<br>
+[1.1. Instalar o plugin asdf do Dart]()<br>
+[1.2. Instalar uma versão do Dart]()<br>
 
-**[2. NodeJS](./README.md#2-nodejs)**<br>
+**[2. Dart](./README.md)**<br>
 [2.1 Inicializar o projeto](#21-inicializar-o-projeto)<br>
 [2.2. Instalar dependências](#22-instalar-depend%C3%AAncias)<br>
 
@@ -26,47 +26,78 @@ Temos as seguintes etapas para fazer:
 
 ### 1. asdf
 
-#### 1.1. Instalar o plugin asdf do NodeJS
+#### 1.1. Instalar o plugin asdf do Dart
 
 ```
-asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf plugin-add dart https://github.com/patoconnor43/asdf-dart.git
 ```
 
 #### 1.2. Instalar uma versão do NodeJS
 
-Nós estamos usando a versão 18.7.0 do NodeJS. Para evitar problemas, recomendamos usar a mesma versão. 
+```
+asdf install dart 2.17.6
+```
 
-```
-asdf install nodejs 18.7.0
-```
-📌 _O que está destacado a seguir é opcional_.
-> Se quiser instalar a versão mais recente o comando é:
-> ```
-> asdf install nodejs latest
-> ```
-> Poderá ter qualquer versão disponível entre as listadas:
-> ```
-> asdf list all nodejs
-> ```
-> Poderá configurar a última versão globalmente, como versão default:
-> ```
-> asdf global nodejs latest
-> ```
+#### 1.3. Tornar a versão global
 
-Mas aqui nós vamos utilizar localmente(tcc_grpc/js_grpc/) neste repositório a versão específica.
+Faremos da 2.17.6 a versão global para todos os projetos na máquina
 ```
-asdf local nodejs 18.7.0
+asdf global dart 2.17.6
 ```
+
+Checar instalação 
+```
+dart --version
+```
+`> Dart SDK version: 2.17.6 (stable) (Tue Jul 12 12:54:37 2022 +0200) on "linux_x64"`
+
 ---
 
-### 2. NodeJS
+### 2. Dart
 
-O NodeJS traz a reboque em seu binário o gerenciador de pacotes npm. Primeiro precisamos inicializá-lo.
+#### 2.1 Plugin _Protocol Buffer Compiler_
 
-#### 2.1 Inicializar o projeto
+Instalar o plugin do compilador dos arquivos `.proto`. 
 
 ```
-npm init -y
+dart pub global activate protoc_plugin
+```
+
+#### 2.2 Atualizar o PATH
+
+Precisamos atualizar o PATH para que o protoc possa encontrar o plugin que acabamos de instalar.
+
+```
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+```
+
+Este comando modifica temporariamente o PATH, apenas para o shell que estivermos usando. Se quisermos evitar ter de executarmos o comando anterior toda vez que formos compilar arquivos .proto para o Dart, devemos acrescentar essa linha de comando ao final do arquivo ~/.bashrc.
+
+![Path para o plugin do compilador _protobuff_](images/dart_plugin_path.png Path para o plugin do compilador _protobuff_)<br>
+_Figura 1: Path para o plugin do compilador _protobuff_ no ~/.bashrc_
+
+Nosso shell é bash, executar source ~/.bashrc carrregará as novas configurações. Se usa outro shell, feche e abra o terminal novamente.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### 2.1 Criar uma aplicação de console
+
+```
+dart create --template=console-simple dart_grpc
 ```
 
 #### 2.2. Instalar dependências
