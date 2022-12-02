@@ -8,7 +8,7 @@ No Golang a configuração é mais burocrática que no JavaScript.
 [1.1.2. Instalar a versão](#112-instalar-a-vers%C3%A3o)<br>
 [1.2. Golang](#12-golang)<br>
 [1.2.1. Instalar o plugin](#121-instalar-o-plugin)<br>
-[1.2.2. Instalar uma versão do Golang](#122-instalar-uma-vers%C3%A3o-do-golangestrutura-do-projeto)<br>
+[1.2.2. Instalar uma versão do Golang](#122-instalar-uma-vers%C3%A3o-do-golang)<br>
 
 **[2. Golang](./README.md#2-golang)**<br>
 [2.1. Plugins Go](#21-plugins-go)<br>
