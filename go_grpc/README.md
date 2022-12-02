@@ -175,7 +175,7 @@ Veremos dois arquivos `.go` criados na pasta _protos_, `gerador_id_grpc.pb.go` e
 _Figura 2: Estrutura do projeto_
 
 
-#### 3.3. SerEstrutura do projetover
+#### 3.3. Server
 
 Criar a pasta do servidor e o seu código.
 ```
@@ -293,16 +293,16 @@ _Listagem 3: client/main.go_
 
 ### 4. Executar teste
 
-Vamos precisar de dois terminais, em um deixaremos o servidor ouvindo na porta 50051, no outro executamos as chamadas remotas. O comportamento esperado é dado na figura 3.
+Vamos precisar de dois terminais, em um deixaremos o servidor ouvindo na porta 50051, no outro executamos as chamadas remotas. O comportamento esperado é dado na figEstrutura do projetoura 3.
 
 ![Teste de comunicação cliente-servidor Golang](images/teste-go.png "Teste de comunicação cliente-servidor Golang")<br>
 _Figura 3: Teste de comunicação cliente-servidor Golang_
-
+Estrutura do projeto
 
 <br><br>
 
 [:arrow_up: Topo](#grpc-Estrutura do projetono-golang-)
 
-<br><br>Estrutura do projeto
+<br><br>
 
 
