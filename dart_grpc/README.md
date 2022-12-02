@@ -87,7 +87,7 @@ dart create --template=console-simple dart_grpc
 
 O comando cria uma aplicação de console em Dart no diretório dart_grpc com a estrutura da figura 2.
 ![Estrutura projeto console Dart](images/console_dart.png "Estrutura projeto console Dart")<br>
-_Figura 2: Estrutura projeto console Dart
+_Figura 2: Estrutura projeto console Dart_
 
 #### 2.2. Adicionar dependências
 
