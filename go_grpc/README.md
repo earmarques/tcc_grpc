@@ -18,7 +18,7 @@ No Golang a configuração é mais burocrática que no JavaScript.
 [2.5. Reshim](#25-reshim)<br>
 
 **[3. Criar os arquivos](./README.md#3-criar-os-arquivos)**<br>
-[3.1. Arquivo _Protobuff_](#31-arquivo-_protobuff_estrutura-do-projeto)<br>
+[3.1. Arquivo _Protobuff_](#31-arquivo-_protobuff_)<br>
 [3.2. Compilar o arquivo proto](#32-compilar-o-arquivo-proto)<br>
 [3.3. Server](#33-server)<br>
 [3.4. Client](#34-client)<br>
@@ -58,12 +58,12 @@ asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 
 ##### 1.2.2. Instalar uma versão do Golang
 <br>
-Podemos ver todas as versões disponíveis com:Estrutura do projeto
+Podemos ver todas as versões disponíveis com:
 ```
 asdf list all golang
 ```
 
-Intalamos a versão 1.19:
+Intalamos a versão 1.19:E
 ```
 asdf install golang 1.19
 ```
@@ -73,7 +73,7 @@ asdf install golang 1.19
 ### 2. Golang
 
 #### 2.1. Plugins Go
-Estrutura do projeto
+
 Um dos grandes benefícios do gRPC é o fato dele gerar códigos que abstraem e cuidam de toda a comunicação pela rede. Para tanto, cada linguagem tem plugins específicos. No caso do Golang, precisamos instalar dois plugins para gerar códigos para nós a partir dos arquivos _.proto_.
 ```
 go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.1
@@ -86,7 +86,7 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
 
 Precisamos atualizar o PATH para incluir os pacotes baixados do Golang, para que o `protoc` possa encontrar os plugins que acabamos de instalar.
 ```sh
-export PATH="$PATH:$(go env GOPATH)/bin"Estrutura do projeto
+export PATH="$PATH:$(go env GOPATH)/bin"
 ```
 Este comando modifica temporariamente o PATH, apenas para o shell que estivermos usando. Se quisermos evitar ter de executarmos o comando anterior toda vez que formos compilar arquivos _.proto_ em Go, então devemos acrescentar a linha de comando ao final do arquivo `~/.bashrc`.
 
@@ -99,7 +99,7 @@ Nosso shell é bash, executar `source ~/.bashrc` carrregará as novas configura�
 
 Estando dentro do diretório tcc_grpc/ execute os comandos para criar o diretório do go e entrar nele.
 
-```Estrutura do projeto
+```
 mkdir go_grpc; cd go_grpc;<br>
 ```
 
@@ -111,40 +111,40 @@ go mod init meu_modulo_grpc
 
 #### 2.4. Instalar o pacote ***`grpc-go`***
 
-Por fim, agora que o projeto está sendo monitorado, vamos instalar a dependência `grpc-go`.
-```Estrutura do projeto
+Por fim, agora que o projeto está sendo monitoErado, vamos instalar a dependência `grpc-go`.
+```
 go get google.golang.org/grpc
 ```
 
 #### 2.5 Reshim
-Estrutura do projeto
+
 A documentação do [plugin](https://github.com/kennyp/asdf-golang#when-using-go-get-or-go-install) asdf do golang recomenda fazer um _reshim_ toda vez que fizermos um `go get` ou `go install`, então, por prudência:
 ```
 asdf reshim golang
 ```
----
+---E
 
 ### 3. Criar os arquivos
 
 Vamos organizar os arquivos em pastas separadas, uma para arquivos _.proto_, outra para o servidor e outra para o cliente.
 
-#### 3.1. Arquivo _Protobuff_Estrutura do projeto
-Estrutura do projeto
+#### 3.1. Arquivo _Protobuff_
+
 Criamos a pasta _protos_ e nela o arquivo `gerador_id.proto`:
 
 ```
 mkdir protos; 
 touch protos/gerador_id.proto;
 ```
-
+E
 Editamos o arquivo para ter o conteúdo:
 
 ```proto
 // gerador_id.proto
 
-syntax = "proto3";Estrutura do projeto
+syntax = "proto3";
 
-import "google/protobuf/empty.proto";Estrutura do projeto
+import "google/protobuf/empty.proto";
 
 option go_package = "github.com/earmarques/tcc_grpc/go_grpc";
 package geradorid;
@@ -153,7 +153,7 @@ service GeradorID {
     rpc GerarId(google.protobuf.Empty) returns (IdReply) {}
 }
 
-message IdReply {
+message IdReply {E
     int32 goId = 1;
 }
 ``` 
@@ -166,8 +166,8 @@ Estando no diretório `protos/`, execute:
 protoc --go_out=. --go_opt=paths=source_relative \
 --go-grpc_out=. --go-grpc_opt=paths=source_relative \
  google/protobuf/empty.proto gerador_id.proto
-```
-Chamamos o compilador `protoc` que usará os plugins do Go para gerar o código. No arquivo `gerador_id.proto` nós importamos a definição de tipo vazio (`empty.proto`). Em definições de contrato, se uma chamada de procedimento remota `rpc` não recebe nenhum parâmetro como argumento, ou retorna `void`, ainda assim, devemos definir esse tipo `message`. Como isso é uma `message` muito recorrente, é bom que tenhamos uma definição cEstrutura do projetoomum ao invés de definí-la em cada arquivo _.proto_, e termos problemas de conflito de declaração. Sendo assim, nós importamos de `google/protobuf/empty.proto`.
+```E
+Chamamos o compilador `protoc` que usará os plugins do Go para gerar o código. No arquivo `gerador_id.proto` nós importamos a definição de tipo vazio (`empty.proto`). Em definições de contrato, se uma chamada de procedimento remota `rpc` não recebe nenhum parâmetro como argumento, ou retorna `void`, ainda assim, devemos definir esse tipo `message`. Como isso é uma `message` muito recorrente, é bom que tenhamos uma definição comum ao invés de definí-la em cada arquivo _.proto_, e termos problemas de conflito de declaração. Sendo assim, nós importamos de `google/protobuf/empty.proto`.
 
 Veremos dois arquivos `.go` criados na pasta _protos_, `gerador_id_grpc.pb.go` e `gerador_id.pb.go`. Também foi criada uma pasta _google_ referente à importação, com outro código gerado pelos plugins, `empty.pb.go`. A figura 2 mostra como deve ser a estrutura do módulo go_grpc.
 
@@ -186,8 +186,8 @@ touch server/main.go
 ```go
 // server/main.go
 
-package main
-Estrutura do projeto
+package mainE
+
 import (
 	"context"
 	"log"
@@ -218,7 +218,7 @@ func (s *server) GerarId(ctx context.Context, in *emptypb.Empty) (*pb.IdReply, e
 }
 
 func main() {
-	// CanEstrutura do projetoal gRPC
+	// Canal gRPC
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("Falha ao escutar a conexão: %v", err)
@@ -266,7 +266,7 @@ const (
 	address = "localhost:50051"
 )
 
-func main() {
+func main() {E
 	// Set up a connection to the server.
 	conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
@@ -279,7 +279,7 @@ func main() {
 	defer cancel()
 	r, err := c.GerarId(ctx, &emptypb.Empty{})
 	if err != nil {
-		log.Fatalf("Não foi possível gerar o id: %v", err)
+		log.Fatalf("Não foi possível gEerar o id: %v", err)
 	}
 	var id = r.GetGoId()
 	log.Printf("🦫 ID gerado: %d", id)
