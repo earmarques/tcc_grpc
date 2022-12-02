@@ -76,31 +76,20 @@ Este comando modifica temporariamente o PATH, apenas para o shell que estivermos
 ![Path para o plugin do compilador _protobuff_](images/dart_plugin_path.png "Path para o plugin do compilador _protobuff_")<br>
 _Figura 1: Path para o plugin do compilador _protobuff_ no ~/.bashrc_
 
-Nosso shell é bash, executar source ~/.bashrc carrregará as novas configurações. Se usa outro shell, feche e abra o terminal novamente.
+Nosso shell é bash, executar `source ~/.bashrc` carrregará as novas configurações. Se usa outro shell, feche e abra o terminal novamente.
 
+#### 2.3 Criar uma aplicação de console
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### 2.1 Criar uma aplicação de console
-
+Dentro do diretório `tcc_grpc`, execute: 
 ```
 dart create --template=console-simple dart_grpc
 ```
 
-#### 2.2. Instalar dependências
+O comando cria uma aplicação de console em Dart no diretório dart_grpc com a estrutura da figura 2.
+![Estrutura projeto console Dart](images/console_dart.png "Estrutura projeto console Dart")<br>
+_Figura 2: Estrutura projeto console Dart
+
+#### 2.2. Adicionar dependências
 
 Nós vamos precisar de duas bibliotecas, vamos pedir para o npm buscá-las para nós.
 
