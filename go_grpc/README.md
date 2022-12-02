@@ -42,7 +42,7 @@ Para compilar um arquivo `protocol buffer`, nós precisamos instalar o compilado
 
 ##### 1.1.1. Instalar o plugin 
 ```
-asdf plugin-add protoc https://github.com/paxosglobal/asdf-protoc.git
+asdf plugin-add protoc https://github.com/paxosglobal/asdf-protoc.gitEstrutura do projeto
 ```
 ##### 1.1.2. Instalar a versão 
 
@@ -87,7 +87,7 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
 Precisamos atualizar o PATH para incluir os pacotes baixados do Golang, para que o `protoc` possa encontrar os plugins que acabamos de instalar.
 ```sh
 export PATH="$PATH:$(go env GOPATH)/bin"
-```
+```Estrutura do projeto
 Este comando modifica temporariamente o PATH, apenas para o shell que estivermos usando. Se quisermos evitar ter de executarmos o comando anterior toda vez que formos compilar arquivos _.proto_ em Go, então devemos acrescentar a linha de comando ao final do arquivo `~/.bashrc`.
 
 ![GOPATH no ~/.bashrc](images/gopath.png "GOPATH no ~/.bashrc")<br>
@@ -122,7 +122,7 @@ A documentação do [plugin](https://github.com/kennyp/asdf-golang#when-using-go
 ```
 asdf reshim golang
 ```
----E
+---
 
 ### 3. Criar os arquivos
 
@@ -167,7 +167,7 @@ protoc --go_out=. --go_opt=paths=source_relative \
 --go-grpc_out=. --go-grpc_opt=paths=source_relative \
  google/protobuf/empty.proto gerador_id.proto
 ```E
-Chamamos o compilador `protoc` que usará os plugins do Go para gerar o código. No arquivo `gerador_id.proto` nós importamos a definição de tipo vazio (`empty.proto`). Em definições de contrato, se uma chamada de procedimento remota `rpc` não recebe nenhum parâmetro como argumento, ou retorna `void`, ainda assim, devemos definir esse tipo `message`. Como isso é uma `message` muito recorrente, é bom que tenhamos uma definição comum ao invés de definí-la em cada arquivo _.proto_, e termos problemas de conflito de declaração. Sendo assim, nós importamos de `google/protobuf/empty.proto`.
+Chamamos o compilador `protoc` que usará os plugins do Go para gerar o código. No arquivo `gerador_id.proto` nós importamos a definição Estrutura do projetode tipo vazio (`empty.proto`). Em definições de contrato, se uma chamada de procedimento remota `rpc` não recebe nenhum parâmetro como argumento, ou retorna `void`, ainda assim, devemos definir esse tipo `message`. Como isso é uma `message` muito recorrente, é bom que tenhamos uma definição comum ao invés de definí-la em cada arquivo _.proto_, e termos problemas de conflito de declaração. Sendo assim, nós importamos de `google/protobuf/empty.proto`.
 
 Veremos dois arquivos `.go` criados na pasta _protos_, `gerador_id_grpc.pb.go` e `gerador_id.pb.go`. Também foi criada uma pasta _google_ referente à importação, com outro código gerado pelos plugins, `empty.pb.go`. A figura 2 mostra como deve ser a estrutura do módulo go_grpc.
 
@@ -175,7 +175,7 @@ Veremos dois arquivos `.go` criados na pasta _protos_, `gerador_id_grpc.pb.go` e
 _Figura 2: Estrutura do projeto_
 
 
-#### 3.3. Server
+#### 3.3. SerEstrutura do projetover
 
 Criar a pasta do servidor e o seu código.
 ```
@@ -249,7 +249,7 @@ touch client/main.go
 ```go
 // client/main.go
 Estrutura do projeto
-package main
+package mainEstrutura do projeto
 
 import (
 	"context"
@@ -301,8 +301,8 @@ _Figura 3: Teste de comunicação cliente-servidor Golang_
 
 <br><br>
 
-[:arrow_up: Topo](#grpc-no-golang-)
+[:arrow_up: Topo](#grpc-Estrutura do projetono-golang-)
 
-<br><br>
+<br><br>Estrutura do projeto
 
 
