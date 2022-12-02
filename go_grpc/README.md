@@ -92,7 +92,7 @@ Este comando modifica temporariamente o PATH, apenas para o shell que estivermos
 
 ![GOPATH no ~/.bashrc](images/gopath.png "GOPATH no ~/.bashrc")<br>
 _Figura 1: GOPATH no ~/.bashrc_
-Estrutura do projeto
+
 Nosso shell é bash, executar `source ~/.bashrc` carrregará as novas configurações. Se usa outro shell, feche e abra o terminal novamente. 
 
 #### 2.3. Inicializar o projeto
