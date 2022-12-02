@@ -56,7 +56,7 @@ asdf install protoc 3.20.3
 asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 ```
 
-##### 1.2.2. Instalar uma versão do GolangEstrutura do projeto
+##### 1.2.2. Instalar uma versão do Golang
 <br>
 Podemos ver todas as versões disponíveis com:Estrutura do projeto
 ```
@@ -69,7 +69,7 @@ asdf install golang 1.19
 ```
 
 ---
-Estrutura do projeto
+
 ### 2. Golang
 
 #### 2.1. Plugins Go
