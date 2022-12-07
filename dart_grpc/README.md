@@ -330,21 +330,35 @@ main() {
 ```
 _Listagem 3: client.dart_
 
-Com êxito, teremos o resultado mostado na figura 5.
+##### 4.1.2 Teste CRUD banco de dados Dart
+
+Precisamos de dois terminais, um para o servidor do banco e outro para o cliente testar. Dentro do diretório bin:
+- terminal do servidor
+
+```
+dart server.dart
+```
+- terminal do cliente
+
+```
+dart client.dart
+```
+
+Com êxito, teremos o resultado mostrado na figura 5.
 
 ![Banco de dados Dart](images/crud_aluno_service.png "Banco de dados Dart")<br>
-_Figura 4: Banco de dados Dart_
-
+_Figura 5: Banco de dados Dart_
 
 
 #### 4.2. _Microservice_ GeradorID
+
+
 
 #### 4.3. _Microservices_ CrudAlunoService com GeradorID
 
 
 
-<br><br>![Código Dart gerado a partir das especificações de serviços .proto](images/dart_proto_code.png "Código Dart gerado a partir das especificações de serviços .proto")<br>
-_Figura 4: Código Dart gerado a partir das especificações de serviços .proto_
+<br><br>
 
 [:arrow_up: Topo](#grpc-no-nodejs-green_apple)
 
