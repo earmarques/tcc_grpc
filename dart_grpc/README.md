@@ -85,22 +85,17 @@ Dentro do diretório `tcc_grpc`, execute:
 dart create --template=console-simple dart_grpc
 ```
 
-O comando cria uma aplicação de console em Dart no diretório dart_grpc com a estrutura da figura 2.
+O comando cria uma aplicação de console no diretório dart_grpc com a estrutura da figura 2.
+
 ![Estrutura projeto console Dart](images/console_dart.png "Estrutura projeto console Dart")<br>
 _Figura 2: Estrutura projeto console Dart_
 
 #### 2.2. Adicionar dependências
 
-Nós vamos precisar de duas bibliotecas, vamos pedir para o npm buscá-las para nós.
+Vamos adcionar duas dependências ao arquivo pubspec.yaml: [`grpc: ^3.1.0`](https://pub.dev/packages/grpc) e [`protobuf: ^2.1.0`](https://pub.dev/packages/protobuf).
 
-- **@grpc/grpc-js**
-```
-npm i @grpc/grpc-js
-```
-- **@grpc/proto-loader**
-```
-npm i @grpc/proto-loader
-```
+![Dependências no pubspec.yaml](images/dart_pubspec.yaml.png "Dependências no pubspec.yaml")<br>
+_Figura 3\: Dependências no pubspec.yaml_
 
 ---
 
