@@ -180,9 +180,154 @@ _Figura 4: Código Dart gerado a partir das especificações de serviços .proto
 
 ### 4. Códigos cliente e servidor
 
-Vamos fazer uma abordagem cautelosa cartesiana - análise e síntese, conquistando passo a passo cada recurso de que precisamos para depois formarmos o todo de que precisamos. Primeiro vamos fazer um cliente-servidor apenas 
-em Dart do nosso `CrudAlunoService` (`client.dart` e `server.dart`). Depois vamos fazer um cliente Dart consumir o `service` Golang `GeradorID` (client_id.dart). Por fim, vamos fazer um cliente-servidor Dart cujo servidor de serviço é por sua vez cliente de outro serviço em Golang. Esses códigos estarão abrigados na pasta `dart_grpc/bin`.    
+Vamos fazer uma abordagem cautelosa cartesiana - análise e síntese, conquistando passo a passo cada recurso de que precisamos para depois formarmos o todo. Primeiro vamos fazer um cliente-servidor apenas 
+em Dart do nosso `CrudAlunoService` (`client.dart` e `server.dart`). Depois vamos fazer um cliente Dart consumir o `service` Golang `GeradorID` (client_id.dart). Por fim, vamos fazer um cliente-servidor Dart cujo servidor de serviço é por sua vez cliente de outro serviço em Golang (`server_cliente_go.dart` e `cliente_id_go.dart`). Esses códigos .dart estarão abrigados na pasta `dart_grpc/bin`.    
 
+#### 4.1. _Microservice_ CrudAlunoService
+
+Nosso banco de dados é emulado (_mock_) com uma lista em memória: `Alunos lista = Alunos();`. Em `#createAluno` o `id` do aluno já deve vir fornecido no objeto `request`. Posteriormente esse id será gerado pelo microserviço em Golang.
+
+##### 4.1.1 server.dart
+
+```dart
+import 'package:grpc/grpc.dart';
+import '../protos/aluno.pbgrpc.dart';
+import '../protos/google/protobuf/empty.pb.dart';
+
+
+class CrudAlunoService extends CrudAlunoServiceBase {
+  Alunos lista = Alunos();
+
+  @override
+  Future<Aluno> createAluno(ServiceCall call, Aluno request) async {
+    var aluno = Aluno();
+    aluno.nome = request.nome;
+    aluno.id = request.id;
+    lista.alunos.add(aluno);
+    return aluno;
+  }
+
+  @override
+  Future<Alunos> getAllAlunos(ServiceCall call, Empty request) async {
+    return lista;
+  }
+
+  @override
+  Future<Aluno> getAluno(ServiceCall call, AlunoId request) async {
+    var aluno = lista.alunos.firstWhere((aluno) => aluno.id == request.id);
+    return aluno;
+  }
+
+  @override
+  Future<Empty> deleteAluno(ServiceCall call, AlunoId request) async {
+    lista.alunos.removeWhere((aluno) => aluno.id == request.id);
+    return Empty();
+  }
+
+  @override
+  Future<Aluno> editAluno(ServiceCall call, Aluno request) async {
+    var aluno = lista.alunos.firstWhere((aluno) => aluno.id == request.id);
+    aluno.nome = request.nome;
+    return aluno;
+  }
+}
+
+Future<void> main(List<String> args) async {
+  final server = Server(
+    [CrudAlunoService()],
+    const <Interceptor>[],
+    CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
+  );
+  await server.serve(port: 50052);
+  print('Servidor ouvindo na porta ${server.port}...');
+}
+```
+
+##### 4.1.2 client.dart
+
+Na classe `Client` criamos o canal de comunicação `channel` e o objeto `stub` que representa no cliente o serviço oferecido pelo servidor pelo qual faremos as chamadas remotas. Inicialmente criamos dois objetos alunos, passando o id manualmente, e depois testamos todas as _remote procedure calls_.  
+
+```dart
+import 'package:grpc/grpc.dart';
+import './../protos/aluno.pbgrpc.dart';
+import '../protos/google/protobuf/empty.pb.dart';
+
+class Client {
+  late ClientChannel channel;
+  late CrudAlunoClient stub;
+
+  Future<void> main(List<String> args) async {
+    channel = ClientChannel('localhost',
+        port: 50052,
+        options: // Aqui não teremos credenciais
+            const ChannelOptions(credentials: ChannelCredentials.insecure()));
+    stub = CrudAlunoClient(channel,
+        options: CallOptions(timeout: Duration(seconds: 30)));
+    try {
+      //...
+      print('\n__ Adicionando Alunos  ---------------------------------');
+      var alunoToAdd1 = Aluno();
+      alunoToAdd1.id = 1;
+      alunoToAdd1.nome = "Elias Mantovani Rebouças";
+      var alunoAdicionado1 = await stub.createAluno(alunoToAdd1);
+      print("Aluno Adicionado:\n" + alunoAdicionado1.toString());
+
+      var alunoToAdd2 = Aluno();
+      alunoToAdd2.id = 2;
+      alunoToAdd2.nome = "Pedro Henrique Coimbra";
+      var alunoAdicionado2 = await stub.createAluno(alunoToAdd2);
+      print("Aluno Adicionado:\n" + alunoAdicionado2.toString());
+
+      print('\n__ Listagem de Alunos  ---------------------------------');
+      var todosAlunos = await stub.getAllAlunos(Empty());
+      print(todosAlunos.alunos.toString());
+
+      print('\n__ Removendo Aluno  ------------------------------------');
+      var alunoToDel = AlunoId();
+      alunoToDel.id = 2;
+      await stub.deleteAluno(alunoToDel);
+      print("Aluno removido com ID: " + alunoToDel.id.toString());
+
+      print('\n__ Listagem de Alunos  ---------------------------------');
+      var todosAlunos2 = await stub.getAllAlunos(Empty());
+      print(todosAlunos2.alunos);
+
+      print('\n__ Edição de Aluno  ------------------------------------');
+      var alunoToEdit = Aluno();
+      alunoToEdit.id = 1;
+      alunoToEdit.nome = "David Bitcoin";
+      await stub.editAluno(alunoToEdit);
+      print("Aluno editado com ID: " + alunoToEdit.id.toString());
+
+
+      print('\n__ Busca do Aluno Editado  ---------------------------');
+      var alunoToGet = AlunoId();
+      alunoToGet.id = 1;
+      var alunoObtido = await stub.getAluno(alunoToGet);
+      print("Aluno de id = 1 com nome editado:\n" + alunoObtido.toString());
+
+      print('\n__ Listagem de Alunos  ---------------------------------');
+      var todosAlunos3 = await stub.getAllAlunos(Empty());
+      print(todosAlunos3.alunos);
+
+    } 
+    catch (e) {
+      print('\n\nErro: O Servidor está offline\n');
+      print(e);
+    }
+    await channel.shutdown();
+  }
+}
+
+main() {
+  var client = Client();
+  client.main([]);
+}
+```
+
+#### 4.2. _Microservice_ GeradorID
+
+#### 4.3. _Microservices_ CrudAlunoService com GeradorID
 
 
 
