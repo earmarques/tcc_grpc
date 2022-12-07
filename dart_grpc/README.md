@@ -106,9 +106,9 @@ _Figura 3\: Dependências no pubspec.yaml_
 dart pub get
 ```
 
-### 3. Criar os arquivos 
+### 3. Contratos *.proto
 
-Os programas Dart iremos criar na pasta `bin`, já os arquivos .proto de definições de serviços ficarão no diretório `protos`.
+Os arquivos .proto de definições de serviços ficarão no diretório `protos`.
 
 #### 3.1. Arquivos _Protobuff_ 
 
@@ -176,30 +176,15 @@ Teremos os vários códigos `.dart` gerados da figura 4.
 ![Código Dart gerado a partir das especificações de serviços .proto](images/dart_proto_code.png "Código Dart gerado a partir das especificações de serviços .proto")<br>
 _Figura 4: Código Dart gerado a partir das especificações de serviços .proto_
 
-
 ---
 
-### 4. Executar teste
+### 4. Códigos cliente e servidor
 
-Vamos subir o servidor com o comando:
-```
-node server.js
-```
-Veremos o servidor escutando requisições na porta 50053.
+Vamos fazer uma abordagem cautelosa cartesiana - análise e síntese, conquistando passo a passo cada recurso de que precisamos para depois formarmos o todo de que precisamos. Primeiro vamos fazer um cliente-servidor apenas 
+em Dart do nosso `CrudAlunoService` (`client.dart` e `server.dart`). Depois vamos fazer um cliente Dart consumir o `service` Golang `GeradorID` (client_id.dart). Por fim, vamos fazer um cliente-servidor Dart cujo servidor de serviço é por sua vez cliente de outro serviço em Golang. Esses códigos estarão abrigados na pasta `dart_grpc/bin`.    
 
-![Servidor NodeJS gRPC ouvindo na porta 50053](images/node_serving.png "Servidor NodeJS gRPC ouvindo na porta 50053")<br>
-_Figura 1: Servidor NodeJS gRPC ouvindo na porta 50053_
 
-Deixaremos o servidor escutando em um terminal e abriremos outro, no mesmo diretório, para executar o client.js que irá consumir a API.
 
-```
-node client.js
-```
-
-A cada execução do comando acima, a aplicação cliente JS envia uma requisição para o servidor usando o _framework_ gRPC. O servidor gera um número entre 0 e 50 e o envia para a aplicação cliente, que recebe o valor e imprime na tela.  
-
-![Aplicação cliente e servidor se comunicando através do framework gRPC](images/js_grpc_test.png "Aplicação cliente e servidor se comunicando através do framework gRPC")<br>
-_Figura 2: Aplicação cliente e servidor se comunicando através do framework gRPC_
 
 <br><br>
 
