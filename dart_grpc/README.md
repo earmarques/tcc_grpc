@@ -161,8 +161,7 @@ _Listagem 1: aluno.proto_
 Temos três _protobuff_ para compilar, `aluno.proto`, `gerador_id.proto` e o `empty.proto`, que está importado nos dois primeiros, nos quais o usamos como tipo de `message` para procedimentos que não recebem argumentos, como em `CrudAlunoService#GetAllAlunos` e `GeradorID#GerarId`, ou nos procedimentos que retornam vazio (`void`), como em `CrudAlunoService#DeleteAluno`.
 
 Na pasta `dart_grpc`, compile os arquivos com o comando:
-protoc -I=protos/ --dart_out=grpc:protos/ protos/ aluno.proto gerador_id.proto \
-google/protobuf/empty.proto
+
 ```
 protoc -I=protos/ --dart_out=grpc:protos/ \
 protos/aluno.proto \
