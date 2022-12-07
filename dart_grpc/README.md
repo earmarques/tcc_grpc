@@ -352,7 +352,7 @@ _Figura 5: Banco de dados Dart_
 
 #### 4.2. _Microservice_ GeradorID
 
-
+O segundo recurso que precisamos é fazer um cliente Dart consumir o microserviço Golang de gerar o índice incremental para ser nossa chave pimária do banco Dart. 
 
 #### 4.3. _Microservices_ CrudAlunoService com GeradorID
 
