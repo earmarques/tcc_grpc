@@ -160,7 +160,10 @@ Temos três _protobuff_ para compilar, `aluno.proto`, `gerador_id.proto` e o `em
 Na pasta `dart_grpc`, compile os arquivos com o comando:
 
 ```
-protoc -I=protos/ --dart_out=grpc:protos/ protos/ aluno.proto gerador_id.proto google/protobuf/empty.proto
+protoc -I=protos/ --dart_out=grpc:protos/ \
+protos/aluno.proto \
+gerador_id.proto \
+google/protobuf/empty.proto
 ```
 
 ---
