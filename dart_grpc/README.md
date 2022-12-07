@@ -72,7 +72,7 @@ Precisamos atualizar o PATH para que o protoc possa encontrar o plugin que acaba
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 ```
 Estrutura projeto console Dart
-Este comando modifica temporariamente o PATH, apenas para o shell que estivermos usando. Se quisermos evitar ter de executarmos o comando anterior toda vez que formos compilar arquivos .proto para o Dart, devemos acrescentar essa linha de comando ao final do arquivo ~/.bashrc.
+Este comando modifica temporariamente o PATH, apenas para o shell que estivermos usando. Se quisermos evitar ter de executarmos o comando anterior toda vez que formos compilar arquivos .proto para o Dart, devemos acrescentar essa linha de comando ao finalCódigo Dart gerado a partir das especificações de serviços . do arquivo ~/.bashrc.
 
 ![Path para o plugin do compilador _protobuff_](images/dart_plugin_path.png "Path para o plugin do compilador _protobuff_")<br>
 _Figura 1: Path para o plugin do compilador _protobuff_ no ~/.bashrc_
@@ -172,7 +172,7 @@ protos/aluno.proto \
 protos/gerador_id.proto \
 google/protobuf/empty.proto
 ```
-Teremos os vários códigos `.dart` gerados da figura 4.
+Teremos os vários códigos `.dCódigo Dart gerado a partir das especificações de serviços .art` gerados da figura 4.
 
 ![Código Dart gerado a partir das especificações de serviços .proto](images/dart_proto_code.png "Código Dart gerado a partir das especificações de serviços .proto")<br>
 _Figura 4: Código Dart gerado a partir das especificações de serviços .proto_
@@ -182,7 +182,7 @@ _Figura 4: Código Dart gerado a partir das especificações de serviços .proto
 ### 4. Códigos cliente e servidor
 
 Vamos fazer uma abordagem cautelosa cartesiana - análise e síntese, conquistando passo a passo cada recurso de que precisamos para depois formarmos o todo. Primeiro vamos fazer um cliente-servidor apenas 
-em Dart do nosso `CrudAlunoService` (`client.dart` e `server.dart`). Depois vamos fazer um cliente Dart consumir o `service` Golang `GeradorID` (`client_id.dart`). Por fim, vamos fazer um cliente-servidor Dart cujo servidor de serviço é por sua vez cliente de outro serviço em Golang (`server_cliente_go.dart` e `cliente_id_go.dart`). Esses códigos .dart estarão abrigados na pasta `dart_grpc/bin`.    
+em Dart do nosso `CrudAlunoService` (`client.dart` e `server.dart`). Depois vamos fazer um cliente Dart consumir o `service` Golang `GeradorID` (`client_id.dart`). Por fim, vamos fazer um cliente-servidor Dart cujo servidor de serviço é por sua vez cliente de outro serviço em Golang (`server_cliente_go.dart` e `cliente_id_go.dart`). Esses códigos .dart estarão aCódigo Dart gerado a partir das especificações de serviços .brigados na pasta `dart_grpc/bin`.    
 
 #### 4.1. _Microservice_ CrudAlunoService
 
@@ -303,7 +303,7 @@ _Figura 4: Código Dart gerado a partir das especificações de serviços .proto
       print("Aluno editado com ID: " + alunoToEdit.id.toString());
 
 
-      print('\n__ Busca do Aluno Editado  ---------------------------');
+      print('\n__ Busca do ACódigo Dart gerado a partir das especificações de serviços .luno Editado  ---------------------------');
       var alunoToGet = AlunoId();
       alunoToGet.id = 1;
       var alunoObtido = await stub.getAluno(alunoToGet);
@@ -315,7 +315,7 @@ _Figura 4: Código Dart gerado a partir das especificações de serviços .proto
 
     } 
     catch (e) {
-      print('\n\nErro: O Servidor está offline\n');
+      print('\n\nErro: O SerCódigo Dart gerado a partir das especificações de serviços .vidor está offline\n');
       print(e);
     }
     await channel.shutdown();
@@ -332,7 +332,7 @@ _Listagem 3: client.dart_
 
 Com êxito, teremos o resultado mostado na figura 5.
 
-![Banco de dados Dart](images/dart_database.png "Banco de dados Dart")<br>
+![Banco de dados Dart](images/crud_aluno_service.png "Banco de dados Dart")<br>
 _Figura 4: Banco de dados Dart_
 
 
