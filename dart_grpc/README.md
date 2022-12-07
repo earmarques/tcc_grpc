@@ -70,7 +70,7 @@ Precisamos atualizar o PATH para que o protoc possa encontrar o plugin que acaba
 ```
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 ```
-
+Estrutura projeto console Dart
 Este comando modifica temporariamente o PATH, apenas para o shell que estivermos usando. Se quisermos evitar ter de executarmos o comando anterior toda vez que formos compilar arquivos .proto para o Dart, devemos acrescentar essa linha de comando ao final do arquivo ~/.bashrc.
 
 ![Path para o plugin do compilador _protobuff_](images/dart_plugin_path.png "Path para o plugin do compilador _protobuff_")<br>
@@ -92,19 +92,32 @@ _Figura 2: Estrutura projeto console Dart_
 
 #### 2.2. Adicionar dependências
 
-Vamos adcionar duas dependências ao arquivo pubspec.yaml: [`grpc: ^3.1.0`](https://pub.dev/packages/grpc) e [`protobuf: ^2.1.0`](https://pub.dev/packages/protobuf).
+Vamos adicionar duas dependências ao arquivo pubspec.yaml: [`grpc: ^3.1.0`](https://pub.dev/packages/grpc) e [`protobuf: ^2.1.0`](https://pub.dev/packages/protobuf).
+
+- Editar `pubspec.yaml`
 
 ![Dependências no pubspec.yaml](images/dart_pubspec.yaml.png "Dependências no pubspec.yaml")<br>
 _Figura 3\: Dependências no pubspec.yaml_
 
----
-
-### 3. Criando os arquivos `server.js`, `client.js` e o contrato `sorteio.proto`
-
-Vamos criar os três arquivos que iremos precisar.
+- Instalar dependências
 
 ```
-touch sorteio.proto server.js client.js
+dart pub get
+```
+
+---
+
+### 3. Criar os arquivos 
+
+Os programas Dart iremos criar na pasta `bin`, já os arquivos .proto de definições de serviços ficarão no diretório `protos`.
+
+#### 3.1. Arquivos _Protobuff_ 
+
+O Dart consumirá a API Golang, logo, o Dart precisa do mesmo contrato, da mesma interface especificada pelo arquivo [LINK TODO -> gerador_id.proto]() presente no repositório da API Go. A outra definição de serviço é `aluno.proto` onde vamos declarar todas as operações elementares do banco de dados.
+
+```
+mkdir -p protos;
+touch protos/aluno.proto
 ```
 Vamos editar os arquivos para que fiquem como nas listagens 1, 2 e 3.
 
@@ -128,7 +141,7 @@ message IntervaloRequest {
 message SorteadoResponse {
   int32 numero = 1;
 }
-
+Estrutura projeto console Dart
 ```
 _Listagem 1: sorteio.proto_
 
