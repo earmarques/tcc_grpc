@@ -88,7 +88,8 @@ dart create --template=console-simple dart_grpc
 
 O comando cria uma aplicação de console no diretório dart_grpc com a estrutura da figura 2.
 
-![Estrutura projeto console Dart](images/console_dart.png "Estrutura projeto console Dart")<br>
+![Estrutura projeto console Dart](images/console_dart.png "Estrutura projeto console Dart")<br>protoc -I=protos/ --dart_out=grpc:protos/ protos/ aluno.proto gerador_id.proto \
+google/protobuf/empty.proto
 _Figura 2: Estrutura projeto console Dart_
 
 #### 2.2. Adicionar dependências
@@ -97,7 +98,8 @@ Vamos adicionar duas dependências ao arquivo pubspec.yaml: [`grpc: ^3.1.0`](htt
 
 - Editar `pubspec.yaml`
 
-![Dependências no pubspec.yaml](images/dart_pubspec.yaml.png "Dependências no pubspec.yaml")<br>
+![Dependências no pubspec.yaml](images/dart_pubspec.yaml.png "Dependências no pubspec.yaml")<br>protoc -I=protos/ --dart_out=grpc:protos/ protos/ aluno.proto gerador_id.proto \
+google/protobuf/empty.proto
 _Figura 3\: Dependências no pubspec.yaml_
 
 - Instalar dependências
@@ -106,7 +108,8 @@ _Figura 3\: Dependências no pubspec.yaml_
 dart pub get
 ```
 
----
+---protoc -I=protos/ --dart_out=grpc:protos/ protos/ aluno.proto gerador_id.proto \
+google/protobuf/empty.proto
 
 ### 3. Criar os arquivos 
 
@@ -158,11 +161,12 @@ _Listagem 1: aluno.proto_
 Temos três _protobuff_ para compilar, `aluno.proto`, `gerador_id.proto` e o `empty.proto`, que está importado nos dois primeiros, nos quais o usamos como tipo de `message` para procedimentos que não recebem argumentos, como em `CrudAlunoService#GetAllAlunos` e `GeradorID#GerarId`, ou nos procedimentos que retornam vazio (`void`), como em `CrudAlunoService#DeleteAluno`.
 
 Na pasta `dart_grpc`, compile os arquivos com o comando:
-
+protoc -I=protos/ --dart_out=grpc:protos/ protos/ aluno.proto gerador_id.proto \
+google/protobuf/empty.proto
 ```
 protoc -I=protos/ --dart_out=grpc:protos/ \
 protos/aluno.proto \
-gerador_id.proto \
+protos/gerador_id.proto \
 google/protobuf/empty.proto
 ```
 
