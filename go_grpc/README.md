@@ -185,7 +185,7 @@ touch server/main.go
 ```go
 // server/main.go
 
-package mainE
+package main
 
 import (
 	"context"
@@ -247,8 +247,8 @@ touch client/main.go
 
 ```go
 // client/main.go
-Estrutura do projeto
-package mainEstrutura do projeto
+
+package main
 
 import (
 	"context"
@@ -265,7 +265,7 @@ const (
 	address = "localhost:50051"
 )
 
-func main() {E
+func main() {
 	// Set up a connection to the server.
 	conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
