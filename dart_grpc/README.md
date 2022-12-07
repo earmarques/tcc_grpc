@@ -141,6 +141,7 @@ service CrudAlunoService {
     rpc GetAluno(AlunoId) returns (Aluno);
     rpc DeleteAluno(AlunoId) returns (google.protobuf.Empty) {};
     rpc EditAluno(Aluno) returns (Aluno) {};
+
 }
 
 message AlunoId {
@@ -181,7 +182,7 @@ _Figura 4: Código Dart gerado a partir das especificações de serviços .proto
 ### 4. Códigos cliente e servidor
 
 Vamos fazer uma abordagem cautelosa cartesiana - análise e síntese, conquistando passo a passo cada recurso de que precisamos para depois formarmos o todo. Primeiro vamos fazer um cliente-servidor apenas 
-em Dart do nosso `CrudAlunoService` (`client.dart` e `server.dart`). Depois vamos fazer um cliente Dart consumir o `service` Golang `GeradorID` (client_id.dart). Por fim, vamos fazer um cliente-servidor Dart cujo servidor de serviço é por sua vez cliente de outro serviço em Golang (`server_cliente_go.dart` e `cliente_id_go.dart`). Esses códigos .dart estarão abrigados na pasta `dart_grpc/bin`.    
+em Dart do nosso `CrudAlunoService` (`client.dart` e `server.dart`). Depois vamos fazer um cliente Dart consumir o `service` Golang `GeradorID` (`client_id.dart`). Por fim, vamos fazer um cliente-servidor Dart cujo servidor de serviço é por sua vez cliente de outro serviço em Golang (`server_cliente_go.dart` e `cliente_id_go.dart`). Esses códigos .dart estarão abrigados na pasta `dart_grpc/bin`.    
 
 #### 4.1. _Microservice_ CrudAlunoService
 
@@ -242,10 +243,11 @@ Future<void> main(List<String> args) async {
   print('Servidor ouvindo na porta ${server.port}...');
 }
 ```
+_Listagem 2: server.dart_
 
 ##### 4.1.2 client.dart
 
-Na classe `Client` criamos o canal de comunicação `channel` e o objeto `stub` que representa no cliente o serviço oferecido pelo servidor pelo qual faremos as chamadas remotas. Inicialmente criamos dois objetos alunos, passando o id manualmente, e depois testamos todas as _remote procedure calls_.  
+Na classe `Client` criamos o canal de comunicação `channel` e o objeto `stub` que representa no cliente o serviço oferecido pelo servidor, pelo qual faremos as chamadas remotas. Inicialmente criamos dois objetos alunos, passando o id manualmente, e depois testamos todas as _remote procedure calls_.  
 
 ```dart
 import 'package:grpc/grpc.dart';
@@ -290,7 +292,8 @@ class Client {
 
       print('\n__ Listagem de Alunos  ---------------------------------');
       var todosAlunos2 = await stub.getAllAlunos(Empty());
-      print(todosAlunos2.alunos);
+      print(todosAlu![Código Dart gerado a partir das especificações de serviços .proto](images/dart_proto_code.png "Código Dart gerado a partir das especificações de serviços .proto")<br>
+_Figura 4: Código Dart gerado a partir das especificações de serviços .proto_nos2.alunos);
 
       print('\n__ Edição de Aluno  ------------------------------------');
       var alunoToEdit = Aluno();
@@ -317,13 +320,22 @@ class Client {
     }
     await channel.shutdown();
   }
-}
+}![Código Dart gerado a partir das especificações de serviços .proto](images/dart_proto_code.png "Código Dart gerado a partir das especificações de serviços .proto")<br>
+_Figura 4: Código Dart gerado a partir das especificações de serviços .proto_
 
 main() {
   var client = Client();
   client.main([]);
 }
 ```
+_Listagem 3: client.dart_
+
+Com êxito, teremos o resultado mostado na figura 5.
+
+![Banco de dados Dart](images/dart_database.png "Banco de dados Dart")<br>
+_Figura 4: Banco de dados Dart_
+
+
 
 #### 4.2. _Microservice_ GeradorID
 
@@ -331,7 +343,8 @@ main() {
 
 
 
-<br><br>
+<br><br>![Código Dart gerado a partir das especificações de serviços .proto](images/dart_proto_code.png "Código Dart gerado a partir das especificações de serviços .proto")<br>
+_Figura 4: Código Dart gerado a partir das especificações de serviços .proto_
 
 [:arrow_up: Topo](#grpc-no-nodejs-green_apple)
 
