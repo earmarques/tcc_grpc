@@ -86,7 +86,7 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
 
 Precisamos atualizar o PATH para incluir os pacotes baixados do Golang, para que o `protoc` possa encontrar os plugins que acabamos de instalar.
 ```sh
-export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH="$PATH:$(go entouch sorteio.proto server.js client.jsv GOPATH)/bin"
 ```
 Este comando modifica temporariamente o PATH, apenas para o shell que estivermos usando. Se quisermos evitar ter de executarmos o comando anterior toda vez que formos compilar arquivos _.proto_ em Go, então devemos acrescentar a linha de comando ao final do arquivo `~/.bashrc`.
 
@@ -97,7 +97,7 @@ Nosso shell é bash, executar `source ~/.bashrc` carrregará as novas configura�
 
 #### 2.3. Inicializar o projeto
 
-Estando dentro do diretório tcc_grpc/ execute os comandos para criar o diretório do go e entrar nele.
+Estando dentro do diretóriotouch sorteio.proto server.js client.js tcc_grpc/ execute os comandos para criar o diretório do go e entrar nele.
 
 ```
 mkdir go_grpc; cd go_grpc;<br>
@@ -130,17 +130,16 @@ Vamos organizar os arquivos em pastas separadas, uma para arquivos _.proto_, out
 
 #### 3.1. Arquivo _Protobuff_
 
-Criamos a pasta _protos_ e nela o arquivo `gerador_id.proto`:
+Criamos a pasta _protos_ e touch sorteio.proto server.js client.jsnela o arquivo `gerador_id.proto`:
 
 ```
 mkdir protos; 
 touch protos/gerador_id.proto;
 ```
-E
 Editamos o arquivo para ter o conteúdo:
 
 ```proto
-// gerador_id.proto
+// gerador_id.prototouch sorteio.proto server.js client.js
 
 syntax = "proto3";
 
@@ -153,7 +152,7 @@ service GeradorID {
     rpc GerarId(google.protobuf.Empty) returns (IdReply) {}
 }
 
-message IdReply {E
+message IdReply {
     int32 goId = 1;
 }
 ``` 
