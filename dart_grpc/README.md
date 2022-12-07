@@ -28,7 +28,8 @@ Temos as seguintes etapas para fazer:
 
 #### 1.1. Instalar o plugin asdf do Dart
 
-```
+```mkdir -p protos;
+touch protos/aluno.proto
 asdf plugin-add dart https://github.com/patoconnor43/asdf-dart.git
 ```
 
@@ -117,108 +118,39 @@ O Dart consumirá a API Golang, logo, o Dart precisa do mesmo contrato, da mesma
 
 ```
 mkdir -p protos;
+cp ../go_grpc/protos/gerador_id.proto protos/ ;
 touch protos/aluno.proto
 ```
-Vamos editar os arquivos para que fiquem como nas listagens 1, 2 e 3.
+O arquivo `aluno.proto` deve estar como na listagem 1.
 
-#### 3.1. sorteio.proto
- 
 ```proto
-//sorteio.proto
+// aluno.proto
 syntax = "proto3";
 
-option java_package = "com.java_grpc";
+import "google/protobuf/empty.proto";
 
-service SorteioService {
-  rpc SortearNumero (IntervaloRequest) returns (SorteadoResponse) {}
+service CrudAlunoService {
+    rpc CreateAluno(Aluno) returns (Aluno);
+    rpc GetAllAlunos(google.protobuf.Empty) returns (Alunos);
+    rpc GetAluno(AlunoId) returns (Aluno);
+    rpc DeleteAluno(AlunoId) returns (google.protobuf.Empty) {};
+    rpc EditAluno(Aluno) returns (Aluno) {};
 }
 
-message IntervaloRequest {
-  int32 min = 1;
-  int32 max = 2;
-}ME.md
-
-message SorteadoResponse {
-  int32 numero = 1;
-}
-Estrutura projeto console Dart
-```
-_Listagem 1: sorteio.proto_
-
-#### 3.2. server.js
-
-```js
-// server.js
-const grpc = require("@grpc/grpc-js");
-const protoLoader = require("@grpc/proto-loader");
-const PROTO_PATH = "./sorteio.proto";ME.md
-
-con####st protoObject = protoLoader.loadSync(PROTO_PATH);
-const sorteioDefinition = grpc.loadPackageDefinition(protoObject);
-const SorteioService = sorteioDefinition.SorteioService;
-https://github.com/earmarques/tcc_grpc/tree/main/js_grpc
-const server = new grpc.Server();
-server.addService(SorteioService.service, {sortearNumero});
-
-
-function sortearNumero({ request:{min, max} }, callback) {
-  let sorteado = bingo(min, max);
-  sorteadoResponse = {numero: sorteado};
-  console.log('🍏 API JavaScript - Número Sortedado:' + sorteado);
-  return callback(null, sorteadoResponse);
+message AlunoId {
+    int32 id = 1;
 }
 
-function bingo(min, max) {
-  return Math.floor( Math.random() * (max - min + 1) ) + min;
-};
+message Aluno {
+    int32 id = 1;
+    string nome = 2;    
+}
 
-const endereco = 'localhost';
-const porta = '50053';
-const pontoAcesso = endereco + ':' + porta;
-
-server.bindAsync(
-  pontoAcesso,
-  grpc.ServerCredentials.createInsecure(),
-  (error, port) => {
-    console.log("\n🍏 Servidor rodando no ponto de acesso " + pontoAcesso);
-    server.start();
-  }
-);
+message Alunos {
+    repeated Aluno alunos = 1;
+}
 ```
-_Listagem 2: server.js_
-
-
-#### 3.3. client.js
-```js
-// client.js
-const grpc = require("@grpc/grpc-js");
-const protoLoader = require("@grpc/proto-loader");
-const PROTO_PATH = "./sorteio.proto";
-const packageDefinition = protoLoader.loadSync(PROTO_PATH);
-const sorteioStub = grpc.loadPackageDefinition(packageDefinition);
-const SorteioService = sorteioStub.SorteioService;
-const endereco = 'localhost';
-const porta = '50053';
-const pontoAcesso = endereco + ':' + porta;
-
-const client = new SorteioService(
-  pontoAcesso,
-  grpc.credentials.createInsecure()ME.md
-);
-
-let intervaloRequest = {min: 0, max:50}
-Aplicação cliente consumindo microserviço e servidor respondendo às requisições com gRPC
-client.sortearNumero(intervaloRequest, (error, responseSorteado) => {  
-  if (!error) {
-    //console.log("Sucesso!!!");
-    let msg = responseSorteado.numero;
-    console.log('🍏 número sorteado:' + msg.toString() + '\n');
-  }else {
-    console.log(error);
-  }
-});
-```
-_Listagem 3: client.js_
+_Listagem 1: aluno.proto_
 
 ---
 
