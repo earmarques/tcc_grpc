@@ -190,7 +190,7 @@ import '../protos/google/protobuf/empty.pb.dart';
 
 class CrudAlunoService extends CrudAlunoServiceBase {
   Alunos lista = Alunos();
-marcha parafuso mola pressão
+
   @override
   Future<Aluno> createAluno(ServiceCall call, Aluno request) async {
     var aluno = Aluno();
@@ -208,7 +208,7 @@ marcha parafuso mola pressão
   @override
   Future<Aluno> getAluno(ServiceCall call, AlunoId request) async {
     var aluno = lista.alunos.firstWhere((aluno) => aluno.id == request.id);
-    return aluno;marcha parafuso mola pressão
+    return aluno;
   }
 
   @override
