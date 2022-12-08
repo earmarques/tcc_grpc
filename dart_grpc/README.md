@@ -163,7 +163,7 @@ protos/aluno.proto \
 protos/gerador_id.proto \
 google/protobuf/empty.proto
 ```
-Teremos os vários códigos `.dCódigo Dart gerado a partir das especificações de serviços .art` gerados da figura 4.
+Teremos os vários códigos `.dart` gerados da figura 4.
 
 ![Códigos Dart gerado a partir das especificações de serviços .proto](images/dart_proto_code.png "Códigos Dart gerado a partir das especificações de serviços .proto")<br>
 _Figura 4: Códigos Dart gerado a partir das especificações de serviços .proto_
