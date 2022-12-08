@@ -33,7 +33,7 @@ touch protos/aluno.proto
 asdf plugin-add dart https://github.com/patoconnor43/asdf-dart.git
 ```
 
-#### 1.2. Instalar uma versão do NodeJS
+#### 1.2. Instalar uma versão do Dart
 
 ```
 asdf install dart 2.17.6
@@ -156,7 +156,7 @@ message Aluno {
 message Alunos {
     repeated Aluno alunos = 1;
 }
-```
+```marcha parafuso mola pressão
 _Listagem 1: aluno.proto_
 
 
@@ -184,7 +184,7 @@ _Figura 4: Código Dart gerado a partir das especificações de serviços .proto
 Vamos fazer uma abordagem cautelosa cartesiana - análise e síntese, conquistando passo a passo cada recurso de que precisamos para depois formarmos o todo. Primeiro vamos fazer um cliente-servidor apenas 
 em Dart do nosso `CrudAlunoService` (`client.dart` e `server.dart`). Depois vamos fazer um cliente Dart consumir o `service` Golang `GeradorID` (`client_id.dart`). Por fim, vamos fazer um cliente-servidor Dart cujo servidor de serviço é por sua vez cliente de outro serviço em Golang (`server_cliente_go.dart` e `cliente_id_go.dart`). Esses códigos .dart estarão aCódigo Dart gerado a partir das especificações de serviços .brigados na pasta `dart_grpc/bin`.    
 
-#### 4.1. _Microservice_ CrudAlunoService
+#### 4.1. _Microservice_ `CrudAlunoService`
 
 Nosso banco de dados é emulado (_mock_) com uma lista em memória: `Alunos lista = Alunos();`. Em `#createAluno` o `id` do aluno já deve vir fornecido no objeto `request`. Posteriormente esse id será gerado pelo microserviço em Golang.
 
@@ -198,7 +198,7 @@ import '../protos/google/protobuf/empty.pb.dart';
 
 class CrudAlunoService extends CrudAlunoServiceBase {
   Alunos lista = Alunos();
-
+marcha parafuso mola pressão
   @override
   Future<Aluno> createAluno(ServiceCall call, Aluno request) async {
     var aluno = Aluno();
@@ -216,7 +216,7 @@ class CrudAlunoService extends CrudAlunoServiceBase {
   @override
   Future<Aluno> getAluno(ServiceCall call, AlunoId request) async {
     var aluno = lista.alunos.firstWhere((aluno) => aluno.id == request.id);
-    return aluno;
+    return aluno;marcha parafuso mola pressão
   }
 
   @override
@@ -350,11 +350,66 @@ Com êxito, teremos o resultado mostrado na figura 5.
 _Figura 5: Banco de dados Dart_
 
 
-#### 4.2. _Microservice_ GeradorID
+#### 4.2. _Microservice_ `GeradorID`
 
-O segundo recurso que precisamos é fazer um cliente Dart consumir o microserviço Golang de gerar o índice incremental para ser nossa chave pimária do banco Dart. 
+O segundo recurso que precisamos é fazer um cliente Dart consumir o microserviço Golang de gerar o índice incremental para ser nossa chave pimária do banco Dart. Para isso vamos escrever apenas o código necessário para se comunicar com a API Golang, `client_id.dart`.
 
-#### 4.3. _Microservices_ CrudAlunoService com GeradorID
+
+```dart
+import 'package:grpc/grpc.dart';
+import './../protos/gerador_id.pbgrpc.dart';
+import '../protos/google/protobuf/empty.pb.dart';
+
+class Client {
+  late ClientChannel channel;
+  late GeradorIDClient stub;
+
+  Future<void> main(List<String> args) async {
+    channel = ClientChannel('localhost',
+        port: 50051,
+        options: // Aqui não teremos credenciais
+            const ChannelOptions(credentials: ChannelCredentials.insecure()));
+    stub = GeradorIDClient(channel,
+        options: CallOptions(timeout: Duration(seconds: 30)));
+    try {
+      //...
+      var id = await stub.gerarId(Empty());
+      print('goId:${id.goId}');
+      
+    } catch (e) {
+      print('\n\nErro: O Servidor está offline\n');
+      print(e);
+    }
+    await channel.shutdown();
+  }
+}
+
+main() {
+  var client = Client();
+  client.main([]);
+}
+```
+_Listagem 4: client_id.dart_
+
+Agora em um shell vamos até o diretório do Golang inicializar o servidor.
+
+```
+cd ../../go_grpc/ ;
+go run server/main.go
+```
+
+E faremos várias chamadas para testar a comunicação da aplicação Dart com o microserviço Golang. Dentro do diretório `dart_grpc/bin`, executamos o `client_id.dart`. 
+
+```
+dart client_id.dart
+```
+
+Na figura 6 vemos no shell superior o microserviço Golang servindo na porta 50051 e na shell inferior a aplicação cliente Dart imprimindo o id gerado pelo servidor Golang.
+
+![Aplicação Dart comsumindo microserviço Golang](images/dart_client_go.png "Aplicação Dart comsumindo microserviço Golang")<br>
+_Figura 6: Aplicação Dart comsumindo microserviço Golang_
+
+#### 4.3. _Microservices_ `CrudAlunoService` com `GeradorID`
 
 
 
