@@ -248,14 +248,14 @@ import '../protos/google/protobuf/empty.pb.dart';
 
 class Client {
   late ClientChannel channel;
-  late CrudAlunoClient stub;
+  late CrudAlunoServiceClient stub;
 
   Future<void> main(List<String> args) async {
     channel = ClientChannel('localhost',
         port: 50052,
         options: // Aqui não teremos credenciais
             const ChannelOptions(credentials: ChannelCredentials.insecure()));
-    stub = CrudAlunoClient(channel,
+    stub = CrudAlunoServiceClient(channel,
         options: CallOptions(timeout: Duration(seconds: 30)));
     try {
       //...
@@ -278,7 +278,7 @@ class Client {
 
       print('\n__ Removendo Aluno  ------------------------------------');
       var alunoToDel = AlunoId();
-      alunoToDel.id = 2;
+      alunoToDel.id = 1;
       await stub.deleteAluno(alunoToDel);
       print("Aluno removido com ID: " + alunoToDel.id.toString());
 
@@ -288,25 +288,25 @@ class Client {
 
       print('\n__ Edição de Aluno  ------------------------------------');
       var alunoToEdit = Aluno();
-      alunoToEdit.id = 1;
+      alunoToEdit.id = 2;
       alunoToEdit.nome = "David Bitcoin";
       await stub.editAluno(alunoToEdit);
       print("Aluno editado com ID: " + alunoToEdit.id.toString());
 
 
-      print('\n__ Busca do ACódigo Dart gerado a partir das especificações de serviços .luno Editado  ---------------------------');
+      print('\n__ Busca do Aluno Editado  -----------------------------');
       var alunoToGet = AlunoId();
-      alunoToGet.id = 1;
+      alunoToGet.id = 2;
       var alunoObtido = await stub.getAluno(alunoToGet);
-      print("Aluno de id = 1 com nome editado:\n" + alunoObtido.toString());
+      print("Aluno de id = 2 com nome editado:\n" + alunoObtido.toString());
 
       print('\n__ Listagem de Alunos  ---------------------------------');
       var todosAlunos3 = await stub.getAllAlunos(Empty());
       print(todosAlunos3.alunos);
 
-    } 
+    }
     catch (e) {
-      print('\n\nErro: O SerCódigo Dart gerado a partir das especificações de serviços .vidor está offline\n');
+      print('\n\nErro: O Servidor está offline\n');
       print(e);
     }
     await channel.shutdown();
