@@ -56,7 +56,191 @@ dart --version
 
 ### 2. Dart
 
-#### 2.1 Plugin _Protocol Buffer Compiler_
+#### 2.1 Plugin _Protocol Buffer Compiler_import 'package:grpc/grpc.dart';
+246
+import './../protos/aluno.pbgrpc.dart';
+247
+import '../protos/google/protobuf/empty.pb.dart';
+248
+​
+249
+class Client {
+250
+  late ClientChannel channel;
+251
+  late CrudAlunoClient stub;
+252
+​
+253import 'package:grpc/grpc.dart';
+246
+import './../protos/aluno.pbgrpc.dart';
+247
+import '../protos/google/protobuf/empty.pb.dart';
+248
+​
+249
+class Client {
+250
+  late ClientChannel channel;
+251
+  late CrudAlunoClient stub;
+252
+​
+253
+  Future<void> main(List<String> args) async {
+254
+    channel = ClientChannel('localhost',
+255
+        port: 50052,
+256
+        options: // Aqui não teremos credenciais
+257
+            const ChannelOptions(credentials: ChannelCredentials.insecure()));
+258
+    stub = CrudAlunoClient(channel,
+259
+        options: CallOptions(timeout: Duration(seconds: 30)));
+260
+    try {
+261
+      //...
+262
+      print('\n__ Adicionando Alunos  ---------------------------------');
+263
+      var alunoToAdd1 = Aluno();
+264
+      alunoToAdd1.id = 1;
+265
+      alunoToAdd1.nome = "Elias Mantovani Rebouças";
+266
+      var alunoAdicionado1 = await stub.createAluno(alunoToAdd1);
+267
+      print("Aluno Adicionado:\n" + alunoAdicionado1.toString());
+268
+​
+269
+      var alunoToAdd2 = Aluno();
+270
+      alunoToAdd2.id = 2;
+271
+      alunoToAdd2.nome = "Pedro Henrique Coimbra";
+272
+      var alunoAdicionado2 = await stub.createAluno(alunoToAdd2);
+273
+      print("Aluno Adicionado:\n" + alunoAdicionado2.toString());
+274
+​
+275
+      print('\n__ Listagem de Alunos  ---------------------------------');
+276
+      var todosAlunos = await stub.getAllAlunos(Empty());
+277
+      print(todosAlunos.alunos.toString());
+278
+​
+279
+      print('\n__ Removendo Aluno  ------------------------------------');
+280
+      var alunoToDel = AlunoId();
+281
+      alunoToDel.id = 2;
+282
+      await stub.deleteAluno(alunoToDel);
+283
+      print("Aluno removido com ID: " + alunoToDel.id.toString());
+284
+​
+285
+      print('\n__ Listagem de Alunos  ---------------------------------');
+286
+      var todosAlunos2 = await stub.getAllAlunos(Empty());
+287
+      print(todosAlunos2.alunos);
+288
+​
+289
+      print('\n__ Edição de Aluno  ------------------------------------');
+290
+      var alunoToEdit = Aluno();
+291
+      alunoToEdit.id = 1;
+  Future<void> main(List<String> args) async {
+254
+    channel = ClientChannel('localhost',
+255
+        port: 50052,
+256
+        options: // Aqui não teremos credenciais
+257
+            const ChannelOptions(credentials: ChannelCredentials.insecure()));
+258
+    stub = CrudAlunoClient(channel,
+259
+        options: CallOptions(timeout: Duration(seconds: 30)));
+260
+    try {
+261
+      //...
+262
+      print('\n__ Adicionando Alunos  ---------------------------------');
+263
+      var alunoToAdd1 = Aluno();
+264
+      alunoToAdd1.id = 1;
+265
+      alunoToAdd1.nome = "Elias Mantovani Rebouças";
+266
+      var alunoAdicionado1 = await stub.createAluno(alunoToAdd1);
+267
+      print("Aluno Adicionado:\n" + alunoAdicionado1.toString());
+268
+​
+269
+      var alunoToAdd2 = Aluno();
+270
+      alunoToAdd2.id = 2;
+271
+      alunoToAdd2.nome = "Pedro Henrique Coimbra";
+272
+      var alunoAdicionado2 = await stub.createAluno(alunoToAdd2);
+273
+      print("Aluno Adicionado:\n" + alunoAdicionado2.toString());
+274
+​
+275
+      print('\n__ Listagem de Alunos  ---------------------------------');
+276
+      var todosAlunos = await stub.getAllAlunos(Empty());
+277
+      print(todosAlunos.alunos.toString());
+278
+​
+279
+      print('\n__ Removendo Aluno  ------------------------------------');
+280
+      var alunoToDel = AlunoId();
+281
+      alunoToDel.id = 2;
+282
+      await stub.deleteAluno(alunoToDel);
+283
+      print("Aluno removido com ID: " + alunoToDel.id.toString());
+284
+​
+285
+      print('\n__ Listagem de Alunos  ---------------------------------');
+286
+      var todosAlunos2 = await stub.getAllAlunos(Empty());
+287
+      print(todosAlunos2.alunos);
+288
+​
+289
+      print('\n__ Edição de Aluno  ------------------------------------');
+290
+      var alunoToEdit = Aluno();
+291
+      alunoToEdit.id = 1;
 
 Instalar o plugin do compilador dos arquivos `.proto`. 
 
@@ -85,7 +269,99 @@ Dentro do diretório `tcc_grpc`, execute:
 ```
 dart create --template=console-simple dart_grpc
 ```
-
+import 'package:grpc/grpc.dart';
+246
+import './../protos/aluno.pbgrpc.dart';
+247
+import '../protos/google/protobuf/empty.pb.dart';
+248
+​
+249
+class Client {
+250
+  late ClientChannel channel;
+251
+  late CrudAlunoClient stub;
+252
+​
+253
+  Future<void> main(List<String> args) async {
+254
+    channel = ClientChannel('localhost',
+255
+        port: 50052,
+256
+        options: // Aqui não teremos credenciais
+257
+            const ChannelOptions(credentials: ChannelCredentials.insecure()));
+258
+    stub = CrudAlunoClient(channel,
+259
+        options: CallOptions(timeout: Duration(seconds: 30)));
+260
+    try {
+261
+      //...
+262
+      print('\n__ Adicionando Alunos  ---------------------------------');
+263
+      var alunoToAdd1 = Aluno();
+264
+      alunoToAdd1.id = 1;
+265
+      alunoToAdd1.nome = "Elias Mantovani Rebouças";
+266
+      var alunoAdicionado1 = await stub.createAluno(alunoToAdd1);
+267
+      print("Aluno Adicionado:\n" + alunoAdicionado1.toString());
+268
+​
+269
+      var alunoToAdd2 = Aluno();
+270
+      alunoToAdd2.id = 2;
+271
+      alunoToAdd2.nome = "Pedro Henrique Coimbra";
+272
+      var alunoAdicionado2 = await stub.createAluno(alunoToAdd2);
+273
+      print("Aluno Adicionado:\n" + alunoAdicionado2.toString());
+274
+​
+275
+      print('\n__ Listagem de Alunos  ---------------------------------');
+276
+      var todosAlunos = await stub.getAllAlunos(Empty());
+277
+      print(todosAlunos.alunos.toString());
+278
+​
+279
+      print('\n__ Removendo Aluno  ------------------------------------');
+280
+      var alunoToDel = AlunoId();
+281
+      alunoToDel.id = 2;
+282
+      await stub.deleteAluno(alunoToDel);
+283
+      print("Aluno removido com ID: " + alunoToDel.id.toString());
+284
+​
+285
+      print('\n__ Listagem de Alunos  ---------------------------------');
+286
+      var todosAlunos2 = await stub.getAllAlunos(Empty());
+287
+      print(todosAlunos2.alunos);
+288
+​
+289
+      print('\n__ Edição de Aluno  ------------------------------------');
+290
+      var alunoToEdit = Aluno();
+291
+      alunoToEdit.id = 1;
 O comando cria uma aplicação de console no diretório dart_grpc com a estrutura da figura 2.
 
 ![Estrutura projeto console Dart](images/console_dart.png "Estrutura projeto console Dart")<br>
@@ -166,8 +442,8 @@ google/protobuf/empty.proto
 ```
 Teremos os vários códigos `.dCódigo Dart gerado a partir das especificações de serviços .art` gerados da figura 4.
 
-![Código Dart gerado a partir das especificações de serviços .proto](images/dart_proto_code.png "Código Dart gerado a partir das especificações de serviços .proto")<br>
-_Figura 4: Código Dart gerado a partir das especificações de serviços .proto_
+![Códigos Dart gerado a partir das especificações de serviços .proto](images/dart_proto_code.png "Códigos Dart gerado a partir das especificações de serviços .proto")<br>
+_Figura 4: Códigos Dart gerado a partir das especificações de serviços .proto_
 
 ---
 
