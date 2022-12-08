@@ -90,7 +90,7 @@ O comando cria uma aplicação de console no diretório dart_grpc com a estrutur
 ![Estrutura projeto console Dart](images/console_dart.png "Estrutura projeto console Dart")<br>
 _Figura 2: Estrutura projeto console Dart_
 
-#### 2.2. Adicionar dependências
+#### 2.4. Adicionar dependências
 
 Vamos adicionar duas dependências ao arquivo pubspec.yaml: [`grpc: ^3.1.0`](https://pub.dev/packages/grpc) e [`protobuf: ^2.1.0`](https://pub.dev/packages/protobuf).
 
