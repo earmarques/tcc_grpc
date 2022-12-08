@@ -97,7 +97,7 @@ Vamos adicionar duas dependências ao arquivo pubspec.yaml: [`grpc: ^3.1.0`](htt
 - Editar `pubspec.yaml`
 
 ![Dependências no pubspec.yaml](images/dart_pubspec.yaml.png "Dependências no pubspec.yaml")<br>
-_Figura 3\: Dependências no pubspec.yaml_
+_Figura 3: Dependências no pubspec.yaml_
 
 - Instalar dependências
 
@@ -165,8 +165,8 @@ google/protobuf/empty.proto
 ```
 Teremos os vários códigos `.dart` gerados da figura 4.
 
-![Códigos Dart gerado a partir das especificações de serviços .proto](images/dart_proto_code.png "Códigos Dart gerado a partir das especificações de serviços .proto")<br>
-_Figura 4: Códigos Dart gerado a partir das especificações de serviços .proto_
+![Códigos Dart gerados a partir das especificações de serviços .proto](images/dart_proto_code.png "Códigos Dart gerados a partir das especificações de serviços .proto")<br>
+_Figura 4: Códigos Dart gerados a partir das especificações de serviços .proto_
 
 ---
 
