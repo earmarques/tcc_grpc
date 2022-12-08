@@ -112,15 +112,7 @@ Os arquivos .proto de definições de serviços ficarão no diretório `protos`.
 
 #### 3.1. Arquivos _Protobuff_ 
 
-O Dart consumirá a API Golang, logo, o Dart precisa do mesmo contrato, da mesma interface especificada pelo arquivo [LINK TODO -> gerador_id.proto]() presente no repositório da API Go. A outra definição de serviço
-108
-​
-109
----protoc -I=protos/ --dart_out=grpc:protos/ protos/ aluno.proto gerador_id.proto \
-110
-google/protobuf/empty.proto
-111
- é `aluno.proto` onde vamos declarar todas as operações elementares do banco de dados.
+O Dart consumirá a API Golang, logo, o Dart precisa do mesmo contrato, da mesma interface especificada pelo arquivo [LINK TODO -> gerador_id.proto]() presente no repositório da API Go. A outra definição de serviço é `aluno.proto` onde vamos declarar todas as operações elementares do banco de dados.
 
 ```
 mkdir -p protos;
@@ -292,8 +284,7 @@ class Client {
 
       print('\n__ Listagem de Alunos  ---------------------------------');
       var todosAlunos2 = await stub.getAllAlunos(Empty());
-      print(todosAlu![Código Dart gerado a partir das especificações de serviços .proto](images/dart_proto_code.png "Código Dart gerado a partir das especificações de serviços .proto")<br>
-_Figura 4: Código Dart gerado a partir das especificações de serviços .proto_nos2.alunos);
+      print(todosAlunos2.alunos);
 
       print('\n__ Edição de Aluno  ------------------------------------');
       var alunoToEdit = Aluno();
@@ -320,8 +311,7 @@ _Figura 4: Código Dart gerado a partir das especificações de serviços .proto
     }
     await channel.shutdown();
   }
-}![Código Dart gerado a partir das especificações de serviços .proto](images/dart_proto_code.png "Código Dart gerado a partir das especificações de serviços .proto")<br>
-_Figura 4: Código Dart gerado a partir das especificações de serviços .proto_
+}
 
 main() {
   var client = Client();
