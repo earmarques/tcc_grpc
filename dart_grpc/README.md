@@ -156,7 +156,7 @@ message Aluno {
 message Alunos {
     repeated Aluno alunos = 1;
 }
-```marcha parafuso mola pressão
+```
 _Listagem 1: aluno.proto_
 
 
