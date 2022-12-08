@@ -56,7 +56,7 @@ dart --version
 
 ### 2. Dart
 
-#### 2.1 Plugin _Protocol Buffer Compiler_
+#### 2.1. Plugin _Protocol Buffer Compiler_
 
 Instalar o plugin do compilador dos arquivos `.proto`. 
 
@@ -64,7 +64,7 @@ Instalar o plugin do compilador dos arquivos `.proto`.
 dart pub global activate protoc_plugin
 ```
 
-#### 2.2 Atualizar o PATH
+#### 2.2. Atualizar o PATH
 
 Precisamos atualizar o PATH para que o protoc possa encontrar o plugin que acabamos de instalar.
 
@@ -79,7 +79,7 @@ _Figura 1: Path para o plugin do compilador _protobuff_ no ~/.bashrc_
 
 Nosso shell é bash, executar `source ~/.bashrc` carrregará as novas configurações. Se usa outro shell, feche e abra o terminal novamente.
 
-#### 2.3 Criar uma aplicação de console
+#### 2.3. Criar uma aplicação de console
 
 Dentro do diretório `tcc_grpc`, execute: 
 ```
@@ -179,7 +179,7 @@ em Dart do nosso `CrudAlunoService` (`client.dart` e `server.dart`). Depois vamo
 
 Nosso banco de dados é emulado (_mock_) com uma lista em memória: `Alunos lista = Alunos();`. Em `#createAluno` o `id` do aluno já deve vir fornecido no objeto `request`. Posteriormente esse id será gerado pelo microserviço em Golang.
 
-##### 4.1.1 server.dart
+##### 4.1.1. server.dart
 
 ```dart
 import 'package:grpc/grpc.dart';
@@ -236,7 +236,7 @@ Future<void> main(List<String> args) async {
 ```
 _Listagem 2: server.dart_
 
-##### 4.1.2 client.dart
+##### 4.1.2. client.dart
 
 Na classe `Client` criamos o canal de comunicação `channel` e o objeto `stub` que representa no cliente o serviço oferecido pelo servidor, pelo qual faremos as chamadas remotas. Inicialmente criamos dois objetos alunos, passando o id manualmente, e depois testamos todas as _remote procedure calls_.  
 
@@ -319,7 +319,7 @@ main() {
 ```
 _Listagem 3: client.dart_
 
-##### 4.1.2 Teste CRUD banco de dados Dart
+##### 4.1.3. Teste CRUD banco de dados Dart
 
 Precisamos de dois terminais, um para o servidor do banco e outro para o cliente testar. Dentro do diretório bin:
 - terminal do servidor
