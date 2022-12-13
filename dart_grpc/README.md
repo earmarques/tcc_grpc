@@ -399,7 +399,7 @@ _Figura 6: Aplicação Dart comsumindo microserviço Golang_
 
 #### 4.3. _Microservices_ `CrudAlunoService` com `GeradorID`
 
-Agora vamos fazer nosso microserviço de banco de dados Dart cujo chave primária será um inteiro sequencial fornecido pelo microserviço Golang. No mesmo diretório `dart_grpc/bin` vamos criar os arquivos `server_client_go.dart` e `client_id_go.dart`. 
+Agora vamos fazer nosso microserviço de banco de dados Dart cuja chave primária será um inteiro sequencial fornecido pelo microserviço Golang. No mesmo diretório `dart_grpc/bin` vamos criar os arquivos `server_client_go.dart` e `client_id_go.dart`. 
 
 Do serviço `CrudAlunoService`, a única chamada de procedimento remota que usará o serviço Go é `createAluno`. 
 
