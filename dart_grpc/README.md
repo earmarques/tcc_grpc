@@ -575,7 +575,7 @@ main() {
 ```
 _Listagem 6: client_id_go.dart_
 
-Agora vamos precisar de três shell. Um para subir o servidor Golang, um segundo para o servidor Dart e o terceiro para rodar nosso `client_id_go.dart` para os testes. Com efeito, temos a figura 7, com a shell superior tendo o servidor Golang ouvindo na porta 50051, e na parte inferior o Dart, com o servidor (`server_client_go.dart`) respondendo na port 50052 na shell à esquerda e a aplicação cliente (`client_id_go.dart`) à direita  
+Agora vamos precisar de três shell. Um para subir o servidor Golang, um segundo para o servidor Dart e o terceiro para rodar nosso `client_id_go.dart` para os testes. Com efeito, temos a figura 7, com a shell superior tendo o servidor Golang ouvindo na porta 50051, e na parte inferior o Dart, com o servidor (`server_client_go.dart`) respondendo na port 50052 na shell à esquerda e a aplicação cliente (`client_id_go.dart`) à direita. 
 
 ![gRPC integrando APIs Dart e Golang](images/dart_database_service.png "gRPC integrando APIs Dart e Golang")<br>
 _Figura 7: gRPC integrando APIs Dart e Golang_
