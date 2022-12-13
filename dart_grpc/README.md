@@ -502,7 +502,7 @@ Future<void> main(List<String> args) async {
 ```
 _Listagem 5: server_client_go.dart_
 
-Para testar nosso servidor de banco de dados, nós vamos utilizar `client_id_go.dart` da listagem 6, que é quase o mesmo código de `client.dart` da listagem 4. mas a pequena diferença que nós não fornecemos o id para o aluno. Nós instanciamos o objeto aluno e atribuímos apenas o nome, o id o servidor irá buscar com o serviço Golang. 
+Para testar nosso servidor de banco de dados, nós vamos utilizar `client_id_go.dart` da listagem 6, que é quase o mesmo código de `client.dart` da listagem 4, com a pequena diferença que dessa vez nós não fornecemos o id para o aluno. Nós instanciamos o objeto aluno e atribuímos apenas o nome, o id o servidor irá buscar com o serviço Golang. 
 
 ```dart
 import 'package:grpc/grpc.dart';
