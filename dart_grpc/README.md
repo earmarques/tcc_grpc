@@ -456,7 +456,6 @@ class CrudAlunoService extends CrudAlunoServiceBase {
   
   @override
   Future<Alunos> getAllAlunos(ServiceCall call, Empty request) async {
-    //==================================================================
     print('\n🐦 API Dart - getAllAlunos  _______________________________');    
     if (lista.alunos.isEmpty) {
       print('Lista vazia.');
@@ -522,7 +521,7 @@ class Client {
     stub = CrudAlunoServiceClient(channel,
         options: CallOptions(timeout: Duration(seconds: 30)));
     try {
-      //...
+      
       print('\n__ Adicionando Alunos  ---------------------------------');
       var alunoToAdd1 = Aluno();
       alunoToAdd1.nome = "Elias Mantovani Rebouças";
