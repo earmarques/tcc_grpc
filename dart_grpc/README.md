@@ -172,7 +172,7 @@ _Figura 4: Códigos Dart gerados a partir das especificações de serviços .pro
 
 ### 4. Códigos cliente e servidor
 
-Vamos fazer uma abordagem cautelosa cartesiana - análise e síntese, conquistando passo a passo cada recurso de que precisamos para depois formarmos o todo. Primeiro vamos fazer um cliente-servidor apenas em Dart do nosso `CrudAlunoService` (`client.dart` e `server.dart`). Depois vamos fazer um cliente Dart consumir o `service` Golang `GeradorID` (`client_id.dart`). Por fim, vamos fazer um cliente-servidor Dart cujo servidor de serviço é por sua vez cliente de outro serviço em Golang (`server_cliente_go.dart` e `cliente_id_go.dart`). Esses códigos .dart estarão abrigados na pasta `dart_grpc/bin`.    
+Vamos fazer uma abordagem cautelosa cartesiana - análise e síntese, conquistando passo a passo cada recurso de que precisamos para depois formarmos o todo. Primeiro vamos fazer um cliente-servidor apenas em Dart do nosso `CrudAlunoService` (`client.dart` e `server.dart`). Depois vamos fazer um cliente Dart consumir o `service` Golang `GeradorID` (`client_id.dart`). Por fim, vamos fazer um cliente-servidor Dart cujo servidor de serviço é por sua vez cliente de outro serviço em Golang (`server_cliente_go.dart` e `client_id_go.dart`). Estes códigos .dart estarão abrigados na pasta `dart_grpc/bin`.    
 
 #### 4.1. _Microservice_ `CrudAlunoService`
 
@@ -399,7 +399,9 @@ _Figura 6: Aplicação Dart comsumindo microserviço Golang_
 
 #### 4.3. _Microservices_ `CrudAlunoService` com `GeradorID`
 
-Agora vamos fazer nosso microserviço de banco de dados Dart cujo chave primária das tuplas será um inteiro sequencial fornecido pelo microserviço Golang. No mesmo diretório `dart_grpc/bin` vamos criar os arquivos `server_cliente_go.dart` e `cliente_id_go.dart`. 
+Agora vamos fazer nosso microserviço de banco de dados Dart cujo chave primária será um inteiro sequencial fornecido pelo microserviço Golang. No mesmo diretório `dart_grpc/bin` vamos criar os arquivos `server_client_go.dart` e `client_id_go.dart`. 
+
+Do serviço `CrudAlunoService`, a única chamada de procedimento remota que usará o serviço Go é `createAluno`. 
 
 ```dart
 import 'package:grpc/grpc.dart';
@@ -501,8 +503,86 @@ Future<void> main(List<String> args) async {
 ```
 _Listagem 5: server_client_go.dart_
 
-Do serviço `CrudAlunoService`, a única chamada de procedimento remota que usará o serviço Go é `createAluno`.  
+Para testar nosso servidor de banco de dados, nós vamos utilizar `client_id_go.dart` da listagem 6, que é quase o mesmo código de `client.dart` da listagem 4. mas a pequena diferença que nós não fornecemos o id para o aluno. Nós instanciamos o objeto aluno e atribuímos apenas o nome, o id o servidor irá buscar com o serviço Golang. 
 
+```dart
+import 'package:grpc/grpc.dart';
+import './../protos/aluno.pbgrpc.dart';
+import '../protos/google/protobuf/empty.pb.dart';
+
+class Client {
+  late ClientChannel channel;
+  late CrudAlunoServiceClient stub;
+
+  Future<void> main(List<String> args) async {
+    channel = ClientChannel('localhost',
+        port: 50052,
+        options: // Aqui não teremos credenciais
+            const ChannelOptions(credentials: ChannelCredentials.insecure()));
+    stub = CrudAlunoServiceClient(channel,
+        options: CallOptions(timeout: Duration(seconds: 30)));
+    try {
+      //...
+      print('\n__ Adicionando Alunos  ---------------------------------');
+      var alunoToAdd1 = Aluno();
+      alunoToAdd1.nome = "Elias Mantovani Rebouças";
+      var alunoAdicionado1 = await stub.createAluno(alunoToAdd1);
+      print("Aluno Adicionado:\n" + alunoAdicionado1.toString());
+
+      var alunoToAdd2 = Aluno();
+      alunoToAdd2.nome = "Pedro Henrique Coimbra";
+      var alunoAdicionado2 = await stub.createAluno(alunoToAdd2);
+      print("Aluno Adicionado:\n" + alunoAdicionado2.toString());
+
+      print('\n__ Listagem de Alunos  ---------------------------------');
+      var todosAlunos = await stub.getAllAlunos(Empty());
+      print(todosAlunos.alunos.toString());
+
+
+      print('\n__ Removendo Aluno  ------------------------------------');
+      var alunoToDel = AlunoId();
+      alunoToDel.id = alunoAdicionado2.id;
+      await stub.deleteAluno(alunoToDel);
+      print("Aluno removido com ID: " + alunoToDel.id.toString());
+
+      print('\n__ Listagem de Alunos  ---------------------------------');
+      var todosAlunos2 = await stub.getAllAlunos(Empty());
+      print(todosAlunos2.alunos);
+
+      print('\n__ Edição de Aluno  ------------------------------------');
+      var alunoToEdit = Aluno();
+      alunoToEdit.id = alunoAdicionado1.id;
+      alunoToEdit.nome = "David Bitcoin";
+      await stub.editAluno(alunoToEdit);
+      print("Aluno editado com ID: " + alunoToEdit.id.toString());
+
+
+      print('\n__ Busca do Aluno Editado  ---------------------------');
+      var alunoToGet = AlunoId();
+      alunoToGet.id = alunoAdicionado1.id;
+      var alunoObtido = await stub.getAluno(alunoToGet);
+      print("Aluno de id = 1 com nome editado:\n" + alunoObtido.toString());
+
+    }
+    catch (e) {
+      print('\n\nErro: O Servidor está offline\n');
+      print(e);
+    }
+    await channel.shutdown();
+  }
+}
+
+main() {
+  var client = Client();
+  client.main([]);
+}
+```
+_Listagem 6: client_id_go.dart_
+
+Agora vamos precisar de três shell. Um para subir o servidor Golang, um segundo para o servidor Dart e o terceiro para rodar nosso `client_id_go.dart` para os testes. Com efeito, temos a figura 7, com a shell superior tendo o servidor Golang ouvindo na porta 50051, e na parte inferior o Dart, com o servidor (`server_client_go.dart`) respondendo na port 50052 na shell à esquerda e a aplicação cliente (`client_id_go.dart`) à direita  
+
+![gRPC integrando APIs Dart e Golang](images/dart_database_service.png "gRPC integrando APIs Dart e Golang")<br>
+_Figura 7: gRPC integrando APIs Dart e Golang_
 <br><br>
 
 [:arrow_up: Topo](#grpc-no-nodejs-green_apple)
