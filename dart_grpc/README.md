@@ -520,8 +520,7 @@ class Client {
             const ChannelOptions(credentials: ChannelCredentials.insecure()));
     stub = CrudAlunoServiceClient(channel,
         options: CallOptions(timeout: Duration(seconds: 30)));
-    try {
-      
+    try {      
       print('\n__ Adicionando Alunos  ---------------------------------');
       var alunoToAdd1 = Aluno();
       alunoToAdd1.nome = "Elias Mantovani Rebouças";
@@ -536,7 +535,6 @@ class Client {
       print('\n__ Listagem de Alunos  ---------------------------------');
       var todosAlunos = await stub.getAllAlunos(Empty());
       print(todosAlunos.alunos.toString());
-
 
       print('\n__ Removendo Aluno  ------------------------------------');
       var alunoToDel = AlunoId();
@@ -554,7 +552,6 @@ class Client {
       alunoToEdit.nome = "David Bitcoin";
       await stub.editAluno(alunoToEdit);
       print("Aluno editado com ID: " + alunoToEdit.id.toString());
-
 
       print('\n__ Busca do Aluno Editado  ---------------------------');
       var alunoToGet = AlunoId();
