@@ -174,12 +174,12 @@ Salvado o `pom.xml`, clicamos com botão direto no projeto em `Package Explorer`
 ![Atualizar projeto após edição do pom.xml](images/java_update.png "Atualizar projeto após edição do pom.xml")<br>
 _Figura 6: Atualizar projeto após edição do pom.xml_
 
-Em seguida vamos construir o projeto e verificar se está tudo certo.  Novamente, botão direto sobre o projeto, `Run As` >> `Maven build`. Irá abrir a janela da figura 7.
+Em seguida, vamos construir o projeto e verificar se está tudo certo.  Novamente, botão direto sobre o projeto, `Run As` >> `Maven build`. Irá abrir a janela da figura 7. Como nós já definimos no `pom.xml` o comportamento padrão do `Maven-build`, podemos deixar o campo `Goal` vazio e clicar em `Run`.
 
 ![Maven build](images/java_maven_build.png "Maven build")<br>
 _Figura 7: Maven build_
 
-Na primeira vez, o Maven vai baixar e instalar as dependências. Se tudo correr bem teremos como resultado a saida no Console da figura 8.
+Na primeira vez, o Maven vai baixar e instalar as dependências. Se tudo correr bem, teremos como resultado a saida no Console da figura 8.
 
 ![Projeto construído com sucesso](images/java_build_sucess.png "Projeto construído com sucesso")<br>
 _Figura 8: Projeto construído com sucesso_
