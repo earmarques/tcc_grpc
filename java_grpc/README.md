@@ -32,8 +32,21 @@ O mais recorrente e que nos pareceu mais simples, talvez pela nossa familiaridad
 
 #### 1.1. Instalar o Eclipse
 
-Instalar o Eclipse não tem segredo. Pode utilizar o gerenciador de aplicativos da sua distribuição linux ou [baixar do site](https://www.eclipse.org/downloads/) o instalador caso use Windows. Nós optamos por baixar o arquivo `eclipse-inst-jre-linux64.tar.gz`. É preciso descompactar este arquivo. Haverá dentro do diretório `eclipse-installer/` o arquivo **`eclipse-inst`** que deve ser executado. Se tiver problemas de permissão, clique com botão da direita, selecione propriedades e dê permissão de execução, ou então no terminal, digite: `chmod +x eclipse-inst`. Nós instalamos a versão para Web 4.26.0. 
+Instalar o Eclipse não tem segredo. Pode utilizar o gerenciador de aplicativos da sua distribuição linux ou [baixar do site](https://www.eclipse.org/downloads/) o instalador caso use Windows. Nós optamos por baixar o arquivo `eclipse-inst-jre-linux64.tar.gz`. É preciso descompactar este arquivo. Haverá dentro do diretório `eclipse-installer/` o arquivo **`eclipse-inst`** que deve ser executado. Se tiver problemas de permissão, clique com botão da direita, selecione Propriedades e dê permissão de execução, ou então no terminal, digite: `chmod +x eclipse-inst`. Nós instalamos a versão para Web 4.26.0. 
 
 #### 1.2. Configurar o Eclipse
+
+Ao abrirmos o Eclipse, ele questiona pelo diretório _workspace_, onde ficará os arquivos de configuração, de códigos e tudo mais pertinente aos projetos. Podemos centralizar em um único ou podemos ter vários _workspaces_. Nós preferimos a segunda opção, e além do mais, no nosso caso, temos o diretório `tcc_grpc` com subdiretórios para cada API, então vamos criar o subdiretório `java_grpc` para ser o _workspace_ . Na figura 1 vemos o caminho conmpleto do nosso _workspace_ onde será criado nosso projeto Maven. 
+
+![Workspace gRPC](images/java_workspace.png "Workspace gRPC")<br>
+_Figura 2: Workspace gRPC_
+
+Nós gostamos da versão do Java 8, e vamos configurar o IDE Eclipse para usar essa versão em todos os projetos que criarmos, isto é, será a versão _default_ da IDE. É possível configurar uma versão específica para o Java para cada projeto. Nessa instalação do Eclipse já foi instalado várias versões, até a versão 19. Na barra superior do menu, fomos em `Window` >> `Preferences`. Na janela _pop-up_, navegamos `Java` >> `Compiler`, em `Compiler compliance lever`, selecionamos `1.8` e clicamos em `Apply and Close`, como na figura 2. 
+
+![Versão Java 8](images/java_version.png "Versão Java 8")<br>
+_Figura 2: Versão Java 8_
+
+### 2. Criar Projeto
+
 
 
