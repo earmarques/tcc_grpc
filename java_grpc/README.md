@@ -169,5 +169,20 @@ _Figura 5: Dependências gRPC_
 
 Temos na sequência a proriedade UTF-8, e logo a seguir, a configuração do comportamento padrão quando fizermos o _Maven-build_. No escopo dos _plugins_, podemos ver artefato e a versão do compilador _protobuf_ que iremos usar. Na tag `inputDirectories` está a localização dos arquivos `.proto`, no caso em `src/main/resources`. O destino dos códigos gerados pelo _framework_ gRPC (_tag_ `outputTargets`) vai depender do tipo, os `java` vão parar em `src/main/java` e os tipo `grpc-java` para a pasta `src/main/java_grpc`. O último _plugin_ é do próprio Maven, onde é informada a versão Java 8 para o projeto.
 
+Salvado o `pom.xml`, clicamos com botão direto no projeto em `Package Explorer` para abrir um menu, vamos em `Maven` >> `Update Project...` (atalho Alt F5), selecionamos o projeto e em `Ok` (figura 6).
+
+![Atualizar projeto após edição do pom.xml](images/java_update.png "Atualizar projeto após edição do pom.xml")<br>
+_Figura 6: Atualizar projeto após edição do pom.xml_
+
+Em seguida vamos construir o projeto e verificar se está tudo certo.  Novamente, botão direto sobre o projeto, `Run As` >> `Maven build`. Irá abrir a janela da figura 7.
+
+![Maven build](images/java_maven_build.png "Maven build")<br>
+_Figura 7: Maven build_
+
+Na primeira vez, o Maven vai baixar e instalar as dependências. Se tudo correr bem teremos como resultado a saida no Console da figura 8.
+
+![Projeto construído com sucesso](images/java_build_sucess.png "Projeto construído com sucesso")<br>
+_Figura 8: Projeto construído com sucesso_
+
 
 
