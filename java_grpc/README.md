@@ -36,7 +36,7 @@ Instalar o Eclipse não tem segredo. Pode utilizar o gerenciador de aplicativos 
 
 #### 1.2. Configurar o Eclipse
 
-Ao abrirmos o Eclipse, ele questiona pelo diretório _workspace_, onde ficará os arquivos de configuração, de códigos e tudo mais pertinente aos projetos. Podemos centralizar em um único ou podemos ter vários _workspaces_. Nós preferimos a segunda opção, e além do mais, no nosso caso, temos o diretório `tcc_grpc` com subdiretórios para cada API, então vamos criar o subdiretório `java_grpc` para ser o _workspace_ . Na figura 1 vemos o caminho conmpleto do nosso _workspace_ onde será criado nosso projeto Maven. 
+Ao abrirmos o Eclipse, ele questiona pelo diretório _workspace_, onde ficará os arquivos de configuração, de códigos e tudo mais pertinente aos projetos. Podemos centralizar em um único ou podemos ter vários _workspaces_. Nós preferimos a segunda opção, e além do mais, no nosso caso, temos o diretório `tcc_grpc` com subdiretórios para cada API, então vamos criar o subdiretório `java_grpc` para ser o _workspace_ do gRPC. Na figura 1 vemos o caminho completo onde será criado nosso projeto Maven. 
 
 ![Workspace gRPC](images/java_workspace.png "Workspace gRPC")<br>
 _Figura 2: Workspace gRPC_
