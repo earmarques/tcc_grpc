@@ -138,7 +138,7 @@ Precisamos fazer algumas configurações no projeto para que possomos trabalhar 
 								<outputTarget>
 									<type>grpc-java</type>
 									<pluginArtifact>io.grpc:protoc-gen-grpc-java:1.15.0</pluginArtifact>
-									<outputDirectory>src/main/java_grpc</outputDirectory>
+									<outputDirectory>src/main/java</outputDirectory>
 								</outputTarget>
 							</outputTargets>
 							
