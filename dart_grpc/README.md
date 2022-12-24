@@ -3,20 +3,29 @@
 Temos as seguintes etapas para fazer:
 
 
-**[1. asdf](./README.md#)**<br>
-[1.1. Instalar o plugin asdf do Dart]()<br>
-[1.2. Instalar uma versão do Dart]()<br>
+**[1. asdf](./README.md#1-asdf)**<br>
+[1.1. Instalar o plugin asdf do Dart](#11-instalar-o-plugin-asdf-do-dart)<br>
+[1.2. Instalar uma versão do Dart](#12-instalar-uma-vers%C3%A3o-do-dart)<br>
+[1.3. Tornar a versão global](#13-tornar-a-vers%C3%A3o-global)<br>
 
-**[2. Dart](./README.md)**<br>
-[2.1 Inicializar o projeto](#21-inicializar-o-projeto)<br>
-[2.2. Instalar dependências](#22-instalar-depend%C3%AAncias)<br>
+**[2. Dart](./README.md#2-dart)**<br>
+[2.1 Plugin Protocol Buffer Compiler](#21-plugin-protocol-buffer-compiler)<br>
+[2.2. Atualizar o PATH](#22-atualizar-o-path)<br>
+[2.3. Criar uma aplicação de console](#23-criar-uma-aplica%C3%A7%C3%A3o-de-console)<br>
+[2.4. Adicionar dependências](#24-adicionar-depend%C3%AAncias)<br>
 
-**[3. Criar os arquivos](./README.md#3-criando-os-arquivos-serverjs-clientjs-e-o-contrato-sorteioproto)**<br>
-[3.1. sorteio.proto](#31-sorteioproto)<br>
-[3.2 server.js](#32-serverjs)<br>
-[3.3 client.js](#33-clientjs)<br>
+**[3. Contratos *.proto](./README.md#3-contratos-proto)**<br>
+[3.1. Arquivos _Protobuf_](#31-arquivos-protobuf)<br>
+[3.2 Compilar os arquivos .proto](#32-compilar-os-arquivos-proto)<br>
 
-**[4. Executar teste](./README.md#4-executar-teste)**
+**[4. Códigos cliente e servidor](./README.md#4-c%C3%B3digos-cliente-e-servidor)**
+[4.1. _Microservice_ CrudAlunoService](#41-microservice-crudalunoservice)<br>
+[4.1.1. server.dart](#411-serverdart)<br>
+[4.1.2. client.dart](#412-clientdart)<br>
+[4.1.3. Teste CRUD banco de dados Dart](#413-teste-crud-banco-de-dados-dart)<br>
+[4.2. _Microservice_ CrudAlunoService](#42-microservice-geradorid)<br>
+[4.3. _Microservice_ CrudAlunoService com GeradorID](#43-microservices-crudalunoservice-com-geradorid)<br>
+
 
 ---
 
@@ -109,7 +118,7 @@ dart pub get
 
 Os arquivos .proto de definições de serviços ficarão no diretório `protos`.
 
-#### 3.1. Arquivos _Protobuff_ 
+#### 3.1. Arquivos _Protobuf_ 
 
 O Dart consumirá a API Golang, logo, o Dart precisa do mesmo contrato, da mesma interface especificada pelo arquivo [LINK TODO -> gerador_id.proto]() presente no repositório da API Go. A outra definição de serviço é `aluno.proto` onde vamos declarar todas as operações elementares do banco de dados.
 
