@@ -18,7 +18,7 @@ Temos as seguintes etapas para fazer:
 [3.1. Arquivos _Protobuf_](#31-arquivos-protobuf)<br>
 [3.2 Compilar os arquivos .proto](#32-compilar-os-arquivos-proto)<br>
 
-**[4. Códigos cliente e servidor](./README.md#4-c%C3%B3digos-cliente-e-servidor)**
+**[4. Códigos cliente e servidor](./README.md#4-c%C3%B3digos-cliente-e-servidor)**<br>
 [4.1. _Microservice_ CrudAlunoService](#41-microservice-crudalunoservice)<br>
 [4.1.1. server.dart](#411-serverdart)<br>
 [4.1.2. client.dart](#412-clientdart)<br>
