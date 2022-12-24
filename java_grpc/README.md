@@ -38,13 +38,13 @@ asdf plugin-add java https://github.com/halcyon/asdf-java.git
 Nós vamos usar o Java 8. 
 
 ```
-asdf install java adoptopenjdk-8.0.352+8
+asdf install java adoptopenjdk-8.0.345+1
 ```
 
 Configurando o Java 8 globalmente.
 
 ```
-asdf global java adoptopenjdk-8.0.352+8
+asdf global java adoptopenjdk-8.0.345+1
 ```
 
 Configurar o JAVA_HOME.
