@@ -18,7 +18,7 @@ No Golang a configuração é mais burocrática que no JavaScript.
 [2.5. Reshim](#25-reshim)<br>
 
 **[3. Criar os arquivos](./README.md#3-criar-os-arquivos)**<br>
-[3.1. Arquivo _Protobuff_](#31-arquivo-_protobuff_)<br>
+[3.1. Arquivo _Protobuf_](#31-arquivo-_protobuf_)<br>
 [3.2. Compilar o arquivo proto](#32-compilar-o-arquivo-proto)<br>
 [3.3. Server](#33-server)<br>
 [3.4. Client](#34-client)<br>
@@ -128,7 +128,7 @@ asdf reshim golang
 
 Vamos organizar os arquivos em pastas separadas, uma para arquivos _.proto_, outra para o servidor e outra para o cliente.
 
-#### 3.1. Arquivo _Protobuff_
+#### 3.1. Arquivo _Protobuf_
 
 Criamos a pasta _protos_ e touch sorteio.proto server.js client.jsnela o arquivo `gerador_id.proto`:
 
