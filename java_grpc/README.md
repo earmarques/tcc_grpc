@@ -25,18 +25,45 @@ Aqui vamos cuidar apenas de fazer o gRPC funcionar com o Java.
 
 ---
 
-### 1. Eclipse
+### 1. asdf
+
+#### 1.1. Instalar o plugin asdf do Java
+
+```
+asdf plugin-add java https://github.com/halcyon/asdf-java.git
+```
+
+#### 1.2. Instalar uma versão do NodeJS
+
+Nós vamos usar o Java 8. 
+
+```
+asdf install java adoptopenjdk-8.0.352+8
+```
+
+Configurando o Java 8 globalmente.
+
+```
+asdf global java adoptopenjdk-8.0.352+8
+```
+
+Configurar o JAVA_HOME.
+```
+. ~/.asdf/plugins/java/set-java-home.bash
+```
+
+### 2. Eclipse
 
 Em nossas pesquisas sobre gRPC no Java, todos os autores que encontramos usavam alguma ferramenta gráfica com um dos dois gerenciadores de dependências Java, Maven ou Gradle.
 O mais recorrente e que nos pareceu mais simples, talvez pela nossa familiaridade com a ferramenta, foi o Eclipse IDE. Portanto, não vamos usar o NeoVim e o asdf, vamos utilizar o Eclipse com o Maven.
 
-#### 1.1. Instalar o Eclipse
+#### 2.1. Instalar o Eclipse
 
 
 
 Instalar o Eclipse não tem segredo. Pode utilizar o gerenciador de aplicativos da sua distribuição linux ou [baixar do site](https://www.eclipse.org/downloads/) o instalador caso use Windows. Nós optamos por baixar o arquivo `eclipse-inst-jre-linux64.tar.gz`. É preciso descompactar este arquivo. Haverá dentro do diretório `eclipse-installer/` o arquivo **`eclipse-inst`** que deve ser executado. Se tiver problemas de permissão, clique com botão da direita, selecione Propriedades e dê permissão de execução, ou então no terminal, digite: `chmod +x eclipse-inst`. Nós instalamos a versão para Web 4.26.0. 
 
-#### 1.2. Configurar o Eclipse
+#### 2.2. Configurar o Eclipse
 
 Ao abrirmos o Eclipse, ele questiona pelo diretório _workspace_, onde ficará os arquivos de configuração, de códigos e tudo mais pertinente aos projetos. Podemos centralizar em um único ou podemos ter vários _workspaces_. Nós preferimos a segunda opção, e além do mais, no nosso caso, temos o diretório `tcc_grpc` com subdiretórios para cada API, então vamos criar o subdiretório `java_grpc` para ser o _workspace_ do gRPC. Na figura 1 vemos o caminho completo onde será criado nosso projeto Maven. 
 
@@ -48,9 +75,9 @@ Nós gostamos da versão do Java 8, e vamos configurar a IDE Eclipse para usar e
 ![Versão Java 8](images/java_version.png "Versão Java 8")<br>
 _Figura 2: Versão Java 8_
 
-### 2. Projeto Maven Java java_maven_build.png
+### 3. Projeto Maven Java java_maven_build.png
 
-#### 2.1. Criar Projeto
+#### 3.1. Criar Projeto
 
 Nós precisamos de um projeto com o gerenciador de dependências Maven. No menu, `File` >> `New` >> `Other...`, _pop-up_ `Maven` >> `Maven Project` >> `Next`. Não esquecer de marcar a opção `Create a simple project` como está na figura 3.
 
@@ -62,7 +89,7 @@ Para este projeto Maven, nós demos as identificações de artefato mostradas na
 ![Artefato do projeto Maven](images/java_maven_simple_project2.png "Artefato do projeto Maven")<br>
 _Figura 4: Artefato do projeto Maven_
 
-#### 2.2. Configurar Projeto
+#### 3.2. Configurar Projeto
 
 Precisamos fazer algumas configurações no projeto para que possomos trabalhar com o gRPC. Para tanto, devemos editar o arquivo pom.xml para ficar como na listagem 1. 
 
