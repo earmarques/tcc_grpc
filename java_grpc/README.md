@@ -225,27 +225,503 @@ Agora vamos compilar os `.proto` com o plugin Java através do Maven. Botão dir
 
 Vamos escrever códigos clientes das API um por vez. Primeiro vamos fazer o Java consumir o microserviço de sorteio do JavaScript com `ClientJS.java`, depois vamos testar a integração do Java com o Dart com `ClientDart.java` e por fim, faremos a integração com as quatro aplicações em `JavaClientNodeJSDartGo.java`. Estes arquivos estão no pacote `client`.
 
-#### 5.1. ClientJS.java
+#### 5.1. Códigos Auxiliares
+
+Antes precisamos de dois códigos que estão no _package_ `model`.
+
+##### 5.1.1. Agenda de Contatos
+
+Esta classe é a que possui a lista de 51 nomes da qual iremos selecionar dez, sorteando o índice da lista com o microserviço Javascript.
 
 ```java
+package model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class AgendaContatos {
+	
+	public List<String> lista;
+	
+	public AgendaContatos() {
+		this.lista = new ArrayList<>();
+	    preencherLista();
+	  }
+
+	public String getPessoa(int i) {
+		return this.lista.get(i);
+	}
+
+	private void preencherLista() {
+		this.lista.add("ANDREY OCHIUCI RAMOS MARCONDES");
+		this.lista.add("ANGELICA DEMCZUK SERRA SILVA DE JESUS");
+		this.lista.add("ARYELL MATOS DE AMORIM");
+		this.lista.add("BRUNA RAMALHO MAYOR");
+		this.lista.add("BRUNO SILVA SANTANA");
+		this.lista.add("CAROLINE CARDOSO OLIVEIRA");
+		this.lista.add("DANIEL DE OLIVEIRA MARTINS");
+		this.lista.add("DULCEMEIRE DE FREITAS SOUZA ALONSO");
+		this.lista.add("EDEZIO TOMAZ DE OLIVEIRA");
+		this.lista.add("EVANDRO GARCIA LOPES");
+		this.lista.add("FERNANDA FERREIRA MAGALHDIAS");
+		this.lista.add("FERNANDA GABRIELA DOS SANTOS CHIQUETO");
+		this.lista.add("FERNANDO MAURO GARCIA");
+		this.lista.add("GABRIEL DAVID SANTOS");
+		this.lista.add("GUILHERME SILVA CASTILHO");
+		this.lista.add("JEANE DE ALBUQUERQUE SILVA");
+		this.lista.add("JOAO PEDRO SOBRINHO RIBEIRO");
+		this.lista.add("JOSE ANTONIO FERNANDES");
+		this.lista.add("JOSIANE SILVA OLIVEIRA");
+		this.lista.add("LUIZ PEDRO CANDIDO");
+		this.lista.add("LUIZ RICARDO DE OLIVEIRA ZANOLINI");
+		this.lista.add("MAICON GUILHERME PINHEIRO BRUNO");
+		this.lista.add("MARA CRISTINA DE SOUZA ARRUDA");
+		this.lista.add("MISAEL CREMONIN DE SOUZA");
+		this.lista.add("PATRICK OLIVEIRA SIMPLICIO");
+		this.lista.add("PAULO ALEX GRONOW");
+		this.lista.add("RODRIGO HENRIQUE GARCEZ GUIMARAES");
+		this.lista.add("SOLANGE LAYANA DE OLIVEIRA CANTINHO LOPES");
+		this.lista.add("THULIO HENRIQUE XAVIER E SILVA PARTEZANI");
+		this.lista.add("VICTOR HUGO BARIA");
+		this.lista.add("VICTOR LOURENCO SIQUEIRA LOPES");
+		this.lista.add("VICTOR SANTINI HAIKEL");
+		this.lista.add("VICTOR SILVA DOS SANTOS");
+		this.lista.add("VITORIA LYSANDRA OLIVEIRA SANTOS DE SOUZA");
+		this.lista.add("VITORIA RAHMAN");
+		this.lista.add("WILFRANC PIERRE LOUIS");
+		this.lista.add("YAN CAETANO PADUA BARRETO");
+		this.lista.add("LUCIANA REGINA PERPETUA DOS SANTOS");
+		this.lista.add("ANGELA SEBASTIANA DOS SANTOS");
+		this.lista.add("CAMILA SILVA TORRES");
+		this.lista.add("CASSIA DOS SANTOS");
+		this.lista.add("DARA LUIZA ZACARIAS SIQUEIRA");
+		this.lista.add("DILEIA FERREIRA DA SILVA");
+		this.lista.add("EDCLEIA GASPARELLI QUINTINO");
+		this.lista.add("EDSON HENRIQUE DO CARMO CARVALHO");
+		this.lista.add("ELIANE ZANIBONI");
+		this.lista.add("FABIO ROBERTO REIS PRACHEDES");
+		this.lista.add("FABIOLA MATEUS FERREIRA");
+		this.lista.add("GENESIS BATISTA DA SILVA");
+		this.lista.add("GENILDO FIGUEIREDO OLIVEIRA");
+		this.lista.add("IRACIANA DA CONCEICAO SILVA");
+	}	  
+}
+
+```
+
+##### 5.1.2. Intervalo
+
+Classe para encapsular os limites do domínio contínuo de números inteiros a serem sorteados.
+
+```java
+package model;
+
+public class Intervalo {
+	public int min = 0;
+	public int max = 0;
+	
+	public Intervalo() {}
+	
+	public Intervalo(int min, int max) {
+		this.min = min;
+		this.max = max;
+	}
+}
+
+```
+
+#### 5.1. ClientJS.java
+
+Testamos a comunicação entre Java e sorteador de número Javascript. Não podemos escrever de executar o servidor no NodeJS, porta 50053.
+
+```java
+package client;
+import java.util.ArrayList;
+import java.util.List;
+
+import io.grpc.Channel;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+import io.grpc.StatusRuntimeException;
+import java_grpc.Sorteio;
+import java_grpc.SorteioServiceGrpc;
+import model.AgendaContatos;
+
+public class ClientJS {
+	public static int getNumeroSorteado(int min, int max) {
+		try {
+			ManagedChannel channel = ManagedChannelBuilder
+					.forAddress("localhost", 50053)
+					.usePlaintext()
+					.build();
+			SorteioServiceGrpc.SorteioServiceBlockingStub sorteioStub = SorteioServiceGrpc
+					.newBlockingStub((Channel)channel);
+			Sorteio.IntervaloRequest request = Sorteio.IntervaloRequest.newBuilder()
+					.setMin(5)
+					.setMax(15)
+					.build();
+			Sorteio.SorteadoResponse response = sorteioStub.sortearNumero(request);
+			int sorteado = response.getNumero();
+			return sorteado;
+		} catch (StatusRuntimeException e) {
+			String msg = "\n\n\tServidor indisponível.\n\n";
+			System.out.println(msg);				
+			e.printStackTrace();
+			throw new RuntimeException(msg, e);
+		}
+	}
+
+	public static void main(String[] args) {
+		AgendaContatos contatos = new AgendaContatos();
+		List<String> selecionados = new ArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			int sorteado = getNumeroSorteado(0, 50);
+			System.out.println("Numero sorteado: " + sorteado);
+			selecionados.add(contatos.getPessoa(sorteado));
+		} 
+		System.out.println("Alunos Selecionados: ");
+		System.out.println(selecionados);
+	}
+
+}
+
 ```
 #### 5.2. ClientDart.java
 
+Testamos a comunicação entre Java e o banco de dados Dart. Só precisamos executar o Dart, o servidor de id Golang não precisa, porque no teste estamos fornecendo o id, e o Dart só fazer a chamada remota ao Go se o objeto `request` não tiver id. Só queremos checar comunicação gRPC, então, só fizemos dois métodos: `getAllAlunos` e `createAluno`. 
+
 ```java
+package client;
+
+import com.google.protobuf.Empty;
+
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+import java_grpc.AlunoOuterClass.Aluno;
+import java_grpc.AlunoOuterClass.AlunoId;
+import java_grpc.AlunoOuterClass.Alunos;
+import java_grpc.CrudAlunoServiceGrpc;
+import java_grpc.CrudAlunoServiceGrpc.CrudAlunoServiceBlockingStub;
+
+public class ClientDart {
+
+	// CRUD Dart  -------------------------------------------------------------------------------------------
+	
+	// getAllAlunos
+	public Alunos getAllAlunos() {
+		// Canal
+		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();	
+		// Stub		
+		CrudAlunoServiceBlockingStub alunoStub = CrudAlunoServiceGrpc.newBlockingStub(channel);
+		
+		Empty empty  = Empty.newBuilder().build();
+		Alunos alunos = alunoStub.getAllAlunos(empty);
+		
+		return alunos;
+	}
+
+	// createAluno
+	public Aluno createAluno(Aluno a) {
+		
+		ManagedChannel channel = ManagedChannelBuilder
+				.forAddress("localhost", 50052)
+				.usePlaintext()
+				.build();	
+		CrudAlunoServiceBlockingStub alunoStub = CrudAlunoServiceGrpc.newBlockingStub(channel);
+
+		Aluno aluno = alunoStub.createAluno(a);
+		
+		return aluno;
+	}
+
+		
+	// Testes
+	public static void main(String[] args) {
+				
+		ClientDart client = new ClientDart();
+		
+		try {
+			// createAluno  -------------------------------------------------------------------------------------
+			
+
+			System.out.println("__ Adicionando Alunos  ----------------------------------");
+			Aluno alunoToAdd1 = Aluno.newBuilder().setId(1).setNome("Elias Mantovani Reboucas").build();
+			Aluno alunoAdicionado1 = client.createAluno(alunoToAdd1);
+			System.out.println("Aluno Adicionado:\n" + alunoAdicionado1);
+			
+			Aluno alunoToAdd2 = Aluno.newBuilder().setId(2).setNome("David Bitcoin").build();
+			Aluno alunoAdicionado2 = client.createAluno(alunoToAdd2);
+			System.out.println("Aluno Adicionado:\n" + alunoAdicionado2);
+			
+			Aluno alunoToAdd3 = Aluno.newBuilder().setId(3).setNome("Pedro Henrique Coimbra").build();
+			Aluno alunoAdicionado3 = client.createAluno(alunoToAdd3);
+			System.out.println("Aluno Adicionado:\n" + alunoAdicionado3);
+			
+			
+			// getAllAlunos -------------------------------------------------------------------------------------
+			
+			System.out.println("__ Listagem de Alunos  ----------------------------------");
+			Alunos alunos = client.getAllAlunos();
+			System.out.println(alunos);	
+		} 
+		catch (Exception e) {
+			System.out.println("\n\nErro: Servidor Dart está offline.\n");
+			System.out.println(e);
+		}
+		
+	}
+
+}
+
 ```
 #### 5.3. JavaClientNodeJSDartGo.java
 
-```java
-```
-
-##### 5.3.1. Agenda Contatos
+Agora sim, devemos inicializar os três servidores de microserviço e testar todos os métodos CRUD Dart.  
 
 ```java
-```
+package client;
 
-##### 5.3.2. Intervalo
+import com.google.protobuf.Empty;
 
-```java
+import io.grpc.Channel;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+import java_grpc.CrudAlunoServiceGrpc;
+import java_grpc.Sorteio;
+import java_grpc.SorteioServiceGrpc;
+import java_grpc.AlunoOuterClass.Aluno;
+import java_grpc.AlunoOuterClass.AlunoId;
+import java_grpc.AlunoOuterClass.Alunos;
+import java_grpc.CrudAlunoServiceGrpc.CrudAlunoServiceBlockingStub;
+import model.AgendaContatos;
+import model.Intervalo;
+
+public class JavaClientNodeJSDartGo {
+	
+	AgendaContatos contatos = new AgendaContatos();
+	
+	
+	// Sorteio NodeJS  --------------------------------------------------------------------------------------
+	
+	private String sortearNomePessoa(Intervalo intervalo) {
+		int numeroSorteado = getNumeroSorteado(intervalo.min, intervalo.max);
+		String nomePessoa = contatos.getPessoa(numeroSorteado); 
+		return nomePessoa;
+	}
+	
+	// sortearNumero
+	private int getNumeroSorteado(int min, int max) {
+		// Canal
+		ManagedChannel channel = ManagedChannelBuilder
+				.forAddress("localhost", 50053)
+				.usePlaintext()
+				.build();
+		// Stub: ligação ao servidor de API
+		SorteioServiceGrpc.SorteioServiceBlockingStub sorteioStub = SorteioServiceGrpc
+				.newBlockingStub((Channel)channel);
+		// Montar a requisição
+		Sorteio.IntervaloRequest request = Sorteio.IntervaloRequest.newBuilder()
+				.setMin(5)
+				.setMax(15)
+				.build();
+		// Fazer a requisição
+		Sorteio.SorteadoResponse response = sorteioStub.sortearNumero(request);
+		int sorteado = response.getNumero();
+		
+		return sorteado;
+		
+	}
+
+
+	// CRUD Dart  -------------------------------------------------------------------------------------------
+	
+	// createAluno
+	public Aluno createAluno(Aluno a) {
+		// Canal
+		ManagedChannel channel = ManagedChannelBuilder
+				.forAddress("localhost", 50052)
+				.usePlaintext()
+				.build();	
+		// Stub
+		CrudAlunoServiceBlockingStub alunoStub = CrudAlunoServiceGrpc.newBlockingStub(channel);
+
+		Aluno aluno = alunoStub.createAluno(a);
+		
+		return aluno;
+	}
+
+	// getAllAlunos
+	public Alunos getAllAlunos() {
+		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();	
+		CrudAlunoServiceBlockingStub alunoStub = CrudAlunoServiceGrpc.newBlockingStub(channel);
+				
+		Empty empty  = Empty.newBuilder().build();
+		Alunos alunos = alunoStub.getAllAlunos(empty);
+		
+		return alunos;
+	}
+	
+	// getAluno
+	public Aluno getAluno(AlunoId alunoId) {
+		ManagedChannel channel = ManagedChannelBuilder
+				.forAddress("localhost", 50052)
+				.usePlaintext()
+				.build();	
+		CrudAlunoServiceBlockingStub alunoStub = CrudAlunoServiceGrpc.newBlockingStub(channel);
+		
+		Aluno aluno = alunoStub.getAluno(alunoId);
+		
+		return aluno;
+	}
+	
+	// editAluno
+	public Aluno editAluno(Aluno aluno) {
+		ManagedChannel channel = ManagedChannelBuilder
+				.forAddress("localhost", 50052)
+				.usePlaintext()
+				.build();	
+		CrudAlunoServiceBlockingStub alunoStub = CrudAlunoServiceGrpc.newBlockingStub(channel);
+					
+		aluno = alunoStub.editAluno(aluno);
+		
+		return aluno;
+	}
+	
+	// deleteAluno
+	public void deleteAluno(AlunoId alunoId) {
+		// Canal
+		ManagedChannel channel = ManagedChannelBuilder
+				.forAddress("localhost", 50052)
+				.usePlaintext()
+				.build();	
+		// Stub
+		CrudAlunoServiceBlockingStub alunoStub = CrudAlunoServiceGrpc.newBlockingStub(channel);
+		
+		alunoStub.deleteAluno(alunoId);		
+	}
+	
+
+	// Testes  ----------------------------------------------------------------------------------------------
+	
+	// Create
+	public void testCreate() {
+		System.out.println("\n☕ API Java - createAluno  _________________________________");
+		
+		String nome = sortearNomePessoa(new Intervalo(0, 50));			// gRPC - API NodeJS
+		
+		// aluno sem id - quem irá fornecer será a API Golang
+		Aluno alunoToCreate = Aluno.newBuilder().setNome(nome).build();
+		//teste
+		Aluno alunoCriado =  createAluno(alunoToCreate);				// gRPC - API Dart
+		System.out.println("Novo aluno criado:");
+		System.out.println(alunoCriado);
+	}
+
+	// GetAll
+	public void testGetAll() {
+		System.out.println("\n☕ API Java - getAllAlunos  ________________________________");
+		//teste
+		Alunos alunos = getAllAlunos();									// gRPC - API Dart
+		System.out.println("ID - NOME");
+		System.out.println("==================================================");
+		for (Aluno aluno : alunos.getAlunosList()) {
+			System.out.println(aluno.getId() + " - " + aluno.getNome());
+		}
+		System.out.println("--------------------------------------------------");
+		System.out.println("Quantidade de alunos matriculados: " + alunos.getAlunosCount());
+	}
+	
+	
+	// Edit
+	public void testEdit() {
+		// Altera o nome do aluno do último aluno 
+		System.out.println("\n☕ API Java - editAluno  ___________________________________"); 
+		Alunos alunos = getAllAlunos();									// gRPC - API Dart
+		int indexUltimo = alunos.getAlunosCount() - 1;
+		Aluno ultimoAluno = alunos.getAlunos(indexUltimo);				
+		Aluno alunoToEdit = Aluno.newBuilder()
+				.setId(ultimoAluno.getId())
+				.setNome("Matheus Rufato Santana de Oliveira")
+				.build();
+		//teste		
+		Aluno alunoEditado = editAluno(alunoToEdit);					// gRPC - API Dart
+		String msg = String.format("Aluno de id=%d com nome editado:\n", alunoEditado.getId());
+		System.out.println( msg + alunoEditado);
+	}
+	
+	// Get
+	public void testGet() {
+		// Resgata o aluno que fora editado, o último 
+		System.out.println("\n☕ API Java - getAluno  ____________________________________"); 
+		Alunos alunos = getAllAlunos();									// gRPC - API Dart
+		int indexUltimo = alunos.getAlunosCount() - 1;
+		Aluno ultimoAluno = alunos.getAlunos(indexUltimo);				
+		AlunoId alunoId = AlunoId.newBuilder()
+				.setId(ultimoAluno.getId())
+				.build();
+		//teste
+		Aluno aluno = getAluno(alunoId);								// gRPC - API Dart
+		String msg = String.format("Aluno de id=%d resgatado:\n", aluno.getId());
+		System.out.println( msg + aluno);
+	}
+	
+	// Delete
+	public void testDelete() {
+		// Altera o nome do aluno do último aluno 
+		System.out.println("\n☕ API Java - deleteAluno  _________________________________"); 
+		Alunos alunos = getAllAlunos();									// gRPC - API Dart
+		int indexUltimo = alunos.getAlunosCount() - 1;
+		Aluno ultimoAluno = alunos.getAlunos(indexUltimo);				
+		AlunoId alunoId = AlunoId.newBuilder()
+				.setId(ultimoAluno.getId())
+				.build();
+		// teste
+		deleteAluno(alunoId);											// gRPC - API Dart				
+		System.out.println( String.format("Aluno removido com id=%d \n", alunoId.getId()) );
+	}
+
+		
+	public static void main(String[] args) {
+				
+		JavaClientNodeJSDartGo client = new JavaClientNodeJSDartGo();
+		
+		try {
+			// CreateAluno
+			System.out.println("\n\nTESTE|=> Gerar 10 alunos  =======================================");
+			for (int i=0; i<10; i++) {
+				client.testCreate();
+			}					
+			
+			// getAllAlunos	
+			System.out.println("\n\nTESTE|=> Listar todos os alunos  ================================");
+			client.testGetAll();
+						
+			// editAluno
+			System.out.println("\n\nTESTE|=> Editar último aluno  ===================================");
+			client.testEdit();
+			
+			// getAluno
+			System.out.println("\n\nTESTE|=> Buscar aluno editado  ==================================");
+			client.testGet();
+			
+			System.out.println("\n|=> Listar todos para confirmar edição do último.\n");
+			client.testGetAll();
+			
+			// deleteAluno  			
+			System.out.println("\n\nTESTE|=> Remover aluno  =========================================");
+			client.testDelete();
+			
+			System.out.println("\n|=> Listar todos para confirmar a remoção.\n");
+			client.testGetAll();	
+		} 
+		catch (Exception e) {
+			System.out.println("\n\nErro: Servidor está offline.\n");
+			System.out.println(e);
+		}
+		
+	}
+}
+
 ```
 
 
