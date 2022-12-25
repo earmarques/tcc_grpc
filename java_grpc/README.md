@@ -332,7 +332,7 @@ public class Intervalo {
 
 #### 5.1. ClientJS.java
 
-Testamos a comunicação entre Java e sorteador de número Javascript. Não podemos escrever de executar o servidor no NodeJS, porta 50053.
+Testamos a comunicação entre Java e sorteador de número Javascript. Não podemos esquecer de executar o servidor no NodeJS, porta 50053.
 
 ```java
 package client;
