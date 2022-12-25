@@ -47,7 +47,7 @@ Configurando o Java 8 globalmente.
 asdf global java adoptopenjdk-8.0.345+1
 ```
 
-Configurar o JAVA_HOME.
+O asdf tem um script pronto para configurar o JAVA_HOME.
 ```
 . ~/.asdf/plugins/java/set-java-home.bash
 ```
@@ -211,5 +211,14 @@ Na primeira vez, o Maven vai baixar e instalar as dependências. Se tudo correr 
 ![Projeto construído com sucesso](images/java_build_sucess.png "Projeto construído com sucesso")<br>
 _Figura 8: Projeto construído com sucesso_
 
+
+### Contratos .proto
+
+Java vai se comunicar diretamente com Javascript e Dart, então precisamos dos arquivos `sorteio.proto` e `aluno.proto`. Estes arquivos devem ficar no pacote `resources`, conforme especificamos no `pom.xml`.
+
+![Estrutura de pacotes projeto Java](https://github.com/earmarques/tcc_grpc/blob/main/images/fig20.png "Estrutura de pacotes projeto Java")<br>
+_Figura 9: Estrutura de pacotes projeto Java_
+
+Agora vamos compilar os `.proto` com o plugin Java através do Maven. Botão direito no projeto >> Run As >> Maven build >> Run. Serão criados dois aruqivos por `proto`. `sorteio.proto` produzirá `Sorteio.java` e `SorteioServiceGrpc.java` e o `aluno.proto` resultará em `AlunoOuterClass.java` e `CrudAlunoServiceGrpc.java`. Estes são os códigos gerados pelo plugin que irão cuidar da comunicação pela rede estão no pacote `java_grpc`, como definimos no `pom.xml`.
 
 
