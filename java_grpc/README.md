@@ -3,9 +3,10 @@
 Temos as seguintes etapas para fazer:
 
 
-**[1. asdf](./README.md#1-asdf)**<br>
-[1.1. Instalar o plugin asdf do NodeJS](#11-instalar-o-plugin-asdf-do-nodejs)<br>
-[1.2. Instalar uma versão do NodeJS](#12-instalar-uma-vers%C3%A3o-do-nodejs)<br>
+**[1. asdf](./README.md#1-asdf1-asdf)**<br>
+[1.1. Instalar o plugin asdf do Java](#11-instalar-o-plugin-asdf-do-java)<br>
+[1.2. Instalar uma versão do Java](#12-instalar-uma-vers%C3%A3o-do-java)<br>
+[1.3. Configurar ambiente Java](#13-configurar-ambiente-java)<br>
 
 **[2. NodeJS](./README.md#2-nodejs)**<br>
 [2.1 Inicializar o projeto](#21-inicializar-o-projeto)<br>
@@ -33,13 +34,15 @@ Aqui vamos cuidar apenas de fazer o gRPC funcionar com o Java.
 asdf plugin-add java https://github.com/halcyon/asdf-java.git
 ```
 
-#### 1.2. Instalar uma versão do NodeJS
+#### 1.2. Instalar uma versão do Java
 
 Nós vamos usar o Java 8. 
 
 ```
 asdf install java adoptopenjdk-8.0.345+1
 ```
+
+#### 1.2. Configurar ambiente Java
 
 Configurando o Java 8 globalmente.
 
