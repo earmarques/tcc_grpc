@@ -8,11 +8,11 @@ Temos as seguintes etapas para fazer:
 [1.2. Instalar uma versão do Java](#12-instalar-uma-vers%C3%A3o-do-java)<br>
 [1.3. Configurar ambiente Java](#13-configurar-ambiente-java)<br>
 
-**[2. NodeJS](./README.md#2-nodejs)**<br>
-[2.1 Inicializar o projeto](#21-inicializar-o-projeto)<br>
-[2.2. Instalar dependências](#22-instalar-depend%C3%AAncias)<br>
+**[2. Eclipse](./README.md#2-eclipse)**<br>
+[2.1 Instalar o Eclipse](#21-instalar-o-eclipse)<br>
+[2.2. Configurar o Eclipse](#22-configurar-o-eclipse)<br>
 
-**[3. Criar os arquivos](./README.md#3-criando-os-arquivos-serverjs-clientjs-e-o-contrato-sorteioproto)**<br>
+**[3. Projeto Maven Java](./README.md#3-criando-os-arquivos-serverjs-clientjs-e-o-contrato-sorteioproto)**<br>
 [3.1. sorteio.proto](#31-sorteioproto)<br>
 [3.2 server.js](#32-serverjs)<br>
 [3.3 client.js](#33-clientjs)<br>
@@ -42,7 +42,7 @@ Nós vamos usar o Java 8.
 asdf install java adoptopenjdk-8.0.345+1
 ```
 
-#### 1.2. Configurar ambiente Java
+#### 1.3. Configurar ambiente Java
 
 Configurando o Java 8 globalmente.
 
@@ -78,7 +78,7 @@ Nós gostamos da versão do Java 8, e vamos configurar a IDE Eclipse para usar e
 ![Versão Java 8](images/java_version.png "Versão Java 8")<br>
 _Figura 2: Versão Java 8_
 
-### 3. Projeto Maven Java java_maven_build.png
+### 3. Projeto Maven Java
 
 #### 3.1. Criar Projeto
 
