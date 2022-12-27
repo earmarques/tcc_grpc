@@ -3,7 +3,7 @@
 Temos as seguintes etapas para fazer:
 
 
-**[1. asdf](./README.md#1-asdf1-asdf)**<br>
+**[1. asdf](./README.md#1-asdf)**<br>
 [1.1. Instalar o plugin asdf do Java](#11-instalar-o-plugin-asdf-do-java)<br>
 [1.2. Instalar uma versão do Java](#12-instalar-uma-vers%C3%A3o-do-java)<br>
 [1.3. Configurar ambiente Java](#13-configurar-ambiente-java)<br>
