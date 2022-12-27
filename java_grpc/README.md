@@ -337,7 +337,7 @@ public class Intervalo {
 
 ```
 
-#### 5.1. ClientJS.java
+#### 5.2. ClientJS.java
 
 Testamos a comunicação entre Java e sorteador de número Javascript. Não podemos esquecer de executar o servidor no NodeJS, porta 50053.
 
@@ -393,7 +393,7 @@ public class ClientJS {
 }
 
 ```
-#### 5.2. ClientDart.java
+#### 5.3. ClientDart.java
 
 Testamos a comunicação entre Java e o banco de dados Dart. Só precisamos executar o Dart, o servidor de id Golang não precisa, porque no teste estamos fornecendo o id, e o Dart só fazer a chamada remota ao Go se o objeto `request` não tiver id. Só queremos checar comunicação gRPC, então, só fizemos dois métodos: `getAllAlunos` e `createAluno`. 
 
@@ -481,7 +481,7 @@ public class ClientDart {
 }
 
 ```
-#### 5.3. JavaClientNodeJSDartGo.java
+#### 5.4. JavaClientNodeJSDartGo.java
 
 Agora sim, devemos inicializar os três servidores de microserviço e testar todos os métodos CRUD Dart.  
 
