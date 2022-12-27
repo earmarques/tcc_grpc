@@ -12,12 +12,16 @@ Temos as seguintes etapas para fazer:
 [2.1 Instalar o Eclipse](#21-instalar-o-eclipse)<br>
 [2.2. Configurar o Eclipse](#22-configurar-o-eclipse)<br>
 
-**[3. Projeto Maven Java](./README.md#3-criando-os-arquivos-serverjs-clientjs-e-o-contrato-sorteioproto)**<br>
-[3.1. sorteio.proto](#31-sorteioproto)<br>
-[3.2 server.js](#32-serverjs)<br>
-[3.3 client.js](#33-clientjs)<br>
+**[3. Projeto Maven Java](./README.md#3-projeto-maven-java)**<br>
+[3.1. Criar Projeto](#31-criar-projeto)<br>
+[3.2 Configurar Projeto](#32-configurar-projeto)<br>
 
-**[4. Executar teste](./README.md#4-executar-teste)**
+**[4. Contratos .proto](./README.md#4-contratos-proto)**<br>
+
+**[5. Códigos clientes](./README.md#5-c%C3%B3digos-clientes)**<br>
+[5.1. Códigos Auxiliares](#51-c%C3%B3digos-auxiliares)<br>
+[5.1.1. Agenda de Contatos](#511-agenda-de-contatos)<br>
+[5.1.2. Intervalo](#512-intervalo)<br>
 
 ---
 
