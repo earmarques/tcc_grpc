@@ -590,6 +590,6 @@ Agora vamos precisar de três shell. Um para subir o servidor Golang, um segundo
 _Figura 7: gRPC integrando APIs Dart e Golang_
 <br><br>
 
-[:arrow_up: Topo](#grpc-no-nodejs-green_apple)
+[:arrow_up: Topo](https://github.com/earmarques/tcc_grpc/tree/main/dart_grpc#grpc-no-dart-bird)
 
 <br><br>
