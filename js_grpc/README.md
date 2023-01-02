@@ -78,7 +78,7 @@ Nós vamos precisar de duas bibliotecas, vamos pedir para o npm buscá-las para 
 npm i @grpc/grpc-js
 ```
 - **@grpc/proto-loader**
-```
+```https://github.com/earmarques/tcc_grpc/tree/main/dart_grpc#grpc-no-dart-bird
 npm i @grpc/proto-loader
 ```
 
@@ -107,7 +107,7 @@ service SorteioService {
 
 message IntervaloRequest {
   int32 min = 1;
-  int32 max = 2;
+  int32 max = 2;https://github.com/earmarques/tcc_grpc/tree/main/dart_grpc#grpc-no-dart-bird
 }ME.md
 
 message SorteadoResponse {
@@ -213,7 +213,7 @@ node client.js
 
 A cada execução do comando acima, a aplicação cliente JS envia uma requisição para o servidor usando o _framework_ gRPC. O servidor gera um número entre 0 e 50 e o envia para a aplicação cliente, que recebe o valor e imprime na tela.  
 
-![Aplicação cliente e servidor se comunicando através do framework gRPC](images/js_grpc_test.png "Aplicação cliente e servidor se comunicando através do framework gRPC")<br>
+![Aplicação clienhttps://github.com/earmarques/tcc_grpc/tree/main/dart_grpc#grpc-no-dart-birdte e servidor se comunicando através do framework gRPC](images/js_grpc_test.png "Aplicação cliente e servidor se comunicando através do framework gRPC")<br>
 _Figura 2: Aplicação cliente e servidor se comunicando através do framework gRPC_
 
 <br><br>
