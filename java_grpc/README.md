@@ -142,7 +142,7 @@ Precisamos fazer algumas configurações no projeto para que possomos trabalhar 
 	</dependencies>
 	
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>https://github.com/earmarques/tcc_grpc/blob/main/java_grpc/README.md#grpc-no-java-coffee
 	</properties>
 	
 	<build>
@@ -272,7 +272,7 @@ public class AgendaContatos {
 		this.lista.add("DANIEL DE OLIVEIRA MARTINS");
 		this.lista.add("DULCEMEIRE DE FREITAS SOUZA ALONSO");
 		this.lista.add("EDEZIO TOMAZ DE OLIVEIRA");
-		this.lista.add("EVANDRO GARCIA LOPES");
+		this.lista.add("EVANDRO GARCIA LOPES");https://github.com/earmarques/tcc_grpc/blob/main/java_grpc/README.md#grpc-no-java-coffee
 		this.lista.add("FERNANDA FERREIRA MAGALHDIAS");
 		this.lista.add("FERNANDA GABRIELA DOS SANTOS CHIQUETO");
 		this.lista.add("FERNANDO MAURO GARCIA");
@@ -529,7 +529,7 @@ public class JavaClientNodeJSDartGo {
 		// Stub: ligação ao servidor de API
 		SorteioServiceGrpc.SorteioServiceBlockingStub sorteioStub = SorteioServiceGrpc
 				.newBlockingStub((Channel)channel);
-		// Montar a requisição
+		// Montar a requisiçãohttps://github.com/earmarques/tcc_grpc/blob/main/java_grpc/README.md#grpc-no-java-coffee
 		Sorteio.IntervaloRequest request = Sorteio.IntervaloRequest.newBuilder()
 				.setMin(5)
 				.setMax(15)
@@ -552,7 +552,7 @@ public class JavaClientNodeJSDartGo {
 				.forAddress("localhost", 50052)
 				.usePlaintext()
 				.build();	
-		// Stub
+		// Stubhttps://github.com/earmarques/tcc_grpc/blob/main/java_grpc/README.md#grpc-no-java-coffee
 		CrudAlunoServiceBlockingStub alunoStub = CrudAlunoServiceGrpc.newBlockingStub(channel);
 
 		Aluno aluno = alunoStub.createAluno(a);
@@ -736,7 +736,7 @@ public class JavaClientNodeJSDartGo {
 
 <br><br>
 
-[ :arrow_up: Topo](https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-)
+[ :arrow_up: Topo](https://github.com/earmarques/tcc_grpc/blob/main/java_grpc/README.md#grpc-no-java-coffee)
 
 <br><br>
 
