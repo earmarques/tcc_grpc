@@ -72,7 +72,7 @@ asdf install golang 1.19
 
 ### 2. Golang
 
-#### 2.1. Plugins Go
+#### 2.1. Plugins Gohttps://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
 
 Um dos grandes benefícios do gRPC é o fato dele gerar códigos que abstraem e cuidam de toda a comunicação pela rede. Para tanto, cada linguagem tem plugins específicos. No caso do Golang, precisamos instalar dois plugins para gerar códigos para nós a partir dos arquivos _.proto_.
 ```
@@ -166,7 +166,7 @@ protoc --go_out=. --go_opt=paths=source_relative \
 --go-grpc_out=. --go-grpc_opt=paths=source_relative \
  google/protobuf/empty.proto gerador_id.proto
 ```
-Chamamos o compilador `protoc` que usará os plugins do Go para gerar o código. No arquivo `gerador_id.proto` nós importamos a definição Estrutura do projetode tipo vazio (`empty.proto`). Em definições de contrato, se uma chamada de procedimento remota `rpc` não recebe nenhum parâmetro como argumento, ou retorna `void`, ainda assim, devemos definir esse tipo `message`. Como isso é uma `message` muito recorrente, é bom que tenhamos uma definição comum ao invés de definí-la em cada arquivo _.proto_, e termos problemas de conflito de declaração. Sendo assim, nós importamos de `google/protobuf/empty.proto`.
+Chamamos o compilador `protoc` que usará os plugins do Go para gerar o código. No arquivo `gerador_id.proto` nós ihttps://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-mportamos a definição Estrutura do projetode tipo vazio (`empty.proto`). Em definições de contrato, se uma chamada de procedimento remota `rpc` não recebe nenhum parâmetro como argumento, ou retorna `void`, ainda assim, devemos definir esse tipo `message`. Como isso é uma `message` muito recorrente, é bom que tenhamos uma definição comum ao invés de definí-la em cada arquivo _.proto_, e termos problemas de conflito de declaração. Sendo assim, nós importamos de `google/protobuf/empty.proto`.
 
 Veremos dois arquivos `.go` criados na pasta _protos_, `gerador_id_grpc.pb.go` e `gerador_id.pb.go`. Também foi criada uma pasta _google_ referente à importação, com outro código gerado pelos plugins, `empty.pb.go`. A figura 2 mostra como deve ser a estrutura do módulo go_grpc.
 
@@ -189,7 +189,7 @@ package main
 
 import (
 	"context"
-	"log"
+	"log"https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
 	"net"
 
 	"google.golang.org/grpc"
@@ -283,7 +283,7 @@ func main() {
 	var id = r.GetGoId()
 	log.Printf("🦫 ID gerado: %d", id)
 	//log.Printf("Não foi possível gerar o id: %v", r)
-}
+}https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
 
 ```
 _Listagem 3: client/main.go_
@@ -292,7 +292,7 @@ _Listagem 3: client/main.go_
 
 ### 4. Executar teste
 
-Vamos precisar de dois terminais, em um deixaremos o servidor ouvindo na porta 50051, no outro executamos as chamadas remotas. O comportamento esperado é dado na figEstrutura do projetoura 3.
+Vamos precisar de dois terminais, em um deixaremos o servidor ouvindo na porta 50051, no outro executamos as chamadas remotas. O comportamento esperado é dado na figEstrutura do projetoura 3.https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
 
 ![Teste de comunicação cliente-servidor Golang](images/teste-go.png "Teste de comunicação cliente-servidor Golang")<br>
 _Figura 3: Teste de comunicação cliente-servidor Golang_
@@ -300,7 +300,7 @@ Estrutura do projeto
 
 <br><br>
 
-[ :arrow_up: Topo](./README.md#grpc-no-golang-)
+[ :arrow_up: Topo](https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-)
 
 <br><br>
 
