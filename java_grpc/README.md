@@ -100,7 +100,7 @@ Para este projeto Maven, nós demos as identificações de artefato mostradas na
 _Figura 4: Artefato do projeto Maven_
 
 #### 3.2. Configurar Projeto
-
+https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
 Precisamos fazer algumas configurações no projeto para que possomos trabalhar com o gRPC. Para tanto, devemos editar o arquivo pom.xml para ficar como na listagem 1. 
 
 ```xml
@@ -127,7 +127,7 @@ Precisamos fazer algumas configurações no projeto para que possomos trabalhar 
 		<dependency>
 			<groupId>io.grpc</groupId>
 			<artifactId>grpc-netty-shaded</artifactId>
-			<version>1.15.1</version>
+			<version>1.15.1</version>https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
 		</dependency>
 		<dependency>
 			<groupId>io.grpc</groupId>
@@ -156,7 +156,7 @@ Precisamos fazer algumas configurações no projeto para que possomos trabalhar 
 				<executions>
 					<execution>
 						<phase>generate-sources</phase>
-						<goals>
+						<goalshttps://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang->
 							<goal>run</goal>
 						</goals>
 						<configuration>
@@ -183,7 +183,7 @@ Precisamos fazer algumas configurações no projeto para que possomos trabalhar 
 					</execution>
 				</executions>
 			</plugin>
-			
+			https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -230,7 +230,7 @@ Java vai se comunicar diretamente com Javascript e Dart, então precisamos dos a
 _Figura 9: Estrutura de pacotes projeto Java_
 
 Agora vamos compilar os `.proto` com o plugin Java através do Maven. Botão direito no projeto >> `Run As` >> `Maven build` >> `Run`. Serão criados dois arquivos por `proto`, `sorteio.proto` produzirá `Sorteio.java` e `SorteioServiceGrpc.java` e o `aluno.proto` resultará em `AlunoOuterClass.java` e `CrudAlunoServiceGrpc.java`. Conforme definimos no `pom.xml`, os códigos que irão cuidar da comunicação pela rede estão no pacote `java_grpc`.
-
+https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
 ### 5. Códigos clientes
 
 Vamos escrever códigos clientes das API um por vez. Primeiro vamos fazer o Java consumir o microserviço de sorteio do JavaScript com `ClientJS.java`, depois vamos testar a integração do Java com o Dart com `ClientDart.java` e por fim, faremos a integração com as quatro aplicações em `JavaClientNodeJSDartGo.java`. Estes arquivos estão no pacote `client`.
@@ -258,7 +258,7 @@ public class AgendaContatos {
 	    preencherLista();
 	  }
 
-	public String getPessoa(int i) {
+	public String getPessoa(int i) {https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
 		return this.lista.get(i);
 	}
 
@@ -375,7 +375,7 @@ public class ClientJS {
 			return sorteado;
 		} catch (StatusRuntimeException e) {
 			String msg = "\n\n\tServidor indisponível.\n\n";
-			System.out.println(msg);				
+			System.out.println(msg);https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-				
 			e.printStackTrace();
 			throw new RuntimeException(msg, e);
 		}
@@ -401,7 +401,7 @@ public class ClientJS {
 Testamos a comunicação entre Java e o banco de dados Dart. Só precisamos executar o Dart, o servidor de id Golang não precisa, porque no teste estamos fornecendo o id, e o Dart só fazer a chamada remota ao Go se o objeto `request` não tiver id. Só queremos checar comunicação gRPC, então, só fizemos dois métodos: `getAllAlunos` e `createAluno`. 
 
 ```java
-package client;
+package client;https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
 
 import com.google.protobuf.Empty;
 
@@ -430,7 +430,7 @@ public class ClientDart {
 		return alunos;
 	}
 
-	// createAluno
+	// createAlunohttps://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
 	public Aluno createAluno(Aluno a) {
 		
 		ManagedChannel channel = ManagedChannelBuilder
@@ -518,7 +518,7 @@ public class JavaClientNodeJSDartGo {
 		String nomePessoa = contatos.getPessoa(numeroSorteado); 
 		return nomePessoa;
 	}
-	
+	https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
 	// sortearNumero
 	private int getNumeroSorteado(int min, int max) {
 		// Canal
@@ -669,7 +669,7 @@ public class JavaClientNodeJSDartGo {
 		AlunoId alunoId = AlunoId.newBuilder()
 				.setId(ultimoAluno.getId())
 				.build();
-		//teste
+		//testehttps://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
 		Aluno aluno = getAluno(alunoId);								// gRPC - API Dart
 		String msg = String.format("Aluno de id=%d resgatado:\n", aluno.getId());
 		System.out.println( msg + aluno);
@@ -734,5 +734,10 @@ public class JavaClientNodeJSDartGo {
 
 ```
 
+<br><br>
+
+[ :arrow_up: Topo](https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-)
+
+<br><br>
 
 
