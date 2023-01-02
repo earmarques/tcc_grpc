@@ -50,8 +50,8 @@ O cliente principal, o maior consumidor de microserviços é o _Java_, mas é to
 
 [1. JavaScript](js_grpc)<br>
 [2. Golang](go_grpc)<br>
-3. Dart(dart_grpc)<br>
-4. Java(java_grpc)<br>
+[3. Dart](dart_grpc)<br>
+[4. Java](java_grpc)<br>
 
 Nos README.md's dos sub-repositórios haverá apenas as instruções para subir o servidor e alguns testes. Explicações mais detalhes do que cada trecho do código faz, o leitor pode consultar a **[Wiki do projeto](https://github.com/earmarques/tcc_grpc/wiki)**, onde temos uma explicação mais abrangente e integrada. Se o leitor estiver interessado no gRPC rodando em apenas uma das linguagens de programação, pode ir até o sub-repositório da linguagem de interesse, que as instruções ali presentes bastam para fazer o gRPC funcionar.
 
