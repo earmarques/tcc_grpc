@@ -17,10 +17,10 @@ O gRPC usa HTTP/2 como protocolo de transporte, com uma série de recursos avan�
 
 * **Geração de códico.** O gRPC automatizou a geração de código que tratam dos detalhes da comunicação, como conexão, controle do fluxo de dados e serialização. O suporte do gRPC abrange linguagens como C#, C++, Java, Go, Kotlin, Node, PHP, Python, Ruby e várias outras.
 
-* ** Suporta _streaming_.** O gRPC também fornece _streaming_ de dados: _streaming_ do lado do servidor, _streaming_ do lado do cliente e _streaming_ bidirecional.
+* **Suporta _streaming_.** O gRPC também fornece _streaming_ de dados: _streaming_ do lado do servidor, _streaming_ do lado do cliente e _streaming_ bidirecional.
 
 
-* ** Super rápido.** gRPC é cerca de 7 a 8 vezes mais rápido que a comunicação REST+JSON sobre HTML/1.1.
+* **Super rápido.** gRPC é cerca de 7 a 8 vezes mais rápido que a comunicação REST+JSON sobre HTML/1.1.
 
 ---
 
