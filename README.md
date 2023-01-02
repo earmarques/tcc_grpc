@@ -3,6 +3,26 @@
 Nós construímos um sistema distribuído de microsserviços fazendo a interoperabilidade de APIs implementadas em quatro linguagens de programação diferentes (`Golang`, `Dart`, `Java` e `Javacript`), utilizando o gRPC para a comunicação entre os sistemas de APIs.
 
 ---
+### O que é gRPC?
+
+É um _framework_ desenvolvido pela Google para tratar de chamadas de procedimento remotas (_Remote Procedure Call_).
+
+Atualmente esta tecnologia é usada por grandes empresas líderes no ramo da tecnologia da informação como Google, Netflix, Docker, Kubernetes, Cisco, Dropbox, IBM, etc. O gRPC faz parte da _Cloud Native Computing Foundation – CNCF_ e está integrado às tecnologias desse ecossistema. A documentação oficial pode ser encontrada em [grpc.io](grpc.io).
+
+### Benefícios
+
+O gRPC usa HTTP/2 como protocolo de transporte, com uma série de recursos avançados:
+
+* **Mensagens leves.** As mensagens codificadas com gRPC podem ser até 60–80% menores que as mensagens JSON.
+
+* **Geração de códico.** O gRPC automatizou a geração de código que tratam dos detalhes da comunicação, como conexão, controle do fluxo de dados e serialização. O suporte do gRPC abrange linguagens como C#, C++, Java, Go, Kotlin, Node, PHP, Python, Ruby e várias outras.
+
+* ** Suporta _streaming_.** O gRPC também fornece _streaming_ de dados: _streaming_ do lado do servidor, _streaming_ do lado do cliente e _streaming_ bidirecional.
+
+
+* ** Super rápido.** gRPC é cerca de 7 a 8 vezes mais rápido que a comunicação REST+JSON sobre HTML/1.1.
+
+---
 
 ## Apresentação
 
