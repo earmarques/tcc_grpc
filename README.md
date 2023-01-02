@@ -5,7 +5,7 @@ Nós construímos um sistema distribuído de microsserviços fazendo a interoper
 ---
 ### O que é gRPC?
 
-É um _framework_ desenvolvido pela Google para tratar de chamadas de procedimento remotas (_Remote Procedure Call_).
+É um _framework_ desenvolvido pela Google para tratar de chamadas de procedimento remotas (_Remote Procedure Call_ - RPC).
 
 Atualmente esta tecnologia é usada por grandes empresas líderes no ramo da tecnologia da informação como Google, Netflix, Docker, Kubernetes, Cisco, Dropbox, IBM, etc. O gRPC faz parte da _Cloud Native Computing Foundation – CNCF_ e está integrado às tecnologias desse ecossistema. A documentação oficial pode ser encontrada em [grpc.io](grpc.io).
 
