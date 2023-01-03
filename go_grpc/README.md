@@ -74,9 +74,10 @@ asdf install golang 1.19
 
 ### 2. Golang
 
-#### 2.1. Plugins Gohttps://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
+#### 2.1. Plugins Go
 
 Um dos grandes benefícios do gRPC é o fato dele gerar códigos que abstraem e cuidam de toda a comunicação pela rede. Para tanto, cada linguagem tem plugins específicos. No caso do Golang, precisamos instalar dois plugins para gerar códigos para nós a partir dos arquivos _.proto_.
+
 ```
 go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.1
 ```
