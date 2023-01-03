@@ -590,6 +590,10 @@ Agora vamos precisar de três shell. Um para subir o servidor Golang, um segundo
 _Figura 7: gRPC integrando APIs Dart e Golang_
 <br><br>
 
+---
+
+Por fim, agora nos falta implementar a aplicação cliente que irá consumir o microserviço de sorteio de número NodeJS bem com do serviço de banco de dados Dart. Vamos implementar a aplicação [4. Java](../java_grpc).
+
 [:arrow_up: Topo](https://github.com/earmarques/tcc_grpc/tree/main/dart_grpc#grpc-no-dart-bird)
 
 <br><br>
