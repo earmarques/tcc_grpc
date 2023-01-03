@@ -97,7 +97,8 @@ _Figura 2: Instalação do asdf - adcionar duas linhas ao ~/.bashrc_
 
 ```
 source ~/.bashrc
-```https://github.com/earmarques/tcc_grpc/blob/main/README.md#estudo-da-interoperabilidade-de-apis-com-grpc
+```
+
 Começaremos criando a pasta geral `tcc_grpc` e dentro dela a pasta que abrigará a API _Javascript_. 
 
 ```
@@ -107,7 +108,7 @@ Agora convidamos o leitor para ir até o sub-repositório do [_JavaScript_](js_g
 
 <br><br>
 
-[:arrow_up: Topo]([#grpc-no-nodejs-green_apple](README.md#estudo-da-interoperabilidade-de-apis-com-grpc)
+[:arrow_up: Topo](#grpc-no-nodejs-green_apple](README.md#estudo-da-interoperabilidade-de-apis-com-grpc)
 
 <br><br>
 
