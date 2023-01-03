@@ -9,7 +9,7 @@ public class AgendaContatos {
 	
 	public AgendaContatos() {
 		this.lista = new ArrayList<>();
-	    preencherLista();
+		preencherLista();
 	  }
 
 	public String getPessoa(int i) {
