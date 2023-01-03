@@ -46,7 +46,7 @@ Dessa forma, temos quatro sistemas implementados em linguagens distintas se comu
 
 ### Execução
 
-O cliente principal, o maior consumidor de microserviços é o _Java_, mas é totalmente dependente dos outros serviços. E cada API tem seu próprio ambiente de excecução, seu próprio servidor. Sendo assim, nós vamos criar um diretório para cada linguagem de programação. É preciso ter em mente que cada diretório é como se fosse um repositório, logo, cada um deles terá o seu README.md com as instruções e comandos de execução no terminal. _JavaScript_ e _Golang_ não possuem dependência, mas _Dart_ depende que o serviço _Go_ esteja no ar, e o _Java_ depende de todos eles, sendo assim, nós faremos os "sub-repositórios" na seguinte sequência:
+O cliente principal, o maior consumidor de microserviços é o _Java_, mas é totalmente dependente dos outros serviços. E cada API tem seu próprio ambiente de excecução, seu próprio servidor. Sendo assim, nós vamos criar um diretório para cada linguagem de programação. É preciso ter em mente que cada diretório é como se fosse um repositório, logo, cada um deles terá o seu README.md com as instruções e comandos de execução no terminal. _JavaScript_ e _Golang_ não possuem dependência, mas _Dart_ https://github.com/earmarques/tcc_grpc/blob/main/README.md#estudo-da-interoperabilidade-de-apis-com-grpcdepende que o serviço _Go_ esteja no ar, e o _Java_ depende de todos eles, sendo assim, nós faremos os "sub-repositórios" na seguinte sequência:
 
 [1. JavaScript](js_grpc)<br>
 [2. Golang](go_grpc)<br>
@@ -108,7 +108,7 @@ Agora convidamos o leitor para ir até o sub-repositório do [_JavaScript_](js_g
 
 <br><br>
 
-[:arrow_up: Topo](#grpc-no-nodejs-green_apple](README.md#estudo-da-interoperabilidade-de-apis-com-grpc)
+[:arrow_up: Topo](README.md#estudo-da-interoperabilidade-de-apis-com-grpc)
 
 <br><br>
 
