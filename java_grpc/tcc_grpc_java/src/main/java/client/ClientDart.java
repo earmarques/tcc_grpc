@@ -48,8 +48,7 @@ public class ClientDart {
 		ClientDart client = new ClientDart();
 		
 		try {
-			// createAluno  -------------------------------------------------------------------------------------
-			
+			// createAluno  -------------------------------------------------------------------------------------			
 
 			System.out.println("__ Adicionando Alunos  ----------------------------------");
 			Aluno alunoToAdd1 = Aluno.newBuilder().setId(1).setNome("Elias Mantovani Reboucas").build();
