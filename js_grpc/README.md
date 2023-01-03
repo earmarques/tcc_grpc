@@ -77,8 +77,9 @@ Nós vamos precisar de duas bibliotecas, vamos pedir para o npm buscá-las para 
 ```
 npm i @grpc/grpc-js
 ```
+
 - **@grpc/proto-loader**
-```https://github.com/earmarques/tcc_grpc/tree/main/dart_grpc#grpc-no-dart-bird
+```
 npm i @grpc/proto-loader
 ```
 
@@ -107,7 +108,7 @@ service SorteioService {
 
 message IntervaloRequest {
   int32 min = 1;
-  int32 max = 2;https://github.com/earmarques/tcc_grpc/tree/main/dart_grpc#grpc-no-dart-bird
+  int32 max = 2;
 }ME.md
 
 message SorteadoResponse {
@@ -123,12 +124,11 @@ _Listagem 1: sorteio.proto_
 // server.js
 const grpc = require("@grpc/grpc-js");
 const protoLoader = require("@grpc/proto-loader");
-const PROTO_PATH = "./sorteio.proto";ME.md
+const PROTO_PATH = "./sorteio.proto";
 
-con####st protoObject = protoLoader.loadSync(PROTO_PATH);
+const protoObject = protoLoader.loadSync(PROTO_PATH);
 const sorteioDefinition = grpc.loadPackageDefinition(protoObject);
 const SorteioService = sorteioDefinition.SorteioService;
-https://github.com/earmarques/tcc_grpc/tree/main/js_grpc
 const server = new grpc.Server();
 server.addService(SorteioService.service, {sortearNumero});
 
@@ -213,8 +213,10 @@ node client.js
 
 A cada execução do comando acima, a aplicação cliente JS envia uma requisição para o servidor usando o _framework_ gRPC. O servidor gera um número entre 0 e 50 e o envia para a aplicação cliente, que recebe o valor e imprime na tela.  
 
-![Aplicação clienhttps://github.com/earmarques/tcc_grpc/tree/main/dart_grpc#grpc-no-dart-birdte e servidor se comunicando através do framework gRPC](images/js_grpc_test.png "Aplicação cliente e servidor se comunicando através do framework gRPC")<br>
+![Aplicação cliente e servidor se comunicando através do framework gRPC](images/js_grpc_test.png "Aplicação cliente e servidor se comunicando através do framework gRPC")<br>
 _Figura 2: Aplicação cliente e servidor se comunicando através do framework gRPC_
+
+Seguindo nossa sequência, agora vamos implementar nosso microserviço de gerador de id em [2. Golang](go_grpc/README.md)
 
 <br><br>
 
