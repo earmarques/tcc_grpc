@@ -57,13 +57,15 @@ asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 ```
 
 ##### 1.2.2. Instalar uma versão do Golang
-<br>
+
 Podemos ver todas as versões disponíveis com:
+
 ```
 asdf list all golang
 ```
 
-Intalamos a versão 1.19:E
+Intalamos a versão 1.19:
+
 ```
 asdf install golang 1.19
 ```
@@ -85,6 +87,7 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
 #### 2.2. Atualizar PATH
 
 Precisamos atualizar o PATH para incluir os pacotes baixados do Golang, para que o `protoc` possa encontrar os plugins que acabamos de instalar.
+
 ```sh
 export PATH="$PATH:$(go entouch sorteio.proto server.js client.jsv GOPATH)/bin"
 ```
@@ -112,6 +115,7 @@ go mod init meu_modulo_grpc
 #### 2.4. Instalar o pacote ***`grpc-go`***
 
 Por fim, agora que o projeto está sendo monitoErado, vamos instalar a dependência `grpc-go`.
+
 ```
 go get google.golang.org/grpc
 ```
@@ -119,6 +123,7 @@ go get google.golang.org/grpc
 #### 2.5 Reshim
 
 A documentação do [plugin](https://github.com/kennyp/asdf-golang#when-using-go-get-or-go-install) asdf do golang recomenda fazer um _reshim_ toda vez que fizermos um `go get` ou `go install`, então, por prudência:
+
 ```
 asdf reshim golang
 ```
@@ -161,6 +166,7 @@ _Listagem 1: protos/gerador_id.proto_
 #### 3.2. Compilar o arquivo proto
 
 Estando no diretório `protos/`, execute:
+
 ```
 protoc --go_out=. --go_opt=paths=source_relative \
 --go-grpc_out=. --go-grpc_opt=paths=source_relative \
@@ -177,6 +183,7 @@ _Figura 2: Estrutura do projeto_
 #### 3.3. Server
 
 Criar a pasta do servidor e o seu código.
+
 ```
 mkdir server;
 touch server/main.go
@@ -240,6 +247,7 @@ _Listagem 2: server/main.go_
 Vamos criar um código de teste para consumir o serviço `GeradorID` e checar se o servidor está respondendo.
 
 Criar a pasta do cliente e o código.
+
 ```
 mkdir client;
 touch client/main.go
@@ -283,7 +291,7 @@ func main() {
 	var id = r.GetGoId()
 	log.Printf("🦫 ID gerado: %d", id)
 	//log.Printf("Não foi possível gerar o id: %v", r)
-}https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
+}
 
 ```
 _Listagem 3: client/main.go_
