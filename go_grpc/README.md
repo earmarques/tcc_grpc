@@ -306,6 +306,10 @@ Vamos precisar de dois terminais, em um deixaremos o servidor ouvindo na porta 5
 ![Teste de comunicação cliente-servidor Golang](images/teste-go.png "Teste de comunicação cliente-servidor Golang")<br>
 _Figura 3: Teste de comunicação cliente-servidor Golang_
 
+---
+
+A nossa próxima API irá consumir este microserviço de gerador de id em Golang. É o serviço de banco de dados em [3. Dart](../dart_grpc).
+
 <br><br>
 
 [ :arrow_up: Topo](https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-)
