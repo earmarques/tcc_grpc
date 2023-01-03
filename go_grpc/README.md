@@ -197,7 +197,7 @@ package main
 
 import (
 	"context"
-	"log"https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
+	"log"
 	"net"
 
 	"google.golang.org/grpc"
