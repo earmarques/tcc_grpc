@@ -46,7 +46,7 @@ Dessa forma, temos quatro sistemas implementados em linguagens distintas se comu
 
 ### Execução
 
-O cliente principal, o maior consumidor de microserviços é o _Java_, mas é totalmente dependente dos outros serviços. E cada API tem seu próprio ambiente de excecução, seu próprio servidor. Sendo assim, nós vamos criar um diretório para cada linguagem de programação. É preciso ter em mente que cada diretório é como se fosse um repositório, logo, cada um deles terá o seu README.md com as instruções e comandos de execução no terminal. JavaScript e Go não possuem dependência, mas Dart depende que o serviço Go esteja no ar, e o Java depende de todos eles, sendo assim, nós faremos os "sub-repositórios" na seguinte sequência:
+O cliente principal, o maior consumidor de microserviços é o _Java_, mas é totalmente dependente dos outros serviços. E cada API tem seu próprio ambiente de excecução, seu próprio servidor. Sendo assim, nós vamos criar um diretório para cada linguagem de programação. É preciso ter em mente que cada diretório é como se fosse um repositório, logo, cada um deles terá o seu README.md com as instruções e comandos de execução no terminal. _JavaScript_ e _Golang_ não possuem dependência, mas _Dart_ depende que o serviço _Go_ esteja no ar, e o _Java_ depende de todos eles, sendo assim, nós faremos os "sub-repositórios" na seguinte sequência:
 
 [1. JavaScript](js_grpc)<br>
 [2. Golang](go_grpc)<br>
@@ -55,7 +55,7 @@ O cliente principal, o maior consumidor de microserviços é o _Java_, mas é to
 
 Nos README.md's dos sub-repositórios haverá apenas as instruções para subir o servidor e alguns testes. Explicações mais detalhes do que cada trecho do código faz, o leitor pode consultar a **[Wiki do projeto](https://github.com/earmarques/tcc_grpc/wiki)**, onde temos uma explicação mais abrangente e integrada. Se o leitor estiver interessado no gRPC rodando em apenas uma das linguagens de programação, pode ir até o sub-repositório da linguagem de interesse, que as instruções ali presentes bastam para fazer o gRPC funcionar.
 
-Nós estamos utilizando no momento o [`Pop!_OS 22.04 LTS`](https://pop.system76.com/), uma ditribuição linux baseada no _Debian_. Nela estamos utilizando uma ferramenta CLI de gerenciamento de ambiente de execução chamado **`asdf`**. Com ela podemos controlar o versionamente global (qualquer diretório) ou local (apenas um diretório) de praticamente todas as linguagens de programação existentes. Depois de instalado o _core_ do _asdf_ é só instalar o _plugin_ específico da linguagem que quer versionar e pronto; qualquer linguagem de programação em um único gerenciador. A documentação é tranquila, confira em [asdf - Getting Started](https://asdf-vm.com/guide/getting-started.html) para instalação do _core_ e dos _plugins_, e para ver como é simples fazer o controle de versionamento, confira [asdf - Versions](https://asdf-vm.com/manage/versions.html).
+Nós estamos utilizando no momento o [`Pop!_OS 22.04 LTS`](https://pop.system76.com/), uma ditribuição linux baseada no _Debian_. Nela estamos utilizando uma ferramenta CLI de gerenciamento de ambiente de execução chamado ***asdf***. Com ela podemos controlar o versionamente global (qualquer diretório) ou local (apenas um diretório) de praticamente todas as linguagens de programação existentes. Depois de instalado o _core_ do _asdf_ é só instalar o _plugin_ específico da linguagem que quer versionar e pronto; qualquer linguagem de programação em um único gerenciador. A documentação é tranquila, confira em [asdf - Getting Started](https://asdf-vm.com/guide/getting-started.html) para instalação do _core_ e dos _plugins_, e para ver como é simples fazer o controle de versionamento, confira [asdf - Versions](https://asdf-vm.com/manage/versions.html).
 
 Peço desculpas aos usuários _Windows_ por não oferecer orientações em seu sistema operacional. As instalações do _Windows_ geralmente são até mais simples, aquela conhecida sequência _Next_, _Next_, ..., _Done._ Acredito que apenas o início será diferente, depois os comandos CLI específicos de cada linguagem serão os mesmos. 
 
@@ -93,12 +93,12 @@ Deve ficar assim:
 <img alt="Instalação do asdf - adcionar duas linhas ao ~/.bashrc" title="Instalação do asdf - adcionar duas linhas ao ~/.bashrc" src="images/asdf_bashrc.png"><br>
 _Figura 2: Instalação do asdf - adcionar duas linhas ao ~/.bashrc_
 
-É só isso, o `core` do _asdf_ já está pronto, a seguir viria **4.Instalar plugin** e **5. Instalar a versão** da ferramenta desejada, mas isso faremos dentro do diretório raiz de cada linguagem.  Abrir um novo terminal para que as novas configurações do `.bashrc` sejam carregadas e recarregá-lo no mesmo terminal com o comando:
+É só isso, o `core` do _asdf_ já está pronto, a seguir viria **4.Instalar plugin** e **5. Instalar a versão** da ferramenta desejada, mas isso faremos dentro do diretório raiz de cada linguagem. Para que as alterações se efetivem, devemos abrir um novo terminal para que as novas configurações do `.bashrc` sejam carregadas ou então recarregá-lo no mesmo terminal com o comando:
 
 ```
 source ~/.bashrc
 ```
-Começaremos criando a pasta geral tcc_grpc e dentro dela a pasta que abrigará a API _Javascript_. 
+Começaremos criando a pasta geral `tcc_grpc` e dentro dela a pasta que abrigará a API _Javascript_. 
 
 ```
 mkdir -p tcc_grpc/js_grpc; cd tcc_grpc/js_grpc;
