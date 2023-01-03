@@ -101,10 +101,10 @@ Nosso shell é bash, executar `source ~/.bashrc` carrregará as novas configura�
 
 #### 2.3. Inicializar o projeto
 
-Estando dentro do diretóriotouch sorteio.proto server.js client.js tcc_grpc/ execute os comandos para criar o diretório do go e entrar nele.
+Estando dentro do diretório tcc_grpc/ execute os comandos para criar o diretório do go e entrar nele.
 
 ```
-mkdir go_grpc; cd go_grpc;<br>
+mkdir go_grpc; cd go_grpc;
 ```
 
 O comando `go mod init` cria um arquivo `go.mod` e rastreia as dependências do projeto. Nós chamaremos nosso módulo como o subrepositório do tcc: `go mod init github.com/earmarques/tcc_grpc/go_grpc`, mas recomendamos ao leitor usar o seu próprio git, ou um nome qualquer, como:
