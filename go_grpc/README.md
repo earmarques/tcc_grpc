@@ -136,7 +136,7 @@ Vamos organizar os arquivos em pastas separadas, uma para arquivos _.proto_, out
 
 #### 3.1. Arquivo _Protobuf_
 
-Criamos a pasta _protos_ e touch sorteio.proto server.js client.jsnela o arquivo `gerador_id.proto`:
+Criamos a pasta _protos_ e nela o arquivo `gerador_id.proto`:
 
 ```
 mkdir protos; 
@@ -145,7 +145,7 @@ touch protos/gerador_id.proto;
 Editamos o arquivo para ter o conteúdo:
 
 ```proto
-// gerador_id.prototouch sorteio.proto server.js client.js
+// gerador_id.proto
 
 syntax = "proto3";
 
