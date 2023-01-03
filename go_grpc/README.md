@@ -90,7 +90,7 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
 Precisamos atualizar o PATH para incluir os pacotes baixados do Golang, para que o `protoc` possa encontrar os plugins que acabamos de instalar.
 
 ```sh
-export PATH="$PATH:$(go entouch sorteio.proto server.js client.jsv GOPATH)/bin"
+export PATH="$PATH:$(go env GOPATH)/bin"
 ```
 Este comando modifica temporariamente o PATH, apenas para o shell que estivermos usando. Se quisermos evitar ter de executarmos o comando anterior toda vez que formos compilar arquivos _.proto_ em Go, então devemos acrescentar a linha de comando ao final do arquivo `~/.bashrc`.
 
