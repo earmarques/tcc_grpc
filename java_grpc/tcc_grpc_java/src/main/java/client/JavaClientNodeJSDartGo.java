@@ -131,7 +131,7 @@ public class JavaClientNodeJSDartGo {
 		// aluno sem id - quem irá fornecer será a API Golang
 		Aluno alunoToCreate = Aluno.newBuilder().setNome(nome).build();
 		//teste
-		Aluno alunoCriado =  createAluno(alunoToCreate);				// gRPC - API Dart
+		Aluno alunoCriado =  createAluno(alunoToCreate);			// gRPC - API Dart
 		System.out.println("Novo aluno criado:");
 		System.out.println(alunoCriado);
 	}
@@ -140,7 +140,7 @@ public class JavaClientNodeJSDartGo {
 	public void testGetAll() {
 		System.out.println("\n☕ API Java - getAllAlunos  ________________________________");
 		//teste
-		Alunos alunos = getAllAlunos();									// gRPC - API Dart
+		Alunos alunos = getAllAlunos();						// gRPC - API Dart
 		System.out.println("ID - NOME");
 		System.out.println("==================================================");
 		for (Aluno aluno : alunos.getAlunosList()) {
@@ -155,7 +155,7 @@ public class JavaClientNodeJSDartGo {
 	public void testEdit() {
 		// Altera o nome do aluno do último aluno 
 		System.out.println("\n☕ API Java - editAluno  ___________________________________"); 
-		Alunos alunos = getAllAlunos();									// gRPC - API Dart
+		Alunos alunos = getAllAlunos();						// gRPC - API Dart
 		int indexUltimo = alunos.getAlunosCount() - 1;
 		Aluno ultimoAluno = alunos.getAlunos(indexUltimo);				
 		Aluno alunoToEdit = Aluno.newBuilder()
@@ -163,7 +163,7 @@ public class JavaClientNodeJSDartGo {
 				.setNome("Matheus Rufato Santana de Oliveira")
 				.build();
 		//teste		
-		Aluno alunoEditado = editAluno(alunoToEdit);					// gRPC - API Dart
+		Aluno alunoEditado = editAluno(alunoToEdit);				// gRPC - API Dart
 		String msg = String.format("Aluno de id=%d com nome editado:\n", alunoEditado.getId());
 		System.out.println( msg + alunoEditado);
 	}
@@ -172,14 +172,14 @@ public class JavaClientNodeJSDartGo {
 	public void testGet() {
 		// Resgata o aluno que fora editado, o último 
 		System.out.println("\n☕ API Java - getAluno  ____________________________________"); 
-		Alunos alunos = getAllAlunos();									// gRPC - API Dart
+		Alunos alunos = getAllAlunos();						// gRPC - API Dart
 		int indexUltimo = alunos.getAlunosCount() - 1;
 		Aluno ultimoAluno = alunos.getAlunos(indexUltimo);				
 		AlunoId alunoId = AlunoId.newBuilder()
 				.setId(ultimoAluno.getId())
 				.build();
 		//teste
-		Aluno aluno = getAluno(alunoId);								// gRPC - API Dart
+		Aluno aluno = getAluno(alunoId);					// gRPC - API Dart
 		String msg = String.format("Aluno de id=%d resgatado:\n", aluno.getId());
 		System.out.println( msg + aluno);
 	}
@@ -188,14 +188,14 @@ public class JavaClientNodeJSDartGo {
 	public void testDelete() {
 		// Altera o nome do aluno do último aluno 
 		System.out.println("\n☕ API Java - deleteAluno  _________________________________"); 
-		Alunos alunos = getAllAlunos();									// gRPC - API Dart
+		Alunos alunos = getAllAlunos();						// gRPC - API Dart
 		int indexUltimo = alunos.getAlunosCount() - 1;
 		Aluno ultimoAluno = alunos.getAlunos(indexUltimo);				
 		AlunoId alunoId = AlunoId.newBuilder()
 				.setId(ultimoAluno.getId())
 				.build();
 		// teste
-		deleteAluno(alunoId);											// gRPC - API Dart				
+		deleteAluno(alunoId);							// gRPC - API Dart				
 		System.out.println( String.format("Aluno removido com id=%d \n", alunoId.getId()) );
 	}
 
