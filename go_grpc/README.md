@@ -42,7 +42,7 @@ Para compilar um arquivo `protocol buffer`, nós precisamos instalar o compilado
 
 ##### 1.1.1. Instalar o plugin 
 ```
-asdf plugin-add protoc https://github.com/paxosglobal/asdf-protoc.gitEstrutura do projeto
+asdf plugin-add protoc https://github.com/paxosglobal/asdf-protoc.git
 ```
 ##### 1.1.2. Instalar a versão 
 
