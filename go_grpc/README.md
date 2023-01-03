@@ -173,7 +173,7 @@ protoc --go_out=. --go_opt=paths=source_relative \
 --go-grpc_out=. --go-grpc_opt=paths=source_relative \
  google/protobuf/empty.proto gerador_id.proto
 ```
-Chamamos o compilador `protoc` que usará os plugins do Go para gerar o código. No arquivo `gerador_id.proto` nós importamos a definição Estrutura do projeto de tipo vazio (`empty.proto`). Em definições de contrato, se uma chamada de procedimento remota `rpc` não recebe nenhum parâmetro como argumento, ou retorna `void`, ainda assim, devemos definir esse tipo `message`. Como isso é uma `message` muito recorrente, é bom que tenhamos uma definição comum ao invés de definí-la em cada arquivo _.proto_, e termos problemas de conflito de declaração. Sendo assim, nós importamos de `google/protobuf/empty.proto`.
+Chamamos o compilador `protoc` que usará os plugins do Go para gerar o código. No arquivo `gerador_id.proto` nós importamos a definição de tipo vazio (`empty.proto`). Em definições de contrato, se uma chamada de procedimento remota `rpc` não recebe nenhum parâmetro como argumento, ou retorna `void`, ainda assim, devemos definir esse tipo `message`. Como isso é uma `message` muito recorrente, é bom que tenhamos uma definição comum ao invés de definí-la em cada arquivo _.proto_, e termos problemas de conflito de declaração. Sendo assim, nós importamos de `google/protobuf/empty.proto`.
 
 Veremos dois arquivos `.go` criados na pasta _protos_, `gerador_id_grpc.pb.go` e `gerador_id.pb.go`. Também foi criada uma pasta _google_ referente à importação, com outro código gerado pelos plugins, `empty.pb.go`. A figura 2 mostra como deve ser a estrutura do módulo go_grpc.
 
