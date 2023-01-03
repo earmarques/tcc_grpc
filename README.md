@@ -1,6 +1,6 @@
 # Estudo da Interoperabilidade de APIs com gRPC
 
-Nós construímos um sistema distribuído de microsserviços fazendo a interoperabilidade de APIs implementadas em quatro linguagens de programação diferentes (`Golang`, `Dart`, `Java` e `Javacript`), utilizando o gRPC para a comunicação entre os sistemas de APIs.
+Nós construímos um sistema distribuído de microsserviços fazendo a interoperabilidade de APIs implementadas em quatro linguagens de programação diferentes (_Golang_, _Dart_, _Java_ e _Javacript_), utilizando o gRPC para a comunicação entre os sistemas de APIs.
 
 ---
 ### O que é gRPC?
