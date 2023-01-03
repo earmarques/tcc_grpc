@@ -63,7 +63,7 @@ out/
 ## Eclipse
 ##############################
 .settings/
-bin/
+#bin/ os códigos do dart ficam numa paqsta bin
 tmp/
 .metadata
 .classpath
