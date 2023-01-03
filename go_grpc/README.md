@@ -115,7 +115,7 @@ go mod init meu_modulo_grpc
 
 #### 2.4. Instalar o pacote ***`grpc-go`***
 
-Por fim, agora que o projeto está sendo monitoErado, vamos instalar a dependência `grpc-go`.
+Por fim, agora que o projeto está sendo monitorado, vamos instalar a dependência `grpc-go`.
 
 ```
 go get google.golang.org/grpc
