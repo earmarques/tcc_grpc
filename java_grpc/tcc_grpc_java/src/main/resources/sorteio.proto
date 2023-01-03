@@ -1,0 +1,20 @@
+// sorteio.proto
+
+syntax = "proto3";
+
+option java_package = "java_grpc";
+
+service SorteioService {
+  rpc SortearNumero (IntervaloRequest) returns (SorteadoResponse) {}
+}
+
+message IntervaloRequest {
+  int32 min = 1;
+  int32 max = 2;
+}
+
+message SorteadoResponse {
+  int32 numero = 1;
+}
+
+

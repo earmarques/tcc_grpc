@@ -1,0 +1,25 @@
+// aluno.proto
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+service CrudAlunoService {
+    rpc CreateAluno(Aluno) returns (Aluno);
+    rpc GetAllAlunos(google.protobuf.Empty) returns (Alunos);
+    rpc GetAluno(AlunoId) returns (Aluno);
+    rpc DeleteAluno(AlunoId) returns (google.protobuf.Empty) {};
+    rpc EditAluno(Aluno) returns (Aluno) {};
+}
+
+message AlunoId {
+    int32 id = 1;
+}
+
+message Aluno {
+    int32 id = 1;
+    string nome = 2;    
+}
+
+message Alunos {
+    repeated Aluno alunos = 1;
+}

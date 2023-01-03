@@ -1,0 +1,19 @@
+// gerador_id.proto
+
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/earmarques/tcc_grpc/go_grpc";
+package geradorid;
+
+service GeradorID {
+  rpc GerarId(google.protobuf.Empty) returns (IdReply) {}
+}
+
+
+message IdReply {
+  int32 goId = 1;
+}
+
+
