@@ -53,7 +53,7 @@ asdf install nodejs 18.7.0
 > asdf global nodejs latest
 > ```
 
-Mas aqui nós vamos utilizar localmente(tcc_grpc/js_grpc/) neste repositório a versão específica.
+Mas aqui nós vamos utilizar localmente (tcc_grpc/js_grpc/) neste repositório a versão específica.
 ```
 asdf local nodejs 18.7.0
 ```
