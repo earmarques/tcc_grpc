@@ -301,7 +301,7 @@ _Listagem 3: client/main.go_
 
 ### 4. Executar teste
 
-Vamos precisar de dois terminais, em um deixaremos o servidor ouvindo na porta 50051, no outro executamos as chamadas remotas. O comportamento esperado é dado na figEstrutura do projetoura 3.https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
+Vamos precisar de dois terminais, em um deixaremos o servidor ouvindo na porta 50051, no outro executamos as chamadas remotas. O comportamento esperado é dado na figura 3.
 
 ![Teste de comunicação cliente-servidor Golang](images/teste-go.png "Teste de comunicação cliente-servidor Golang")<br>
 _Figura 3: Teste de comunicação cliente-servidor Golang_
