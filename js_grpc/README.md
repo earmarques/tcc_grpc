@@ -216,6 +216,8 @@ A cada execução do comando acima, a aplicação cliente JS envia uma requisiç
 ![Aplicação cliente e servidor se comunicando através do framework gRPC](images/js_grpc_test.png "Aplicação cliente e servidor se comunicando através do framework gRPC")<br>
 _Figura 2: Aplicação cliente e servidor se comunicando através do framework gRPC_
 
+---
+
 Seguindo nossa sequência, agora vamos implementar nosso microserviço de gerador de id em [2. Golang](../go_grpc).
 
 <br><br>
