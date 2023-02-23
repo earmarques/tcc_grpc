@@ -100,7 +100,7 @@ Para este projeto Maven, nós demos as identificações de artefato mostradas na
 _Figura 4: Artefato do projeto Maven_
 
 #### 3.2. Configurar Projeto
-https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
+
 Precisamos fazer algumas configurações no projeto para que possomos trabalhar com o gRPC. Para tanto, devemos editar o arquivo pom.xml para ficar como na listagem 1. 
 
 ```xml
