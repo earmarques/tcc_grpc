@@ -53,6 +53,10 @@ O cliente principal, o maior consumidor de microserviços é o _Java_, mas é to
 [3. Dart](dart_grpc)<br>
 [4. Java](java_grpc)<br>
 
+
+<img width=100% alt="Interoperabilidade de APIs com gRPC - Simulação" title="Interoperabilidade de APIs com gRPC - Simulação" src="images/fig26.png"><br>
+_Figura 2: Interoperabilidade de APIs com gRPC - Simulação_
+
 Nos README.md's dos sub-repositórios haverá apenas as instruções para subir o servidor e alguns testes. Explicações mais detalhes do que cada trecho do código faz, o leitor pode consultar a **[Wiki do projeto](https://github.com/earmarques/tcc_grpc/wiki)**, onde temos uma explicação mais abrangente e integrada. Se o leitor estiver interessado no gRPC rodando em apenas uma das linguagens de programação, pode ir até o sub-repositório da linguagem de interesse, que as instruções ali presentes bastam para fazer o gRPC funcionar.
 
 Nós estamos utilizando no momento o [`Pop!_OS 22.04 LTS`](https://pop.system76.com/), uma ditribuição linux baseada no _Debian_. Nela estamos utilizando uma ferramenta CLI de gerenciamento de ambiente de execução chamado ***asdf***. Com ela podemos controlar o versionamente global (qualquer diretório) ou local (apenas um diretório) de praticamente todas as linguagens de programação existentes. Depois de instalado o _core_ do _asdf_ é só instalar o _plugin_ específico da linguagem que quer versionar e pronto; qualquer linguagem de programação em um único gerenciador. A documentação é tranquila, confira em [asdf - Getting Started](https://asdf-vm.com/guide/getting-started.html) para instalação do _core_ e dos _plugins_, e para ver como é simples fazer o controle de versionamento, confira [asdf - Versions](https://asdf-vm.com/manage/versions.html).
@@ -91,7 +95,7 @@ Edite o arquivo ~/.bashrc e adicione as duas linhas abaixo ao final do arquivo:
 Deve ficar assim:
 
 <img alt="Instalação do asdf - adcionar duas linhas ao ~/.bashrc" title="Instalação do asdf - adcionar duas linhas ao ~/.bashrc" src="images/asdf_bashrc.png"><br>
-_Figura 2: Instalação do asdf - adcionar duas linhas ao ~/.bashrc_
+_Figura 3: Instalação do asdf - adcionar duas linhas ao ~/.bashrc_
 
 É só isso, o `core` do _asdf_ já está pronto, a seguir viria **4.Instalar plugin** e **5. Instalar a versão** da ferramenta desejada, mas isso faremos dentro do diretório raiz de cada linguagem. Para que as alterações se efetivem, devemos abrir um novo terminal para que as novas configurações do `.bashrc` sejam carregadas ou então recarregá-lo no mesmo terminal com o comando:
 
