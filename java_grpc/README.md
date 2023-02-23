@@ -127,7 +127,7 @@ Precisamos fazer algumas configurações no projeto para que possomos trabalhar 
 		<dependency>
 			<groupId>io.grpc</groupId>
 			<artifactId>grpc-netty-shaded</artifactId>
-			<version>1.15.1</version>https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
+			<version>1.15.1</version>
 		</dependency>
 		<dependency>
 			<groupId>io.grpc</groupId>
@@ -142,7 +142,7 @@ Precisamos fazer algumas configurações no projeto para que possomos trabalhar 
 	</dependencies>
 	
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>https://github.com/earmarques/tcc_grpc/blob/main/java_grpc/README.md#grpc-no-java-coffee
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	
 	<build>
@@ -156,7 +156,7 @@ Precisamos fazer algumas configurações no projeto para que possomos trabalhar 
 				<executions>
 					<execution>
 						<phase>generate-sources</phase>
-						<goalshttps://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang->
+						<goals>
 							<goal>run</goal>
 						</goals>
 						<configuration>
@@ -183,7 +183,7 @@ Precisamos fazer algumas configurações no projeto para que possomos trabalhar 
 					</execution>
 				</executions>
 			</plugin>
-			https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -258,7 +258,7 @@ public class AgendaContatos {
 	    preencherLista();
 	  }
 
-	public String getPessoa(int i) {https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
+	public String getPessoa(int i) {
 		return this.lista.get(i);
 	}
 
@@ -272,7 +272,7 @@ public class AgendaContatos {
 		this.lista.add("DANIEL DE OLIVEIRA MARTINS");
 		this.lista.add("DULCEMEIRE DE FREITAS SOUZA ALONSO");
 		this.lista.add("EDEZIO TOMAZ DE OLIVEIRA");
-		this.lista.add("EVANDRO GARCIA LOPES");https://github.com/earmarques/tcc_grpc/blob/main/java_grpc/README.md#grpc-no-java-coffee
+		this.lista.add("EVANDRO GARCIA LOPES");
 		this.lista.add("FERNANDA FERREIRA MAGALHDIAS");
 		this.lista.add("FERNANDA GABRIELA DOS SANTOS CHIQUETO");
 		this.lista.add("FERNANDO MAURO GARCIA");
@@ -375,7 +375,7 @@ public class ClientJS {
 			return sorteado;
 		} catch (StatusRuntimeException e) {
 			String msg = "\n\n\tServidor indisponível.\n\n";
-			System.out.println(msg);https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-				
+			System.out.println(msg);				
 			e.printStackTrace();
 			throw new RuntimeException(msg, e);
 		}
@@ -401,7 +401,7 @@ public class ClientJS {
 Testamos a comunicação entre Java e o banco de dados Dart. Só precisamos executar o Dart, o servidor de id Golang não precisa, porque no teste estamos fornecendo o id, e o Dart só fazer a chamada remota ao Go se o objeto `request` não tiver id. Só queremos checar comunicação gRPC, então, só fizemos dois métodos: `getAllAlunos` e `createAluno`. 
 
 ```java
-package client;https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
+package client;
 
 import com.google.protobuf.Empty;
 
@@ -430,7 +430,7 @@ public class ClientDart {
 		return alunos;
 	}
 
-	// createAlunohttps://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
+	// createAluno
 	public Aluno createAluno(Aluno a) {
 		
 		ManagedChannel channel = ManagedChannelBuilder
@@ -518,7 +518,7 @@ public class JavaClientNodeJSDartGo {
 		String nomePessoa = contatos.getPessoa(numeroSorteado); 
 		return nomePessoa;
 	}
-	https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
+	
 	// sortearNumero
 	private int getNumeroSorteado(int min, int max) {
 		// Canal
@@ -529,7 +529,7 @@ public class JavaClientNodeJSDartGo {
 		// Stub: ligação ao servidor de API
 		SorteioServiceGrpc.SorteioServiceBlockingStub sorteioStub = SorteioServiceGrpc
 				.newBlockingStub((Channel)channel);
-		// Montar a requisiçãohttps://github.com/earmarques/tcc_grpc/blob/main/java_grpc/README.md#grpc-no-java-coffee
+		// Montar a requisição
 		Sorteio.IntervaloRequest request = Sorteio.IntervaloRequest.newBuilder()
 				.setMin(5)
 				.setMax(15)
@@ -552,7 +552,7 @@ public class JavaClientNodeJSDartGo {
 				.forAddress("localhost", 50052)
 				.usePlaintext()
 				.build();	
-		// Stubhttps://github.com/earmarques/tcc_grpc/blob/main/java_grpc/README.md#grpc-no-java-coffee
+		// Stub
 		CrudAlunoServiceBlockingStub alunoStub = CrudAlunoServiceGrpc.newBlockingStub(channel);
 
 		Aluno aluno = alunoStub.createAluno(a);
@@ -669,7 +669,7 @@ public class JavaClientNodeJSDartGo {
 		AlunoId alunoId = AlunoId.newBuilder()
 				.setId(ultimoAluno.getId())
 				.build();
-		//testehttps://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
+		//teste
 		Aluno aluno = getAluno(alunoId);								// gRPC - API Dart
 		String msg = String.format("Aluno de id=%d resgatado:\n", aluno.getId());
 		System.out.println( msg + aluno);
