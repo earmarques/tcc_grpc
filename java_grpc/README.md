@@ -230,7 +230,7 @@ Java vai se comunicar diretamente com Javascript e Dart, então precisamos dos a
 _Figura 9: Estrutura de pacotes projeto Java_
 
 Agora vamos compilar os `.proto` com o plugin Java através do Maven. Botão direito no projeto >> `Run As` >> `Maven build` >> `Run`. Serão criados dois arquivos por `proto`, `sorteio.proto` produzirá `Sorteio.java` e `SorteioServiceGrpc.java` e o `aluno.proto` resultará em `AlunoOuterClass.java` e `CrudAlunoServiceGrpc.java`. Conforme definimos no `pom.xml`, os códigos que irão cuidar da comunicação pela rede estão no pacote `java_grpc`.
-https://github.com/earmarques/tcc_grpc/blob/main/go_grpc/README.md#grpc-no-golang-
+
 ### 5. Códigos clientes
 
 Vamos escrever códigos clientes das API um por vez. Primeiro vamos fazer o Java consumir o microserviço de sorteio do JavaScript com `ClientJS.java`, depois vamos testar a integração do Java com o Dart com `ClientDart.java` e por fim, faremos a integração com as quatro aplicações em `JavaClientNodeJSDartGo.java`. Estes arquivos estão no pacote `client`.
